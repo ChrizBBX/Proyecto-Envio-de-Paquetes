@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj": {}
+    "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj": {
+    "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj",
+        "projectUniqueName": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj",
         "projectName": "Paquetes.API",
-        "projectPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj",
-        "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\obj\\",
+        "projectPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj",
+        "packagesPath": "C:\\Users\\LAB01\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\LAB01\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj": {
-                "projectPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj"
+              "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj": {
+                "projectPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj"
               }
             }
           }
@@ -85,6 +81,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.17, 5.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -93,25 +107,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj": {
+    "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj",
         "projectName": "Paquetes.BusinessLogic",
-        "projectPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj",
-        "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\obj\\",
+        "projectPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\Paquetes.BusinessLogic.csproj",
+        "packagesPath": "C:\\Users\\LAB01\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\LAB01\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -125,8 +135,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj"
+              "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj"
               }
             }
           }
@@ -150,30 +160,40 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj": {
+    "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj",
         "projectName": "Paquetes.DataAccess",
-        "projectPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\Paquetes.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\LAB01\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\LAB01\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -187,8 +207,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj": {
-                "projectPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj"
+              "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj": {
+                "projectPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj"
               }
             }
           }
@@ -226,30 +246,40 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj": {
+    "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj",
         "projectName": "Paquetes.Entities",
-        "projectPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj",
-        "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chris\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\obj\\",
+        "projectPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj",
+        "packagesPath": "C:\\Users\\LAB01\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\LAB01\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -284,12 +314,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -527,3 +527,29 @@ VALUES	('01','0101','La Ceiba', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('18', '1810', 'Victoria', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('18', '1811', 'Yorito', '1', NULL, GETDATE(), NULL, GETDATE());
 GO
+
+
+/*-------------------------Paquetes-------------------------------*/
+/*Paquetes VIEW*/
+GO
+CREATE VIEW paqu.VW_tbPaquetes
+AS
+SELECT paqu_ID, paqu_Cliente,CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS paqu_ClienteNombreCompleto, 
+paqu.sucu_ID,sucu.sucu_Nombre AS sucu_Nombre, paqu_Peso, 
+paqu_Fragil, meto_ID, 
+paqu.muni_ID, paqu_DireccionExacta, 
+paqu_FechaSalida, paqu_FechaCreacion, 
+paqu_UserCreacion, paqu_FechaModificacion, 
+paqu_UserModificacion, paqu_Estado
+FROM paqu.tbPaquetes paqu INNER JOIN paqu.tbPersonas pers
+ON paqu.paqu_Cliente = pers.pers_ID INNER JOIN paqu.tbSucursales sucu
+ON paqu.sucu_ID = sucu.sucu_ID
+
+/*Paquetes VIEW UDP*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_VW
+AS 
+BEGIN
+SELECT * FROM paqu.VW_tbPaquetes
+END
+

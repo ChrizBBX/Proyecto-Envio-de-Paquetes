@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Paquetes.BusinessLogic.Services;
 using Paquetes.DataAccess;
+using Paquetes.DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +14,13 @@ namespace Paquetes.BusinessLogic
     {
         public static void DataAccess(this IServiceCollection service, string connectionString)
         {
-            //service.AddScoped<ClientesRepository>();
+            service.AddScoped<PaquetesRepository>();
 
             PaquetesContext.BuildConnectionString(connectionString);
         }
         public static void BusinessLogic(this IServiceCollection service)
         {
-            //service.AddScoped<TerminalService>();
+            service.AddScoped<PaquetesService>();
         }
     }
 }

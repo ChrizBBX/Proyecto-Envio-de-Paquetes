@@ -40,9 +40,13 @@
       {
          "Name": "[paqu].[tbSucursales]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[paqu].[VW_tbPaquetes]",
+         "ObjectType": 3
       }
    ],
-   "UiHint": "DESKTOP-7ECKOKU\\SQLEXPRESS.Paquetes",
+   "UiHint": "DESKTOP-E6OAL4S\\SERVIDORLOCALDM.Paquetes",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": true,
    "UseDbContextSplitting": false,
