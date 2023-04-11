@@ -1,0 +1,12 @@
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\bin\Debug\net5.0\Paquetes.Entities.deps.json
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\bin\Debug\net5.0\Paquetes.Entities.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\bin\Debug\net5.0\ref\Paquetes.Entities.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\bin\Debug\net5.0\Paquetes.Entities.pdb
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.csproj.AssemblyReference.cache
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.AssemblyInfoInputs.cache
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.AssemblyInfo.cs
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\ref\Paquetes.Entities.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.pdb
