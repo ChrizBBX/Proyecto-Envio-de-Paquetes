@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GUOS9FFXKHiQVPx7MjsMuw/jystQUB8UlqRNcZMj1AcFu25ablzUda5Lf2sTnowpTPwg+HOQ/XrrgkdMPlVnuw==",
+  "dgSpecHash": "a6rDUNwIT0ltPN6G4QDQBp23SCU5dJ6ayH/yJvy67LH8a8+nu9k27yU5gOuliBdJJQblmqSH9H2kugrxKp2Sww==",
   "success": true,
   "projectFilePath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\LAB01\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\LAB01\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\LAB01\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

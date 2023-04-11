@@ -73,6 +73,7 @@ CREATE TABLE acce.tbUsuarios
 (
 [user_ID]				INT IDENTITY (1,1),
 user_Username			NVARCHAR(150) NOT NULL,
+user_Contrasena			NVARCHAR(MAX) NOT NULL,
 pers_ID					INT NOT NULL,
 user_FechaCreacion      DATETIME DEFAULT GETDATE(),
 user_UserCreacion		INT,
@@ -85,10 +86,17 @@ CONSTRAINT FK_tbUsuarios_pers_ID_tbPersonas_pers_ID FOREIGN KEY (pers_ID) REFERE
 )
 
 GO
-INSERT INTO acce.tbUsuarios(user_Username,pers_ID,
-user_UserCreacion,user_FechaModificacion,
-user_UserModificacion)
-VALUES('admin',1,1,NULL,NULL)
+CREATE PROCEDURE UDP_tbUsuarios_Insert
+@user_Username NVARCHAR(250),
+@user_Contrasena NVARCHAR(MAX),
+@pers_ID INT,
+@user_UserCreacion INT
+AS
+BEGIN
+DECLARE @contrasenaEncriptada NVARCHAR(MAX) = HASHBYTES('SHA2-512','123')
+INSERT INTO acce.tbUsuarios(user_Username, pers_ID, user_FechaCreacion, user_UserCreacion, user_FechaModificacion, user_UserModificacion, user_Estado)
+VALUES(@user_Username,@contrasenaEncriptada,@pers_ID,@user_UserCreacion,NULL,NULL)
+END
 GO
  
 ALTER TABLE acce.tbUsuarios
