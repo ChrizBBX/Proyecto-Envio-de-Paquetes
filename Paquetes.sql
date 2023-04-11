@@ -32,7 +32,7 @@ CREATE TABLE gral.tbMunicipios(
 	muni_ID						CHAR(4),
 	muni_Descripcion			NVARCHAR(200),
 	muni_Estado					INT DEFAULT 1,
-	muni_UserCreador			INT,
+	muni_UserCreacion			INT,
 	muni_FechaCreacion			DATETIME DEFAULT GETDATE(),
 	muni_UserModificacion		INT,
 	muni_FechaModificacion		DATETIME,
@@ -171,7 +171,7 @@ CONSTRAINT FK_tbPaquetes_paqu_UserModificacion_tbUsuarios_user_ID FOREIGN KEY (p
 )
 
 /*Insert de Departamentos y municipios*/
-INSERT INTO gral.tbDepartamentos(dept_ID, dept_Descripcion, dept_Estado, dept_UsuarioCreador, dept_FechaCreacion, dept_UsuarioModificador, dept_FechaModificacion)
+INSERT INTO gral.tbDepartamentos(dept_ID, dept_Descripcion, dept_Estado, dept_UserCreacion, dept_FechaCreacion, dept_UserModificacion, dept_FechaModificacion)
 VALUES	('01','Atl�ntida', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('02','Col�n', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('03','Comayagua', '1', NULL, GETDATE(), NULL, GETDATE()),
@@ -193,7 +193,7 @@ VALUES	('01','Atl�ntida', '1', NULL, GETDATE(), NULL, GETDATE()),
 GO
 
 
-INSERT INTO gral.tbMunicipios(dept_ID, muni_ID, muni_Descripcion, muni_Estado, muni_UsuarioCreador, muni_FechaCreacion, muni_UsuarioModificador, muni_FechaModificacion)
+INSERT INTO gral.tbMunicipios(dept_ID, muni_ID, muni_Descripcion, muni_Estado, muni_UserCreacion, muni_FechaCreacion, muni_UserModificacion, muni_FechaModificacion)
 VALUES	('01','0101','La Ceiba', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('01','0102','El Porvenir', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('01','0103','Tela', '1', NULL, GETDATE(), NULL, GETDATE()),

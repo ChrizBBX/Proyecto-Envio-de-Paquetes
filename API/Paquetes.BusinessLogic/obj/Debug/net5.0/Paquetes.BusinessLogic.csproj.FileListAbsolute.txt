@@ -1,0 +1,17 @@
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\bin\Debug\net5.0\Paquetes.BusinessLogic.deps.json
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\bin\Debug\net5.0\Paquetes.BusinessLogic.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\bin\Debug\net5.0\ref\Paquetes.BusinessLogic.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\bin\Debug\net5.0\Paquetes.BusinessLogic.pdb
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\bin\Debug\net5.0\Paquetes.DataAccess.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\bin\Debug\net5.0\Paquetes.Entities.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\bin\Debug\net5.0\Paquetes.DataAccess.pdb
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\bin\Debug\net5.0\Paquetes.Entities.pdb
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\obj\Debug\net5.0\Paquetes.BusinessLogic.csproj.AssemblyReference.cache
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\obj\Debug\net5.0\Paquetes.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\obj\Debug\net5.0\Paquetes.BusinessLogic.AssemblyInfoInputs.cache
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\obj\Debug\net5.0\Paquetes.BusinessLogic.AssemblyInfo.cs
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\obj\Debug\net5.0\Paquetes.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\obj\Debug\net5.0\Paquetes.BusinessLogic.csproj.CopyComplete
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\obj\Debug\net5.0\Paquetes.BusinessLogic.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\obj\Debug\net5.0\ref\Paquetes.BusinessLogic.dll
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.BusinessLogic\obj\Debug\net5.0\Paquetes.BusinessLogic.pdb
