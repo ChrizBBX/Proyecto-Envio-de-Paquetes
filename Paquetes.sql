@@ -93,10 +93,16 @@ CREATE PROCEDURE UDP_tbUsuarios_Insert
 @user_UserCreacion INT
 AS
 BEGIN
-DECLARE @contrasenaEncriptada NVARCHAR(MAX) = HASHBYTES('SHA2-512','123')
-INSERT INTO acce.tbUsuarios(user_Username, pers_ID, user_FechaCreacion, user_UserCreacion, user_FechaModificacion, user_UserModificacion, user_Estado)
-VALUES(@user_Username,@contrasenaEncriptada,@pers_ID,@user_UserCreacion,NULL,NULL)
+
+DECLARE @Pass VARBINARY(MAX) = CONVERT(VARBINARY(MAX), HASHBYTES('SHA2_512', @user_Contrasena));
+
+INSERT INTO acce.tbUsuarios(user_Username,user_Contrasena,pers_ID, user_UserCreacion, user_FechaModificacion, user_UserModificacion)
+VALUES(@user_Username,@Pass,@pers_ID,@user_UserCreacion,NULL,NULL)
 END
+GO
+
+EXECUTE UDP_tbUsuarios_Insert 'admin','123',1,1
+
 GO
  
 ALTER TABLE acce.tbUsuarios

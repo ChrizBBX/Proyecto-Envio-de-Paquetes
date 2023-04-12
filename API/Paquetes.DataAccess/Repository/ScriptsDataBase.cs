@@ -11,5 +11,9 @@ namespace Paquetes.DataAccess.Repository
         #region Paquetes
         public static string UDP_Paquetes_Select = "paqu.UDP_tbPaquetes_VW";
         #endregion
+
+        #region Metodos de pago
+        public static string UDP_MetodosPago_Select = "gral.UDP_tbMetodosPago_VW";
+        #endregion
     }
 }

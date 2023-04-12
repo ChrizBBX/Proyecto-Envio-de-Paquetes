@@ -15,12 +15,14 @@ namespace Paquetes.BusinessLogic
         public static void DataAccess(this IServiceCollection service, string connectionString)
         {
             service.AddScoped<PaquetesRepository>();
+            service.AddScoped<MetodosPagoRepository>();
 
             PaquetesContext.BuildConnectionString(connectionString);
         }
         public static void BusinessLogic(this IServiceCollection service)
         {
             service.AddScoped<PaquetesService>();
+            service.AddScoped<GeneralService>();
         }
     }
 }

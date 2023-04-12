@@ -1,0 +1,15 @@
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\bin\Release\net5.0\Paquetes.DataAccess.deps.json
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\bin\Release\net5.0\Paquetes.DataAccess.dll
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\bin\Release\net5.0\ref\Paquetes.DataAccess.dll
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\bin\Release\net5.0\Paquetes.DataAccess.pdb
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\bin\Release\net5.0\Paquetes.Entities.dll
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\bin\Release\net5.0\Paquetes.Entities.pdb
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\obj\Release\net5.0\Paquetes.DataAccess.csproj.AssemblyReference.cache
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\obj\Release\net5.0\Paquetes.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\obj\Release\net5.0\Paquetes.DataAccess.AssemblyInfoInputs.cache
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\obj\Release\net5.0\Paquetes.DataAccess.AssemblyInfo.cs
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\obj\Release\net5.0\Paquetes.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\obj\Release\net5.0\Paquetes.DataAccess.csproj.CopyComplete
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\obj\Release\net5.0\Paquetes.DataAccess.dll
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\obj\Release\net5.0\ref\Paquetes.DataAccess.dll
+C:\Users\LAB01\Desktop\Proyecto-Envio-de-Paquetes\API\Paquetes.DataAccess\obj\Release\net5.0\Paquetes.DataAccess.pdb

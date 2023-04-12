@@ -42,6 +42,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[gral].[VW_tbMetodosPago]",
+         "ObjectType": 3
+      },
+      {
          "Name": "[paqu].[VW_tbPaquetes]",
          "ObjectType": 3
       }

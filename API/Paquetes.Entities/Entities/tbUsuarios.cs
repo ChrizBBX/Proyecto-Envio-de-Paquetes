@@ -24,6 +24,7 @@ namespace Paquetes.Entities.Entities
 
         public int user_ID { get; set; }
         public string user_Username { get; set; }
+        public string user_Contrasena { get; set; }
         public int pers_ID { get; set; }
         public DateTime? user_FechaCreacion { get; set; }
         public int? user_UserCreacion { get; set; }

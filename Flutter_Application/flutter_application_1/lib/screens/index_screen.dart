@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-String url = "https://api.thecatapi.com/v1/categories";
+String url = "https://localhost:44309/api/MetodosPago";
 
 Future<dynamic>  _getListado() async{
   final respuesta = await http.get(Uri.parse(url));
@@ -24,7 +24,7 @@ class _MyWidgetState extends State<MyWidget>{
   Widget build(BuildContext context){
    return Scaffold(
     appBar: AppBar(
-      title: Text("Listado Categoria"),
+      title: Text("Listado Metodos Pago"),
     ),
     body: FutureBuilder<dynamic>(
       future: _getListado(),
@@ -47,7 +47,7 @@ List<Widget> listado(List<dynamic> info){
   List<Widget> lista = [];
 
 info.forEach((element) {
-  lista.add(Text(element["name"]));
+  lista.add(Text(element["meto_Nombre"]));
 });
 
   return lista;

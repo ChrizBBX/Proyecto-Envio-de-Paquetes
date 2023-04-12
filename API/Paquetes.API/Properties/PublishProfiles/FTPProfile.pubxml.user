@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACo6w/FnZ0kKdPd/qgNqgQQAAAAACAAAAAAAQZgAAAAEAACAAAABO/YaZOlYAoOB3R41PbR5l8Sb14E2GLM5dxyj6rtI9ZwAAAAAOgAAAAAIAACAAAACmMdeIKyL7C9nwGDTgEuBFXUFd61d1AOWYebPhEklotCAAAAA7AOM3rp6nCNNOc3+IqAjXpSiOyV0n9FIHiZY+nNXLQkAAAABNm/A+f8Lbf0Q259FCzVidUWQzPlmiOdfqhcggiYjKUjCFEk8Urb63QcJvlzVYIkri97o1dU7KBCxhQX373hsC</EncryptedPassword>
+    <_PublishTargetUrl>ftp://155.254.244.38/www.RapiExprezzz.somee.com</_PublishTargetUrl>
+    <History>False|2023-04-12T18:23:06.4618277Z;False|2023-04-12T12:20:08.2379901-06:00;</History>
+  </PropertyGroup>
+</Project>
