@@ -145,7 +145,7 @@ meto_FechaCreacion			DATETIME DEFAULT GETDATE(),
 meto_UserCreacion			INT NOT NULL,
 meto_FechaModificacion		DATETIME,
 meto_UserModificacion		INT,
-meto_Estado					BIT
+meto_Estado					BIT DEFAULT 1,
 
 CONSTRAINT PK_tbMetodosPago_meto_ID PRIMARY KEY (meto_ID),
 CONSTRAINT FK_tbMetodosPago_meto_userCreacion_tbUsuarios_user_ID FOREIGN KEY (meto_UserCreacion) REFERENCES acce.tbUsuarios ([user_ID]),
@@ -535,7 +535,46 @@ VALUES	('01','0101','La Ceiba', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('18', '1810', 'Victoria', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('18', '1811', 'Yorito', '1', NULL, GETDATE(), NULL, GETDATE());
 GO
+/*-------------------------Personas-------------------------------*/
+GO
+--CREATE OR ALTER PROCEDURE paqu.UDP_tbPersonas_Insert
+--@pers_Identidad NVARCHAR,
+--@
+--AS
 
+/*-------------------------Metodos de Pago-------------------------------*/
+/*Metodos Pago View*/
+GO
+CREATE VIEW gral.VW_tbMetodosPago
+AS
+SELECT meto_ID, meto_Nombre, meto_FechaCreacion,
+meto_UserCreacion, meto_FechaModificacion, meto_UserModificacion, 
+meto_Estado
+FROM [gral].[tbMetodosPago] 
+WHERE meto_Estado = 1
+
+/*Metodos Pago View UDP*/
+GO
+CREATE OR ALTER PROCEDURE gral.UDP_tbMetodosPago_VW
+AS
+BEGIN
+SELECT * FROM gral.VW_tbMetodosPago
+END
+
+/*Metodos Pago Insert*/
+GO
+CREATE OR ALTER PROCEDURE gral.UDP_tbMetodosPagos_Insert
+@meto_Nombre NVARCHAR(100),
+@user_Creacion INT
+AS
+BEGIN
+INSERT INTO gral.tbMetodosPago (meto_Nombre,meto_UserCreacion, meto_FechaModificacion, meto_UserModificacion)
+VALUES(@meto_Nombre,@user_Creacion,NULL,NULL)
+END
+
+GO
+EXECUTE gral.UDP_tbMetodosPagos_Insert 'Debito',1
+EXECUTE gral.UDP_tbMetodosPagos_Insert 'Credito',1
 
 /*-------------------------Paquetes-------------------------------*/
 /*Paquetes VIEW*/
@@ -561,3 +600,23 @@ BEGIN
 SELECT * FROM paqu.VW_tbPaquetes
 END
 
+
+/*Paquetes Insert*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_Insert
+@paqu_Cliente INT,
+@sucu_ID INT,
+@paqu_Peso INT,
+@paqu_Fragil BIT,
+@meto_ID INT,
+@muni_ID INT,
+@paqu_DireccionExacta NVARCHAR(250),
+@paqu_FechaSalida DATETIME,
+@paqu_UserCreacion INT
+AS
+BEGIN
+INSERT INTO paqu.tbPaquetes(paqu_Cliente, sucu_ID, paqu_Peso, paqu_Fragil, meto_ID, muni_ID, paqu_DireccionExacta, paqu_FechaSalida,paqu_UserCreacion, paqu_FechaModificacion, paqu_UserModificacion)
+VALUES(@paqu_Cliente,@sucu_ID,@paqu_Peso,@paqu_Fragil,@meto_ID,@muni_ID,@paqu_DireccionExacta,@paqu_FechaSalida,@paqu_UserCreacion,NULL,NULL)
+END
+
+GO 
