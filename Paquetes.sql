@@ -642,13 +642,14 @@ AS
 SELECT paqu_ID, paqu_Cliente,CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS paqu_ClienteNombreCompleto, 
 paqu.sucu_ID,sucu.sucu_Nombre AS sucu_Nombre, paqu_Peso, 
 paqu_Fragil, meto_ID, 
-paqu.muni_ID, paqu_DireccionExacta, 
+paqu.muni_ID,muni.muni_Descripcion, paqu_DireccionExacta, 
 paqu_FechaSalida, paqu_FechaCreacion, 
 paqu_UserCreacion, paqu_FechaModificacion, 
 paqu_UserModificacion, paqu_Estado
 FROM paqu.tbPaquetes paqu INNER JOIN paqu.tbPersonas pers
 ON paqu.paqu_Cliente = pers.pers_ID INNER JOIN paqu.tbSucursales sucu
-ON paqu.sucu_ID = sucu.sucu_ID
+ON paqu.sucu_ID = sucu.sucu_ID INNER JOIN gral.tbMunicipios muni
+ON paqu.muni_ID = muni.muni_ID
 
 /*Paquetes VIEW UDP*/
 GO

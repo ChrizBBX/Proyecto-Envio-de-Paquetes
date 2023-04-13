@@ -6,9 +6,9 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJazTVTxpUEWKbIjg2++gEQAAAAACAAAAAAAQZgAAAAEAACAAAABdvyQN36N4TzBlKp9J8OJHb8rtWXwFc872YGbgSDaF6wAAAAAOgAAAAAIAACAAAAA1pW7unY1z4xRb8ykYYe6FDFNzt+aRcLWNCLyKlaSu3yAAAAB1/gT7g38mJezt3AUTGhH24x4PYHRwI9JeoQn6dkbFEEAAAAALj0Xt86fdA8xPEd/OUUQCTYLEoPbl5C/jM/ztbIllrvRxpplsvG1VWMu/ItF8iX9nj9vcN2usR5anBm+Dbovx</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJazTVTxpUEWKbIjg2++gEQAAAAACAAAAAAAQZgAAAAEAACAAAAC/61gaDn5VOJVwSbi3wOl2BULbTathZ2t/AmqV9meUKAAAAAAOgAAAAAIAACAAAABoGcKHBWVy1bs4e+GuMkFEZiVsu3vB+LjhQ1ulzzcnryAAAACWBSrINUyadzjT535ad3xyjkyDhZB4bvDJyrnohjR/hEAAAABudeWI5kHDp05iIjEPPTAyH3Gp0a9WmqJkBsSNqOfPftEt4jVkGZuWnVQIgBBBUZ+vZULGuJR/puBVgtnyh7yn</EncryptedPassword>
     <_PublishTargetUrl>ftp://155.254.244.38/www.RapiExprezzz.somee.com</_PublishTargetUrl>
-    <History>True|2023-04-12T23:33:51.2803643Z;False|2023-04-12T12:23:06.4618277-06:00;False|2023-04-12T12:20:08.2379901-06:00;</History>
+    <History>True|2023-04-13T04:59:00.5274044Z;False|2023-04-12T22:53:53.0498308-06:00;True|2023-04-12T17:33:51.2803643-06:00;False|2023-04-12T12:23:06.4618277-06:00;False|2023-04-12T12:20:08.2379901-06:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
@@ -210,43 +210,43 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/24/2018 11:44:14</publishTime>
     </File>
     <File Include="Paquetes.API.deps.json">
-      <publishTime>04/12/2023 17:29:26</publishTime>
+      <publishTime>04/12/2023 22:54:55</publishTime>
     </File>
     <File Include="Paquetes.API.dll">
-      <publishTime>04/12/2023 17:28:45</publishTime>
+      <publishTime>04/12/2023 22:54:39</publishTime>
     </File>
     <File Include="Paquetes.API.exe">
-      <publishTime>04/12/2023 17:28:45</publishTime>
+      <publishTime>04/12/2023 22:54:39</publishTime>
     </File>
     <File Include="Paquetes.API.pdb">
-      <publishTime>04/12/2023 17:28:45</publishTime>
+      <publishTime>04/12/2023 22:54:39</publishTime>
     </File>
     <File Include="Paquetes.API.runtimeconfig.json">
       <publishTime>04/12/2023 17:28:48</publishTime>
     </File>
     <File Include="Paquetes.API.Views.dll">
-      <publishTime>04/12/2023 17:28:48</publishTime>
+      <publishTime>04/12/2023 22:54:40</publishTime>
     </File>
     <File Include="Paquetes.API.Views.pdb">
-      <publishTime>04/12/2023 17:28:48</publishTime>
+      <publishTime>04/12/2023 22:54:40</publishTime>
     </File>
     <File Include="Paquetes.BusinessLogic.dll">
-      <publishTime>04/12/2023 17:28:43</publishTime>
+      <publishTime>04/12/2023 22:53:14</publishTime>
     </File>
     <File Include="Paquetes.BusinessLogic.pdb">
-      <publishTime>04/12/2023 17:28:43</publishTime>
+      <publishTime>04/12/2023 22:53:14</publishTime>
     </File>
     <File Include="Paquetes.DataAccess.dll">
-      <publishTime>04/12/2023 17:28:43</publishTime>
+      <publishTime>04/12/2023 22:53:13</publishTime>
     </File>
     <File Include="Paquetes.DataAccess.pdb">
-      <publishTime>04/12/2023 17:28:43</publishTime>
+      <publishTime>04/12/2023 22:53:13</publishTime>
     </File>
     <File Include="Paquetes.Entities.dll">
-      <publishTime>04/12/2023 17:28:41</publishTime>
+      <publishTime>04/12/2023 22:53:12</publishTime>
     </File>
     <File Include="Paquetes.Entities.pdb">
-      <publishTime>04/12/2023 17:28:41</publishTime>
+      <publishTime>04/12/2023 22:53:12</publishTime>
     </File>
     <File Include="pl/Microsoft.CodeAnalysis.CSharp.resources.dll">
       <publishTime>11/11/2020 18:15:14</publishTime>
@@ -381,7 +381,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/11/2020 18:16:28</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>04/12/2023 17:29:27</publishTime>
+      <publishTime>04/12/2023 22:54:55</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
       <publishTime>04/11/2023 01:52:04</publishTime>

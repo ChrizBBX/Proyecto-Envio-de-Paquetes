@@ -17,6 +17,7 @@ namespace Paquetes.Entities.Entities
         public bool paqu_Fragil { get; set; }
         public int meto_ID { get; set; }
         public string muni_ID { get; set; }
+        public string muni_Descripcion { get; set; }
         public string paqu_DireccionExacta { get; set; }
         public DateTime paqu_FechaSalida { get; set; }
         public DateTime? paqu_FechaCreacion { get; set; }
