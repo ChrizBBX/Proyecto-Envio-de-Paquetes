@@ -11,11 +11,14 @@ namespace Paquetes.BusinessLogic.Services
     public class PaquetesService
     {
         private readonly PaquetesRepository _paquetesrepository;
+        private readonly SucursalesRepository _sucursalesrepository;
 
-        public PaquetesService(PaquetesRepository paquetesrepository)
+        public PaquetesService(PaquetesRepository paquetesrepository, SucursalesRepository sucursalesrepository)
         {
             _paquetesrepository = paquetesrepository;
+            _sucursalesrepository = sucursalesrepository;
         }
+        #region Paquetes
         public IEnumerable<VW_tbPaquetes> ListadoPaquetes()
         {
             try
@@ -28,5 +31,22 @@ namespace Paquetes.BusinessLogic.Services
                 return Enumerable.Empty<VW_tbPaquetes>();
             }
         }
+        #endregion
+
+        #region Sucursales
+        public IEnumerable<VW_tbSucursales> ListadoSucursales()
+        {
+            try
+            {
+                return _sucursalesrepository.List();
+            }
+            catch (Exception e)
+            {
+
+                return Enumerable.Empty<VW_tbSucursales>();
+            }
+        }
+        #endregion
+
     }
 }

@@ -135,6 +135,7 @@ sucu_FechaCreacion			DATETIME DEFAULT GETDATE(),
 sucu_UserCreacion			INT NOT NULL,
 sucu_FechaModificacion		DATETIME,
 sucu_UserModificacion		INT,
+sucu_Estado					BIT DEFAULT 1,
 
 CONSTRAINT PK_tbSucursales_sucu_ID PRIMARY KEY(sucu_ID),
 CONSTRAINT FK_tbSucursales_muni_ID_tbMunicipios_muni_ID FOREIGN KEY(muni_ID) REFERENCES gral.tbMunicipios (muni_ID),
@@ -174,7 +175,7 @@ paqu_FechaCreacion      DATETIME DEFAULT GETDATE(),
 paqu_UserCreacion		INT NOT NULL,
 paqu_FechaModificacion  DATETIME,
 paqu_UserModificacion	INT,
-paqu_Estado				BIT,
+paqu_Estado				BIT DEFAULT 1,
 
 CONSTRAINT PK_tbPaquetes_paqu_ID PRIMARY KEY (paqu_ID),
 CONSTRAINT FK_tbPaquetes_sucu_ID_tbSucursales_sucu_ID FOREIGN KEY (sucu_ID) REFERENCES paqu.tbSucursales (sucu_ID),
@@ -543,11 +544,62 @@ VALUES	('01','0101','La Ceiba', '1', NULL, GETDATE(), NULL, GETDATE()),
 GO
 /*-------------------------Personas-------------------------------*/
 GO
---CREATE OR ALTER PROCEDURE paqu.UDP_tbPersonas_Insert
---@pers_Identidad NVARCHAR,
---@
---AS
+CREATE OR ALTER PROCEDURE paqu.UDP_tbPersonas_Insert
+@pers_Identidad NVARCHAR(13),
+@pers_Nombres NVARCHAR(200),
+@pers_Apellidos NVARCHAR(200),
+@pers_Sexo CHAR,
+@pers_EsAdmin BIT,
+@pers_UserCreacion INT
+AS
+BEGIN
+INSERT INTO paqu.tbPersonas([pers_Identidad], [pers_Nombres], [pers_Apellidos], [pers_Sexo], [pers_EsAdmin], [pers_UserCreacion], [pers_FechaModificacion], [pers_UserModificacion])
+VALUES(@pers_Identidad,@pers_Nombres,@pers_Apellidos,@pers_Sexo,@pers_EsAdmin,@pers_UserCreacion,NULL,NULL)
+END
+GO
+EXECUTE paqu.UDP_tbPersonas_Insert '0501-2006-75435','Vladimir','Putin','M',0,1
+EXECUTE paqu.UDP_tbPersonas_Insert '0318-1999-09991','Elon','Musk','M',0,1
+GO
+/*-------------------------Sucursales-------------------------------*/
+/*Sucursales View*/
+GO
+CREATE OR ALTER VIEW paqu.VW_tbSucursales
+AS
+SELECT [sucu_ID], [sucu_Nombre], [muni_ID], 
+[sucu_DireccionExacta], [sucu_FechaCreacion], 
+[sucu_UserCreacion], [sucu_FechaModificacion], 
+[sucu_UserModificacion],[sucu_Estado]
+FROM paqu.tbSucursales
+WHERE sucu_Estado = 1
 
+GO
+
+/*Sucursales View UDP*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbSucursales_VW
+AS
+BEGIN
+SELECT * FROM paqu.VW_tbSucursales
+END
+
+/*Sucursales Insert*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbSucursales_Insert
+@sucu_Nombre NVARCHAR(200),
+@muni_ID CHAR(4),
+@sucu_DireccionExacta NVARCHAR(250),
+@susu_UserCreacion INT
+AS
+BEGIN
+INSERT INTO paqu.tbSucursales ([sucu_Nombre], [muni_ID], [sucu_DireccionExacta], [sucu_UserCreacion], [sucu_FechaModificacion], [sucu_UserModificacion])
+VALUES(@sucu_Nombre,@muni_ID,@sucu_DireccionExacta,@susu_UserCreacion,NULL,NULL)
+END
+
+GO
+EXECUTE paqu.UDP_tbSucursales_Insert 'Sucursal de SPS','0501','Queda en el centro xd',1
+EXECUTE paqu.UDP_tbSucursales_Insert 'Sucursal de Comayagua','0301','5ta Avenida, Calle #2',1
+EXECUTE paqu.UDP_tbSucursales_Insert 'Sucursal de Choluteca','0601','Colonia SapoVerde primera calle',1
+GO
 /*-------------------------Metodos de Pago-------------------------------*/
 /*Metodos Pago View*/
 GO
@@ -615,7 +667,7 @@ CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_Insert
 @paqu_Peso INT,
 @paqu_Fragil BIT,
 @meto_ID INT,
-@muni_ID INT,
+@muni_ID CHAR(4),
 @paqu_DireccionExacta NVARCHAR(250),
 @paqu_FechaSalida DATETIME,
 @paqu_UserCreacion INT
@@ -626,3 +678,8 @@ VALUES(@paqu_Cliente,@sucu_ID,@paqu_Peso,@paqu_Fragil,@meto_ID,@muni_ID,@paqu_Di
 END
 
 GO 
+EXECUTE paqu.UDP_tbPaquetes_Insert 2,1,200,0,1,'0512','Colonia la Paz Bloque #85 casa #6','10-10-2023',1
+EXECUTE paqu.UDP_tbPaquetes_Insert 3,1,200,0,1,'0606','Frente a la pulperia de su casa','10-10-2023',1
+EXECUTE paqu.UDP_tbPaquetes_Insert 3,1,200,0,1,'0101','Colonia MonteCristo pajase 2 casa 1','10-10-2023',1
+EXECUTE paqu.UDP_tbPaquetes_Insert 2,1,200,0,1,'0209','Barrio los pinos en el parque','10-10-2023',1
+

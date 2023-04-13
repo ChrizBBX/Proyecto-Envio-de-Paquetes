@@ -6,13 +6,8 @@ using System.Collections.Generic;
 
 namespace Paquetes.Entities.Entities
 {
-    public partial class tbSucursales
+    public partial class VW_tbSucursales
     {
-        public tbSucursales()
-        {
-            tbPaquetes = new HashSet<tbPaquetes>();
-        }
-
         public int sucu_ID { get; set; }
         public string sucu_Nombre { get; set; }
         public string muni_ID { get; set; }
@@ -22,10 +17,5 @@ namespace Paquetes.Entities.Entities
         public DateTime? sucu_FechaModificacion { get; set; }
         public int? sucu_UserModificacion { get; set; }
         public bool? sucu_Estado { get; set; }
-
-        public virtual tbMunicipios muni { get; set; }
-        public virtual tbUsuarios sucu_UserCreacionNavigation { get; set; }
-        public virtual tbUsuarios sucu_UserModificacionNavigation { get; set; }
-        public virtual ICollection<tbPaquetes> tbPaquetes { get; set; }
     }
 }

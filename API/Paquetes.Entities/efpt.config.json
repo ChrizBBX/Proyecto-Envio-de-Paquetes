@@ -48,9 +48,13 @@
       {
          "Name": "[paqu].[VW_tbPaquetes]",
          "ObjectType": 3
+      },
+      {
+         "Name": "[paqu].[VW_tbSucursales]",
+         "ObjectType": 3
       }
    ],
-   "UiHint": "DESKTOP-E6OAL4S\\SERVIDORLOCALDM.Paquetes",
+   "UiHint": "VJ7400.Paquetes",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": true,
    "UseDbContextSplitting": false,
