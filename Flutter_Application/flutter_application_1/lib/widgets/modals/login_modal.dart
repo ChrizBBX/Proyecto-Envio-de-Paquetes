@@ -69,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextField(
                 decoration: InputDecoration(hintText: 'Contraseña'),
+                obscureText: true,
                 onChanged: (value) {
                   password = value;
                 },

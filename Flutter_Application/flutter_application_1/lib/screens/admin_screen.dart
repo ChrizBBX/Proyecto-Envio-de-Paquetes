@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/auth/paquetesform_screen.dart';
 import 'package:flutter_application_1/screens/auth/welcome_page.dart';
 import 'package:flutter_application_1/screens/index_screen.dart';
 import 'package:flutter_application_1/views/AppColor.dart';
@@ -63,7 +64,7 @@ Widget btnEnviarUnPaquete (context){
     children: [
       ElevatedButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => PaquetesForm()));
         },
         child: Padding(
           padding: const EdgeInsets.all(15.0),
