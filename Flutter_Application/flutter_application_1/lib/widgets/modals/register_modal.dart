@@ -68,7 +68,7 @@ class RegisterModal extends StatelessWidget {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
                     isScrollControlled: true,
                     builder: (context) {
-                      return LoginModal();
+                      return LoginPage();
                     },
                   );
                 },

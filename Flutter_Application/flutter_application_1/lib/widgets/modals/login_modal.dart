@@ -5,11 +5,20 @@ import 'package:flutter_application_1/screens/index_screen.dart';
 import 'package:flutter_application_1/screens/admin_screen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:async';
+
 
 String username = "";
 String password = "";
 
-class LoginModal extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+class _LoginPageState extends State<LoginPage> {
+  String username = "";
+  String password = "";
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -87,13 +96,10 @@ if (jsonResponse != null && jsonResponse.length > 0) {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => admin_screen()));
   } else {
-    // Inicio de sesión incorrecto
-    // Muestra un mensaje de error al usuario
+
   }
   } else {
-    // Si hubo algún error en la petición, puedes mostrar un mensaje al usuario
-    ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error de autenticación')));
+//Por si ocurre un error con la URL
   }
 },
 

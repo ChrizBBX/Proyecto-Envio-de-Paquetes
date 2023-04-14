@@ -4,12 +4,19 @@ import 'dart:convert';
 
 String url = "http://rapiexprezzz.somee.com/api/Paquetes";
 
-Future<dynamic>  _getListado() async{
+Future<dynamic> _getListado({String? searchId}) async {
   final respuesta = await http.get(Uri.parse(url));
-  if(respuesta.statusCode == 200){
+  if (respuesta.statusCode == 200) {
     final json = respuesta.body;
-    return jsonDecode(json);
-  }else{
+    final list = jsonDecode(json);
+    if (searchId != null) {
+      return list
+          .where((element) =>
+              element['paqu_ID'].toString().toLowerCase().contains(searchId.toLowerCase()))
+          .toList();
+    }
+    return list;
+  } else {
     print('Ha ocurrido un error');
   }
 }
@@ -22,31 +29,43 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
+    final _searchController = TextEditingController();
+  final _searchFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
+      final searchId = _searchController.text.trim();
     return Scaffold(
-appBar: AppBar(
-        title: Text("Historial de Paquetes"),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blue, Colors.grey],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
-          ),
-        ),
+      appBar:AppBar(
+        backgroundColor: Colors.grey,
+  title: TextField(
+    controller: _searchController,
+    focusNode: _searchFocusNode,
+    decoration: InputDecoration(
+      hintText: 'Buscar por ID de tracking...',
+      border: InputBorder.none,
+      suffixIcon: IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          _searchController.clear();
+          _searchFocusNode.unfocus();
+        },
       ),
+    ),
+    onChanged: (value) {
+      setState(() {});
+    },
+  ),
+  // ...
+),
     
       body: FutureBuilder<dynamic>(
-        future: _getListado(),
-
-        builder: (context, item){
-          if(item.hasData){
-            return ListView(
-              children: listado(item.data)
-            );
-          }
+      future: _getListado(searchId: searchId.isNotEmpty ? searchId : null),
+      builder: (context, item) {
+        if (item.hasData) {
+          return ListView(
+            children: listado(item.data),
+          );
+        }
           else{
             return const Text("Sin data");
           }
@@ -63,6 +82,7 @@ class ItemWidget extends StatelessWidget {
   final String paqu_Peso;
   final String muni_Descripcion;
   final String muni_DireccionExacta;
+  final String Tracking;
 
   ItemWidget({
     required this.paqu_ID,
@@ -71,6 +91,7 @@ class ItemWidget extends StatelessWidget {
     required this.paqu_Peso,
     required this.muni_Descripcion,
     required this.muni_DireccionExacta,
+        required this.Tracking,
   });
 
   @override
@@ -92,7 +113,7 @@ class ItemWidget extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'ID: ',
+                  'Tracking: ',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -197,6 +218,26 @@ class ItemWidget extends StatelessWidget {
               ],
             ),
           ),
+                Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: Row(
+              children: [
+                Text(
+                  'Estado: ',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                  Flexible(
+        child: Text(
+          Tracking,
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
+              ],
+            ),
+          ),
           Divider(),
         ],
       ),
@@ -218,6 +259,7 @@ List<Widget> listado(List<dynamic> info){
        paqu_Peso: element["paqu_Peso"].toString(),
         muni_Descripcion: element["muni_Descripcion"],
          muni_DireccionExacta: element["paqu_DireccionExacta"],
+           Tracking: element["tracking"],
     );
     lista.add(item);
   });

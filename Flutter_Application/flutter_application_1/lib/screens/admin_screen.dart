@@ -13,8 +13,14 @@ class _admin_screenState extends State<admin_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('RapiExprezzz'),
-      ),
+  title: Text('RapiExprezzz'),
+  flexibleSpace: Container(
+    decoration: BoxDecoration(
+      color: Colors.grey
+    ),
+  ),
+),
+
       body: Container(
         child: ListView(
           children: [
@@ -55,97 +61,96 @@ class _admin_screenState extends State<admin_screen> {
 Widget btnEnviarUnPaquete (context){
   return Column(
     children: [
-      ElevatedButton(onPressed: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
-      }, child:   Row(
-              children: [
-                //Icono
-                Icon(Icons.local_shipping,
-                size: 50,
-                color: Colors.black,),
-                //Espacio entre el icono y el texto
-                SizedBox(width: 30,),
-                Text('Enviar un paquete',
-                style: 
-                TextStyle(fontSize: 20,
-                color: Colors.black),),
-                //espacio entre el texto y la flechita
-                SizedBox(width: 80,),
-                //Flechita xd
-                Icon(Icons.arrow_forward_ios,  size: 30, color: Colors.black,)
-              ],
-            ),
-              style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                    backgroundColor: Colors.white,
-                  ),
-            )
+      ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+                Icon(Icons.local_shipping, color:  Colors.black,size: 50,),
+                           //Espacio entre el icono y el texto
+                                  SizedBox(width: 30,),
+              //Espacio entre el texto y la flechita
+              Expanded(child: Text('Enviar un Paquete',
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              )),
+            
+              //Flechita xd
+              Icon(Icons.arrow_forward_ios,  size: 30,color: Colors.black,),
+            ],
+          ),
+        ),  
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+        ),
+      ),        
     ],
   );
 }
 
 Widget btnHistorialdePaquetes(context){
-  return               Column(
-              children: [
-                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
-                  },
-                  child:    Row(
-              children: [
-                //Icono
-                Icon(Icons.access_time,
-                size: 50,
-                color: Colors.black,),
-                //Espacio entre el icono y el texto
-                SizedBox(width: 30,),
-                Text('Historial de Paquetes',
-                style: 
-                TextStyle(fontSize: 20,
-                color: Colors.black),),
-                //espacio entre el texto y la flechita
-                SizedBox(width: 50,),
-                //Flechita xd
-                Icon(Icons.arrow_forward_ios,  size: 30,color: Colors.black,)
-              ],
-            ),  
-              style: ElevatedButton.styleFrom(
-backgroundColor: Colors.white,
-  ),
-                ),        
-              ],
-            );
+  return Column(
+    children: [
+      ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+                Icon(Icons.access_time, color:  Colors.black,size: 50,),
+                           //Espacio entre el icono y el texto
+                                  SizedBox(width: 30,),
+              //Espacio entre el texto y la flechita
+              Expanded(child: Text('Historial de Paquetes',
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              )),
+            
+              //Flechita xd
+              Icon(Icons.arrow_forward_ios,  size: 30,color: Colors.black,),
+            ],
+          ),
+        ),  
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+        ),
+      ),        
+    ],
+  );
 }
 
+
 Widget btnEstadisticas(context){
-  return               Column(
-              children: [
-                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
-                  },
-                  child:    Row(
-              children: [
-                //Icono
-                Icon(Icons.bar_chart,
-                size: 50,
-                color: Colors.black,),
-                //Espacio entre el icono y el texto
-                SizedBox(width: 30,),
-                Text('Estadisticas y Graficas',
-                style: 
-                TextStyle(fontSize: 20,
-                color: Colors.black),),
-                //espacio entre el texto y la flechita
-                SizedBox(width: 50,),
-                //Flechita xd
-                Icon(Icons.arrow_forward_ios,  size: 30,color: Colors.black,)
-              ],
-            ),  
-              style: ElevatedButton.styleFrom(
-backgroundColor: Colors.white,
-  ),
-                ),        
-              ],
-            );
+  return Column(
+    children: [
+      ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+                Icon(Icons.bar_chart, color:  Colors.black,size: 50,),
+                           //Espacio entre el icono y el texto
+                                  SizedBox(width: 30,),
+              //Espacio entre el texto y la flechita
+              Expanded(child: Text('Estadisticas y Graficas',
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              )),
+            
+              //Flechita xd
+              Icon(Icons.arrow_forward_ios,  size: 30,color: Colors.black,),
+            ],
+          ),
+        ),  
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+        ),
+      ),        
+    ],
+  );
 }
