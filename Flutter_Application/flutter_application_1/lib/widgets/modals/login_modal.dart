@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/page_switcher.dart';
+import 'package:flutter_application_1/screens/auth/welcome_page.dart';
 import 'package:flutter_application_1/views/AppColor.dart';
+import 'package:flutter_application_1/screens/index_screen.dart';
+import 'package:flutter_application_1/screens/admin_screen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
+String username = "";
+String password = "";
 
 class LoginModal extends StatelessWidget {
   @override
@@ -12,10 +18,14 @@ class LoginModal extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 85 / 100,
           padding: EdgeInsets.only(left: 16, right: 16, bottom: 32, top: 16),
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
           child: ListView(
             shrinkWrap: true,
-            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
             physics: BouncingScrollPhysics(),
             children: [
               Align(
@@ -24,7 +34,9 @@ class LoginModal extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 35 / 100,
                   margin: EdgeInsets.only(bottom: 20),
                   height: 6,
-                  decoration: BoxDecoration(color: Colors.grey[300], borderRadius: BorderRadius.circular(20)),
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(20)),
                 ),
               ),
               // header
@@ -32,25 +44,68 @@ class LoginModal extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 24),
                 child: Text(
                   'Login',
-                  style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w700, fontFamily: 'inter'),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'inter'),
                 ),
               ),
               // Form
-    TextField( decoration: InputDecoration(hintText: 'Usuario'),),
- TextField( decoration: InputDecoration(hintText: 'Usuario'),),
+              TextField(
+                decoration: InputDecoration(hintText: 'Usuario'),
+                onChanged: (value) {
+                  username = value;
+                },
+              ),
+              TextField(
+                decoration: InputDecoration(hintText: 'Contraseña'),
+                onChanged: (value) {
+                  password = value;
+                },
+              ),
               // Log in Button
               Container(
                 margin: EdgeInsets.only(top: 32, bottom: 6),
                 width: MediaQuery.of(context).size.width,
                 height: 60,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PageSwitcher()));
-                  },
-                  child: Text('Login', style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter')),
+           onPressed: () async {
+var url = Uri.parse('http://rapiexprezzz.somee.com/api/Usuarios/Login');
+var response = await http.put(
+  url,
+  headers: {'Content-Type': 'application/json'},
+  body: json.encode({'user_Username': username, 'user_Contrasena': password}),
+);
+
+print(response.statusCode);
+  if (response.statusCode == 200) {
+   var jsonResponse = json.decode(response.body);
+   print(jsonResponse);
+if (jsonResponse != null && jsonResponse.length > 0) {
+          Navigator.of(context).pop();
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => admin_screen()));
+  } else {
+    // Inicio de sesión incorrecto
+    // Muestra un mensaje de error al usuario
+  }
+  } else {
+    // Si hubo algún error en la petición, puedes mostrar un mensaje al usuario
+    ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error de autenticación')));
+  }
+},
+
+                  child: Text('Login',
+                      style: TextStyle(
+                          color: AppColor.secondary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'inter')),
                   style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
                     primary: AppColor.primarySoft,
                   ),
                 ),

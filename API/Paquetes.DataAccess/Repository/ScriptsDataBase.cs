@@ -19,5 +19,9 @@ namespace Paquetes.DataAccess.Repository
         #region Sucursales
         public static string UDP_Sucursales_Select = "paqu.UDP_tbSucursales_VW";
         #endregion
+
+        #region Usuarios
+        public static string UDP_Login = "acce.UDP_Login";
+        #endregion
     }
 }

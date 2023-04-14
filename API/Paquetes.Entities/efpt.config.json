@@ -30,6 +30,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[gral].[tbTracking]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[paqu].[tbPaquetes]",
          "ObjectType": 0
       },
@@ -40,6 +44,10 @@
       {
          "Name": "[paqu].[tbSucursales]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[acce].[VW_tbUsuarios]",
+         "ObjectType": 3
       },
       {
          "Name": "[gral].[VW_tbMetodosPago]",

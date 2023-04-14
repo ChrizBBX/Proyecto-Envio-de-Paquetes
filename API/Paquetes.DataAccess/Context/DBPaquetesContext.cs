@@ -25,6 +25,7 @@ namespace Paquetes.DataAccess.Context
         public virtual DbSet<tbPaquetes> tbPaquetes { get; set; }
         public virtual DbSet<tbPersonas> tbPersonas { get; set; }
         public virtual DbSet<tbSucursales> tbSucursales { get; set; }
+        public virtual DbSet<tbTracking> tbTracking { get; set; }
         public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -60,6 +61,8 @@ namespace Paquetes.DataAccess.Context
                     .HasName("PK_tbMetodosPago_meto_ID");
 
                 entity.ToTable("tbMetodosPago", "gral");
+
+                entity.Property(e => e.meto_Estado).HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.meto_FechaCreacion)
                     .HasColumnType("datetime")
@@ -133,6 +136,8 @@ namespace Paquetes.DataAccess.Context
                     .IsRequired()
                     .HasMaxLength(250);
 
+                entity.Property(e => e.paqu_Estado).HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.paqu_FechaCreacion)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
@@ -140,6 +145,8 @@ namespace Paquetes.DataAccess.Context
                 entity.Property(e => e.paqu_FechaModificacion).HasColumnType("datetime");
 
                 entity.Property(e => e.paqu_FechaSalida).HasColumnType("datetime");
+
+                entity.Property(e => e.trac_ID).HasDefaultValueSql("((1))");
 
                 entity.HasOne(d => d.meto)
                     .WithMany(p => p.tbPaquetes)
@@ -169,6 +176,11 @@ namespace Paquetes.DataAccess.Context
                     .HasForeignKey(d => d.sucu_ID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_tbPaquetes_sucu_ID_tbSucursales_sucu_ID");
+
+                entity.HasOne(d => d.trac)
+                    .WithMany(p => p.tbPaquetes)
+                    .HasForeignKey(d => d.trac_ID)
+                    .HasConstraintName("FK_tbPaquetes_trac_ID_tbTracking_trac_ID");
             });
 
             modelBuilder.Entity<tbPersonas>(entity =>
@@ -236,6 +248,8 @@ namespace Paquetes.DataAccess.Context
                     .IsRequired()
                     .HasMaxLength(250);
 
+                entity.Property(e => e.sucu_Estado).HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.sucu_FechaCreacion)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
@@ -264,12 +278,34 @@ namespace Paquetes.DataAccess.Context
                     .HasConstraintName("FK_tbSucursales_sucu_UserModificacion_tbUsuarios_user_ID");
             });
 
+            modelBuilder.Entity<tbTracking>(entity =>
+            {
+                entity.HasKey(e => e.trac_ID)
+                    .HasName("PK_tbTracking_trac_ID");
+
+                entity.ToTable("tbTracking", "gral");
+
+                entity.Property(e => e.trac_Estado).HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.trac_FechaCreacion)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.trac_FechaModificacion).HasColumnType("datetime");
+
+                entity.Property(e => e.trac_Nombre)
+                    .IsRequired()
+                    .HasMaxLength(100);
+            });
+
             modelBuilder.Entity<tbUsuarios>(entity =>
             {
                 entity.HasKey(e => e.user_ID)
                     .HasName("PK_tbUsuarios_user_ID");
 
                 entity.ToTable("tbUsuarios", "acce");
+
+                entity.Property(e => e.user_Contrasena).IsRequired();
 
                 entity.Property(e => e.user_Estado).HasDefaultValueSql("((1))");
 

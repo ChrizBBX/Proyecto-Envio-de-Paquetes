@@ -17,6 +17,7 @@ namespace Paquetes.Entities.Entities
         public string muni_ID { get; set; }
         public string paqu_DireccionExacta { get; set; }
         public DateTime paqu_FechaSalida { get; set; }
+        public int? trac_ID { get; set; }
         public DateTime? paqu_FechaCreacion { get; set; }
         public int paqu_UserCreacion { get; set; }
         public DateTime? paqu_FechaModificacion { get; set; }
@@ -28,5 +29,6 @@ namespace Paquetes.Entities.Entities
         public virtual tbUsuarios paqu_UserCreacionNavigation { get; set; }
         public virtual tbUsuarios paqu_UserModificacionNavigation { get; set; }
         public virtual tbSucursales sucu { get; set; }
+        public virtual tbTracking trac { get; set; }
     }
 }

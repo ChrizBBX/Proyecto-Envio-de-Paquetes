@@ -1,0 +1,30 @@
+try {
+          var data = {'user_Username': 'admin', 'user_Contrasena': '123'}; //datos xd
+
+          var body = json.encode(data); //Json encriptado
+print(body);
+          var url = Uri.parse('http://rapiexprezzz.somee.com/api/Usuarios/Login'); //Url
+http.put(url, body: body, headers: {'Content-Type': 'application/json'}).then((response) {
+  print(response); //Brujeria
+    if (response.statusCode == 200) { // resultado
+        var jsonResponse = jsonDecode(response.body);
+        var data = jsonResponse['data'];
+        if (data != null) {
+            Navigator.of(context).pop();
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => admin_screen()));
+        } else {
+            Navigator.of(context).pop();
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => WelcomePage()));
+        }  
+    } else {
+        print('Error en la solicitud HTTP: ${response.statusCode}');
+    }
+}).catchError((error) {
+    print('Error en la solicitud HTTP: $error');
+});
+
+          } catch (e) {
+            
+          }   

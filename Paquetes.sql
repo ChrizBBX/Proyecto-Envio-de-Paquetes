@@ -1,4 +1,4 @@
-﻿CREATE DATABASE Paquetes	
+﻿CREATE DATABASE Paquetes
 
 GO
 USE Paquetes
@@ -160,6 +160,20 @@ CONSTRAINT FK_tbMetodosPago_meto_user_Modificacion_tbUsuarios_user_ID FOREIGN KE
 )
 GO
 
+CREATE TABLE gral.tbTracking
+(
+trac_ID						INT IDENTITY(1,1),
+trac_Nombre					NVARCHAR(100) NOT NULL,
+trac_FechaCreacion			DATETIME DEFAULT GETDATE(),
+trac_UserCreacion			INT NOT NULL,
+trac_FechaModificacion		DATETIME,
+trac_UserModificacion		INT,
+trac_Estado					BIT DEFAULT 1,
+
+CONSTRAINT PK_tbTracking_trac_ID PRIMARY KEY(trac_ID)
+);
+
+GO
 CREATE TABLE paqu.tbPaquetes
 (
 paqu_ID					INT IDENTITY (1,1),
@@ -171,6 +185,7 @@ meto_ID					INT NOT NULL,
 muni_ID					CHAR(4) NOT NULL,
 paqu_DireccionExacta    NVARCHAR(250) NOT NULL,
 paqu_FechaSalida		DATETIME NOT NULL,
+trac_ID					INT DEFAULT 1,
 paqu_FechaCreacion      DATETIME DEFAULT GETDATE(),
 paqu_UserCreacion		INT NOT NULL,
 paqu_FechaModificacion  DATETIME,
@@ -182,7 +197,8 @@ CONSTRAINT FK_tbPaquetes_sucu_ID_tbSucursales_sucu_ID FOREIGN KEY (sucu_ID) REFE
 CONSTRAINT FK_tbPaquetes_muni_ID_tbMunicipios_muni_ID FOREIGN KEY (muni_ID) REFERENCES gral.tbMunicipios (muni_ID),
 CONSTRAINT FK_tbPaquetes_meto_ID_tbMetodosPago_meto_ID FOREIGN KEY (meto_ID) REFERENCES gral.tbMetodosPago (meto_ID),
 CONSTRAINT FK_tbPaquetes_paqu_UserCreacion_tbUsuarios_user_ID FOREIGN KEY (paqu_UserCreacion) REFERENCES acce.tbUsuarios ([user_ID]),
-CONSTRAINT FK_tbPaquetes_paqu_UserModificacion_tbUsuarios_user_ID FOREIGN KEY (paqu_UserModificacion) REFERENCES acce.tbUsuarios ([user_Id])
+CONSTRAINT FK_tbPaquetes_paqu_UserModificacion_tbUsuarios_user_ID FOREIGN KEY (paqu_UserModificacion) REFERENCES acce.tbUsuarios ([user_Id]),
+CONSTRAINT FK_tbPaquetes_trac_ID_tbTracking_trac_ID FOREIGN KEY(trac_ID) REFERENCES gral.tbTracking (trac_ID)
 )
 
 /*Insert de Departamentos y municipios*/
@@ -600,6 +616,23 @@ EXECUTE paqu.UDP_tbSucursales_Insert 'Sucursal de SPS','0501','Queda en el centr
 EXECUTE paqu.UDP_tbSucursales_Insert 'Sucursal de Comayagua','0301','5ta Avenida, Calle #2',1
 EXECUTE paqu.UDP_tbSucursales_Insert 'Sucursal de Choluteca','0601','Colonia SapoVerde primera calle',1
 GO
+/*-------------------------Tracking-------------------------------*/
+GO
+/*Tracking Insert*/
+CREATE OR ALTER PROCEDURE gral.UDP_tbTracking_Insert
+@trac_Nombre NVARCHAR(100),
+@trac_UserCreacion INT
+AS
+BEGIN
+INSERT INTO gral.tbTracking([trac_Nombre], [trac_UserCreacion], [trac_FechaModificacion], [trac_UserModificacion])
+VALUES(@trac_Nombre,@trac_UserCreacion,NULL,NULL)
+END
+GO
+EXECUTE gral.UDP_tbTracking_Insert 'Preparacion',1
+EXECUTE gral.UDP_tbTracking_Insert 'Enpaquetado',1
+EXECUTE gral.UDP_tbTracking_Insert 'En Camino',1
+EXECUTE gral.UDP_tbTracking_Insert 'Entregado',1
+GO
 /*-------------------------Metodos de Pago-------------------------------*/
 /*Metodos Pago View*/
 GO
@@ -643,44 +676,89 @@ SELECT paqu_ID, paqu_Cliente,CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS pa
 paqu.sucu_ID,sucu.sucu_Nombre AS sucu_Nombre, paqu_Peso, 
 paqu_Fragil, meto_ID, 
 paqu.muni_ID,muni.muni_Descripcion, paqu_DireccionExacta, 
-paqu_FechaSalida, paqu_FechaCreacion, 
+paqu_FechaSalida,paqu.trac_ID,trac.trac_Nombre AS Tracking, paqu_FechaCreacion, 
 paqu_UserCreacion, paqu_FechaModificacion, 
 paqu_UserModificacion, paqu_Estado
 FROM paqu.tbPaquetes paqu INNER JOIN paqu.tbPersonas pers
 ON paqu.paqu_Cliente = pers.pers_ID INNER JOIN paqu.tbSucursales sucu
 ON paqu.sucu_ID = sucu.sucu_ID INNER JOIN gral.tbMunicipios muni
-ON paqu.muni_ID = muni.muni_ID
+ON paqu.muni_ID = muni.muni_ID INNER JOIN gral.tbTracking trac
+ON paqu.trac_ID = trac.trac_ID
 
 /*Paquetes VIEW UDP*/
 GO
 CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_VW
 AS 
 BEGIN
-SELECT * FROM paqu.VW_tbPaquetes
+SELECT * FROM paqu.VW_tbPaquetes WHERE paqu_Estado = 1
 END
 
 
 /*Paquetes Insert*/
 GO
 CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_Insert
-@paqu_Cliente INT,
-@sucu_ID INT,
-@paqu_Peso INT,
-@paqu_Fragil BIT,
-@meto_ID INT,
-@muni_ID CHAR(4),
-@paqu_DireccionExacta NVARCHAR(250),
-@paqu_FechaSalida DATETIME,
-@paqu_UserCreacion INT
+@paqu_Cliente				INT,
+@sucu_ID					INT,
+@paqu_Peso					INT,
+@paqu_Fragil				BIT,
+@meto_ID					INT,
+@muni_ID					CHAR(4),
+@paqu_DireccionExacta		NVARCHAR(250),
+@paqu_FechaSalida			DATETIME,
+@trac_ID					INT,
+@paqu_UserCreacion			INT
 AS
 BEGIN
-INSERT INTO paqu.tbPaquetes(paqu_Cliente, sucu_ID, paqu_Peso, paqu_Fragil, meto_ID, muni_ID, paqu_DireccionExacta, paqu_FechaSalida,paqu_UserCreacion, paqu_FechaModificacion, paqu_UserModificacion)
-VALUES(@paqu_Cliente,@sucu_ID,@paqu_Peso,@paqu_Fragil,@meto_ID,@muni_ID,@paqu_DireccionExacta,@paqu_FechaSalida,@paqu_UserCreacion,NULL,NULL)
+INSERT INTO paqu.tbPaquetes(paqu_Cliente, sucu_ID, paqu_Peso, paqu_Fragil, meto_ID, muni_ID, paqu_DireccionExacta, paqu_FechaSalida,trac_ID,paqu_UserCreacion, paqu_FechaModificacion, paqu_UserModificacion)
+VALUES(@paqu_Cliente,@sucu_ID,@paqu_Peso,@paqu_Fragil,@meto_ID,@muni_ID,@paqu_DireccionExacta,@paqu_FechaSalida,@trac_ID,@paqu_UserCreacion,NULL,NULL)
 END
 
 GO 
-EXECUTE paqu.UDP_tbPaquetes_Insert 2,1,200,0,1,'0512','Colonia la Paz Bloque #85 casa #6','10-10-2023',1
-EXECUTE paqu.UDP_tbPaquetes_Insert 3,1,200,0,1,'0606','Frente a la pulperia de su casa','10-10-2023',1
-EXECUTE paqu.UDP_tbPaquetes_Insert 3,1,200,0,1,'0101','Colonia MonteCristo pajase 2 casa 1','10-10-2023',1
-EXECUTE paqu.UDP_tbPaquetes_Insert 2,1,200,0,1,'0209','Barrio los pinos en el parque','10-10-2023',1
+EXECUTE paqu.UDP_tbPaquetes_Insert 2,1,200,0,1,'0512','Colonia la Paz Bloque #85 casa #6','10-10-2023',2,1
+EXECUTE paqu.UDP_tbPaquetes_Insert 3,1,200,0,1,'0606','Frente a la pulperia de su casa','10-10-2023',3,1
+EXECUTE paqu.UDP_tbPaquetes_Insert 3,1,200,0,1,'0101','Colonia MonteCristo pajase 2 casa 1','10-10-2023',4,1
+EXECUTE paqu.UDP_tbPaquetes_Insert 2,1,200,0,1,'0209','Barrio los pinos en el parque','10-10-2023',1,1
+GO
 
+
+/*-------------------------Login-------------------------------*/
+/*Login UDP*/
+GO
+CREATE OR ALTER PROCEDURE acce.UDP_Login
+@user_Username NVARCHAR(150),
+@user_Contrasena NVARCHAR(MAX) 
+AS
+BEGIN
+DECLARE @Pass VARBINARY(MAX) = CONVERT(VARBINARY(MAX), HASHBYTES('SHA2_512', @user_Contrasena));
+SELECT [user_ID], [user_Username], 
+[user_Contrasena], [user].[pers_ID],CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS user_NombreCompleto,pers.pers_Sexo, 
+[user_FechaCreacion], [user_UserCreacion], 
+[user_FechaModificacion], [user_UserModificacion], 
+[user_Estado] 
+FROM acce.tbUsuarios [user] INNER JOIN paqu.tbPersonas pers
+ON pers.pers_ID = [user].pers_ID
+WHERE user_Username = @user_Username AND user_Contrasena = @Pass
+AND user_estado = 1
+END
+GO
+
+/*Usuario VW*/
+GO
+CREATE VIEW acce.VW_tbUsuarios
+AS
+SELECT [user_ID], [user_Username], 
+[user_Contrasena], [user].[pers_ID],pers.pers_EsAdmin,CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS user_NombreCompleto,pers.pers_Sexo, 
+[user_FechaCreacion], [user_UserCreacion], 
+[user_FechaModificacion], [user_UserModificacion], 
+[user_Estado] 
+FROM acce.tbUsuarios [user] INNER JOIN paqu.tbPersonas pers
+ON pers.pers_ID = [user].pers_ID
+AND user_estado = 1
+
+/*Usuarios VW UDP*/
+GO
+CREATE OR ALTER PROCEDURE acce.UDP_tbUsuarios_VW
+AS
+BEGIN
+SELECT * FROM acce.VW_tbUsuarios
+END

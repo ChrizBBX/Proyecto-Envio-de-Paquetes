@@ -20,6 +20,8 @@ namespace Paquetes.Entities.Entities
         public string muni_Descripcion { get; set; }
         public string paqu_DireccionExacta { get; set; }
         public DateTime paqu_FechaSalida { get; set; }
+        public int? trac_ID { get; set; }
+        public string Tracking { get; set; }
         public DateTime? paqu_FechaCreacion { get; set; }
         public int paqu_UserCreacion { get; set; }
         public DateTime? paqu_FechaModificacion { get; set; }
