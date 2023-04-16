@@ -35,6 +35,7 @@ body: Container(
   //Primera fila
   clientesddl(),
   SizedBox(height: 10,),
+  sucursalesddl(),
   SizedBox(height: 10,),
   Expanded(child: PesoInput()),
   SizedBox(height: 10,),

@@ -558,6 +558,28 @@ VALUES	('01','0101','La Ceiba', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('18', '1810', 'Victoria', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('18', '1811', 'Yorito', '1', NULL, GETDATE(), NULL, GETDATE());
 GO
+/*-------------------------Departamentos-------------------------------*/
+GO
+
+/*Departamentos View*/
+CREATE VIEW gral.VW_tbDepartamentos
+AS
+SELECT [dept_ID], [dept_Descripcion], 
+[dept_Estado], [dept_UserCreacion], 
+[dept_FechaCreacion], [dept_UserModificacion], 
+[dept_FechaModificacion]
+FROM gral.tbDepartamentos
+
+/*Departamentos View UDP*/
+GO
+
+CREATE OR ALTER PROCEDURE gral.UDP_tbDepartamentos_VW
+AS
+BEGIN
+SELECT * FROM gral.VW_tbDepartamentos
+END
+
+GO
 /*-------------------------Personas-------------------------------*/
 /*Personas Insert*/
 GO

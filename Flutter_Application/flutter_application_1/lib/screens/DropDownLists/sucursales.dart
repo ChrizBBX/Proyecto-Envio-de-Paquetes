@@ -14,10 +14,10 @@ class _sucursalesddlState extends State<sucursalesddl> {
   @override
   void initState() {
     super.initState();
-    _loadData();
+    _getsucursalesddl();
   }
 
-  Future<void> _loadData() async {
+  void _getsucursalesddl() async {
     final response = await http.get(Uri.parse('http://rapiexprezzz.somee.com/api/Sucursales'));
 
     if (response.statusCode == 200) {
@@ -25,7 +25,7 @@ class _sucursalesddlState extends State<sucursalesddl> {
         _sucursales = jsonDecode(response.body);
       });
     } else {
-      throw Exception('Error al obtener las sucursales');
+      throw Exception('Error al obtener las sucursalesddl');
     }
   }
 
@@ -40,13 +40,13 @@ class _sucursalesddlState extends State<sucursalesddl> {
       },
       items: [
         DropdownMenuItem(
-          value: 'Seleccione una sucursal',
-          child: Text('Seleccione una sucursal'),
+          value: 'Seleccione una Sucursal',
+          child: Text('--Seleccione una Sucursal--'),
         ),
-        ..._sucursales.map((sucursales) {
+        ..._sucursales.map((sucursal) {
           return DropdownMenuItem(
-            value: sucursales['sucu_ID'].toString(),
-            child: Text(sucursales['sucu_Nombre']),
+            value: sucursal['sucu_ID'].toString(),
+            child: Text(sucursal['sucu_Nombre']),
           );
         }).toList(),
       ],
