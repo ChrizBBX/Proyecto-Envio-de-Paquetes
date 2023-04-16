@@ -54,6 +54,14 @@
          "ObjectType": 3
       },
       {
+         "Name": "[paqu].[VW_tbClientes]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[paqu].[VW_tbEmpleados]",
+         "ObjectType": 3
+      },
+      {
          "Name": "[paqu].[VW_tbPaquetes]",
          "ObjectType": 3
       },

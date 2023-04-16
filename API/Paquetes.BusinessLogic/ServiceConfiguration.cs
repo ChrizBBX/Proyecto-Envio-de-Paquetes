@@ -18,6 +18,7 @@ namespace Paquetes.BusinessLogic
             service.AddScoped<MetodosPagoRepository>();
             service.AddScoped<SucursalesRepository>();
             service.AddScoped<UsuariosRepository>();
+            service.AddScoped<ClientesRepository>();
 
             PaquetesContext.BuildConnectionString(connectionString);
         }

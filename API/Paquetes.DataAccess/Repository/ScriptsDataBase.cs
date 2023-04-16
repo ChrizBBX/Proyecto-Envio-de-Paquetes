@@ -23,5 +23,9 @@ namespace Paquetes.DataAccess.Repository
         #region Usuarios
         public static string UDP_Login = "acce.UDP_Login";
         #endregion
+
+        #region Clientes
+        public static string UDP_Clientes_Select = "paqu.UDP_tbClientes_VW";
+        #endregion
     }
 }

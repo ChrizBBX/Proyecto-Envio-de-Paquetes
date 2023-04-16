@@ -559,6 +559,7 @@ VALUES	('01','0101','La Ceiba', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('18', '1811', 'Yorito', '1', NULL, GETDATE(), NULL, GETDATE());
 GO
 /*-------------------------Personas-------------------------------*/
+/*Personas Insert*/
 GO
 CREATE OR ALTER PROCEDURE paqu.UDP_tbPersonas_Insert
 @pers_Identidad NVARCHAR(13),
@@ -576,6 +577,54 @@ GO
 EXECUTE paqu.UDP_tbPersonas_Insert '0501-2006-75435','Vladimir','Putin','M',0,1
 EXECUTE paqu.UDP_tbPersonas_Insert '0318-1999-09991','Elon','Musk','M',0,1
 GO
+
+/*Personas View Clientes*/
+GO
+CREATE VIEW paqu.VW_tbClientes
+AS
+SELECT [pers_ID], [pers_Identidad], 
+[pers_Nombres], [pers_Apellidos],CONCAT(pers_Nombres,' ',pers_Apellidos) AS ClienteNombreCompleto,
+[pers_Sexo], [pers_EsAdmin], 
+[pers_FechaCreacion], [pers_UserCreacion], 
+[pers_FechaModificacion], [pers_UserModificacion], 
+[pers_Estado]
+FROM paqu.tbPersonas
+WHERE pers_EsAdmin = 0
+GO
+
+/*Personas View Clientes UDP*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbClientes_VW
+AS
+BEGIN
+SELECT * FROM paqu.VW_tbClientes
+END
+GO
+
+/*Personas View Empleados*/
+GO
+CREATE VIEW paqu.VW_tbEmpleados 
+AS
+SELECT [pers_ID], [pers_Identidad], 
+[pers_Nombres], [pers_Apellidos],CONCAT(pers_Nombres,' ',pers_Apellidos) AS EmpleadoNombreCompleto,
+[pers_Sexo], [pers_EsAdmin], 
+[pers_FechaCreacion], [pers_UserCreacion], 
+[pers_FechaModificacion], [pers_UserModificacion], 
+[pers_Estado]
+FROM paqu.tbPersonas
+WHERE pers_EsAdmin = 1
+GO
+
+/*Personas View Empleados UDP*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbEmpleados_VW
+AS
+BEGIN
+SELECT * FROM paqu.VW_tbEmpleados
+END
+GO
+
+
 /*-------------------------Sucursales-------------------------------*/
 /*Sucursales View*/
 GO

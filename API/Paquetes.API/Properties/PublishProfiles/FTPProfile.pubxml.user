@@ -8,7 +8,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJazTVTxpUEWKbIjg2++gEQAAAAACAAAAAAAQZgAAAAEAACAAAAC/61gaDn5VOJVwSbi3wOl2BULbTathZ2t/AmqV9meUKAAAAAAOgAAAAAIAACAAAABoGcKHBWVy1bs4e+GuMkFEZiVsu3vB+LjhQ1ulzzcnryAAAACWBSrINUyadzjT535ad3xyjkyDhZB4bvDJyrnohjR/hEAAAABudeWI5kHDp05iIjEPPTAyH3Gp0a9WmqJkBsSNqOfPftEt4jVkGZuWnVQIgBBBUZ+vZULGuJR/puBVgtnyh7yn</EncryptedPassword>
     <_PublishTargetUrl>ftp://155.254.244.38/www.RapiExprezzz.somee.com</_PublishTargetUrl>
-    <History>True|2023-04-14T06:12:36.7482683Z;True|2023-04-13T23:29:35.7536717-06:00;True|2023-04-12T22:59:00.5274044-06:00;False|2023-04-12T22:53:53.0498308-06:00;True|2023-04-12T17:33:51.2803643-06:00;False|2023-04-12T12:23:06.4618277-06:00;False|2023-04-12T12:20:08.2379901-06:00;</History>
+    <History>True|2023-04-16T08:50:37.5637113Z;True|2023-04-16T02:38:40.2531490-06:00;True|2023-04-14T00:12:36.7482683-06:00;True|2023-04-13T23:29:35.7536717-06:00;True|2023-04-12T22:59:00.5274044-06:00;False|2023-04-12T22:53:53.0498308-06:00;True|2023-04-12T17:33:51.2803643-06:00;False|2023-04-12T12:23:06.4618277-06:00;False|2023-04-12T12:20:08.2379901-06:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
@@ -159,7 +159,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>06/15/2021 13:12:46</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Options.dll">
-      <publishTime>10/22/2021 17:50:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Primitives.dll">
       <publishTime>10/22/2021 17:50:40</publishTime>
@@ -210,43 +210,43 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/24/2018 11:44:14</publishTime>
     </File>
     <File Include="Paquetes.API.deps.json">
-      <publishTime>04/14/2023 00:08:26</publishTime>
+      <publishTime>04/16/2023 02:48:16</publishTime>
     </File>
     <File Include="Paquetes.API.dll">
-      <publishTime>04/14/2023 00:08:24</publishTime>
+      <publishTime>04/16/2023 02:48:15</publishTime>
     </File>
     <File Include="Paquetes.API.exe">
-      <publishTime>04/14/2023 00:08:24</publishTime>
+      <publishTime>04/16/2023 02:48:15</publishTime>
     </File>
     <File Include="Paquetes.API.pdb">
-      <publishTime>04/14/2023 00:08:24</publishTime>
+      <publishTime>04/16/2023 02:48:15</publishTime>
     </File>
     <File Include="Paquetes.API.runtimeconfig.json">
-      <publishTime>04/12/2023 17:28:48</publishTime>
+      <publishTime>04/16/2023 02:36:17</publishTime>
     </File>
     <File Include="Paquetes.API.Views.dll">
-      <publishTime>04/14/2023 00:08:25</publishTime>
+      <publishTime>04/16/2023 02:48:16</publishTime>
     </File>
     <File Include="Paquetes.API.Views.pdb">
-      <publishTime>04/14/2023 00:08:25</publishTime>
+      <publishTime>04/16/2023 02:48:16</publishTime>
     </File>
     <File Include="Paquetes.BusinessLogic.dll">
-      <publishTime>04/14/2023 00:08:15</publishTime>
+      <publishTime>04/16/2023 02:36:13</publishTime>
     </File>
     <File Include="Paquetes.BusinessLogic.pdb">
-      <publishTime>04/14/2023 00:08:15</publishTime>
+      <publishTime>04/16/2023 02:36:13</publishTime>
     </File>
     <File Include="Paquetes.DataAccess.dll">
-      <publishTime>04/14/2023 00:08:15</publishTime>
+      <publishTime>04/16/2023 02:48:06</publishTime>
     </File>
     <File Include="Paquetes.DataAccess.pdb">
-      <publishTime>04/14/2023 00:08:15</publishTime>
+      <publishTime>04/16/2023 02:48:06</publishTime>
     </File>
     <File Include="Paquetes.Entities.dll">
-      <publishTime>04/13/2023 23:25:12</publishTime>
+      <publishTime>04/16/2023 02:36:11</publishTime>
     </File>
     <File Include="Paquetes.Entities.pdb">
-      <publishTime>04/13/2023 23:25:12</publishTime>
+      <publishTime>04/16/2023 02:36:11</publishTime>
     </File>
     <File Include="pl/Microsoft.CodeAnalysis.CSharp.resources.dll">
       <publishTime>11/11/2020 18:15:14</publishTime>
@@ -381,7 +381,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/11/2020 18:16:28</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>04/14/2023 00:08:26</publishTime>
+      <publishTime>04/16/2023 02:48:17</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
       <publishTime>04/11/2023 01:52:04</publishTime>
