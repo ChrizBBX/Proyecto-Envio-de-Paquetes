@@ -50,6 +50,10 @@
          "ObjectType": 3
       },
       {
+         "Name": "[gral].[VW_tbDepartamentos]",
+         "ObjectType": 3
+      },
+      {
          "Name": "[gral].[VW_tbMetodosPago]",
          "ObjectType": 3
       },

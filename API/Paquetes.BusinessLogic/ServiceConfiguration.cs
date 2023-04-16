@@ -19,6 +19,7 @@ namespace Paquetes.BusinessLogic
             service.AddScoped<SucursalesRepository>();
             service.AddScoped<UsuariosRepository>();
             service.AddScoped<ClientesRepository>();
+            service.AddScoped<DepartamentosRepository>();
 
             PaquetesContext.BuildConnectionString(connectionString);
         }
