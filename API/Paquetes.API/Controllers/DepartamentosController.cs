@@ -25,7 +25,7 @@ namespace Paquetes.API.Controllers
         [HttpGet]
         public IActionResult List()
         {
-            var listado = _generalservice.ListadoMetodosPago();
+            var listado = _generalservice.ListadoDepartamentos();
             return Ok(listado);
         }
     }
