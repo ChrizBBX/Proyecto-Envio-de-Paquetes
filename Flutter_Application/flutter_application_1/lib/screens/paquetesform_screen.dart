@@ -6,6 +6,9 @@ import 'package:flutter_application_1/widgets/fechasalida.dart';
 import 'package:flutter_application_1/widgets/checkbox.dart';
 import 'package:flutter_application_1/screens/DropDownLists/sucursales.dart';
 import 'package:flutter_application_1/screens/DropDownLists/clientes.dart';
+import 'package:flutter_application_1/screens/DropDownLists/departamentos.dart';
+import 'package:flutter_application_1/screens/DropDownLists/municipios.dart';
+
 class PaquetesForm extends StatefulWidget {
 
   @override
@@ -32,16 +35,13 @@ body: Container(
       children: [
         encabezado(),
   SizedBox(height: 10,),
-  //Primera fila
-  clientesddl(),
+  Container(decoration: BoxDecoration(border: Border.all(color: Colors.grey,width: 1,),borderRadius: BorderRadius.circular(4),),child: clientesddl(),),
   SizedBox(height: 10,),
-  sucursalesddl(),
+  Container(decoration: BoxDecoration(border: Border.all(color: Colors.grey,width: 1,),borderRadius: BorderRadius.circular(4),),child: sucursalesddl(),),
   SizedBox(height: 10,),
   Expanded(child: PesoInput()),
   SizedBox(height: 10,),
-  Expanded(child: MetodoPagoInput()),
-  SizedBox(height: 10,),
-  Expanded(child: MunicipioInput()),
+  Container(decoration: BoxDecoration(border: Border.all(color: Colors.grey,width: 1,),borderRadius: BorderRadius.circular(4),),child: DepartamentosDDL(),),
   SizedBox(height: 10,),
   Expanded(child: DireccionExactaInput()),
   SizedBox(height: 10,),
@@ -49,7 +49,7 @@ body: Container(
   SizedBox(height: 10,),
   Expanded(child: checkbox()),
   SizedBox(height: 10,),
-  btnEnviar()
+  Expanded(child: btnEnviar())
       ],
     ),
   ),
@@ -85,8 +85,6 @@ Widget encabezado (){
     ),
   );
 }
-
-
 
 Widget ClienteInput() {
   return Column(

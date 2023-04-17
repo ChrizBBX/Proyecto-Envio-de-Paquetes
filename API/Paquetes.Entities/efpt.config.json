@@ -58,6 +58,10 @@
          "ObjectType": 3
       },
       {
+         "Name": "[gral].[VW_tbMunicipios]",
+         "ObjectType": 3
+      },
+      {
          "Name": "[paqu].[VW_tbClientes]",
          "ObjectType": 3
       },

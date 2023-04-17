@@ -41,7 +41,7 @@ class _sucursalesddlState extends State<sucursalesddl> {
       items: [
         DropdownMenuItem(
           value: 'Seleccione una Sucursal',
-          child: Text('--Seleccione una Sucursal--'),
+          child: Text('Seleccione una Sucursal'),
         ),
         ..._sucursales.map((sucursal) {
           return DropdownMenuItem(

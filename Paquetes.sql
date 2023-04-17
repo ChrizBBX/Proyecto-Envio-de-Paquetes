@@ -580,6 +580,37 @@ SELECT * FROM gral.VW_tbDepartamentos
 END
 
 GO
+
+/*-------------------------Municipios-------------------------------*/
+/*Municipios View*/
+GO
+CREATE VIEW gral.VW_tbMunicipios
+AS
+SELECT [dept_ID], [muni_ID], 
+[muni_Descripcion], [muni_Estado], 
+[muni_UserCreacion], [muni_FechaCreacion], 
+[muni_UserModificacion], [muni_FechaModificacion]
+FROM [gral].[tbMunicipios]
+GO
+
+/*Municipios View UDP*/
+GO
+CREATE OR ALTER PROCEDURE gral.UDP_tbMunicipios_VW
+AS
+BEGIN
+SELECT * FROM gral.VW_tbMunicipios
+END
+GO
+
+/*Municipios x Departamento UDP*/
+GO
+CREATE OR ALTER PROCEDURE gral.UDP_tbMunicipiosXtbDepartamentos
+@dept_ID CHAR(2)
+AS
+BEGIN
+SELECT * FROM gral.VW_tbMunicipios WHERE dept_ID = @dept_ID
+END
+GO
 /*-------------------------Personas-------------------------------*/
 /*Personas Insert*/
 GO

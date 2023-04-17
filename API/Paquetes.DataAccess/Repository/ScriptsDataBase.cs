@@ -31,5 +31,10 @@ namespace Paquetes.DataAccess.Repository
         #region Departamentos
         public static string UDP_Departamentos_Select = "gral.UDP_tbDepartamentos_VW";
         #endregion
+
+        #region Municipios
+        public static string UDP_Municipios_Select = "gral.UDP_tbMunicipios_VW";
+        public static string UDP_MunicipiosXDepartamento_Select = "gral.UDP_tbMunicipiosXtbDepartamentos";
+        #endregion
     }
 }
