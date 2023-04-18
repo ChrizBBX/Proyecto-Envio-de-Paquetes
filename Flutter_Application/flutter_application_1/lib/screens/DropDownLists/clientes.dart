@@ -14,8 +14,6 @@ class _ClientesDDLState extends State<ClientesDDL> {
   List<dynamic> _clientes = [];
   String _selectedCliente = 'Seleccione un Cliente';
 
-  String get selectedCliente => _selectedCliente; // Getter para acceder al valor de _selectedCliente
-
   @override
   void initState() {
     super.initState();
@@ -39,8 +37,8 @@ class _ClientesDDLState extends State<ClientesDDL> {
   Widget build(BuildContext context) {
     return Container(
        decoration: BoxDecoration(
-    border: Border.all(color: errorCliente ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
-    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+    border: Border.all(color: errorCliente ? Colors.red : Colors.transparent),
+    borderRadius: BorderRadius.circular(4.0),
   ),
       child: DropdownButton(
         value: _selectedCliente,

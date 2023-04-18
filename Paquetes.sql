@@ -611,6 +611,25 @@ BEGIN
 SELECT * FROM gral.VW_tbMunicipios WHERE dept_ID = @dept_ID
 END
 GO
+/*-------------------------PaquetesXMunicipio-------------------------------*/
+/*PaqutesXMunicipio View*/
+GO
+CREATE VIEW paqu.VW_PaquetesXMunicipio
+AS
+SELECT muni.muni_ID, muni.muni_Descripcion, COUNT(paqu.paqu_ID) AS cantidad_Paquetes
+FROM paqu.tbPaquetes paqu
+INNER JOIN gral.tbMunicipios muni ON paqu.muni_ID = muni.muni_ID
+GROUP BY muni.muni_ID, muni.muni_Descripcion;
+GO
+/*PaquetesXMunicipio UDP*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_PaquetesXMunicipio_VW
+AS
+BEGIN
+SELECT * FROM paqu.VW_PaquetesXMunicipio
+END
+GO
+
 /*-------------------------Personas-------------------------------*/
 /*Personas Insert*/
 GO

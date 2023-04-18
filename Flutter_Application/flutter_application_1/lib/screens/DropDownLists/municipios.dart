@@ -57,8 +57,8 @@ class _DepartamentosDDLState extends State<DepartamentosDDL> {
       children: [
         Container(
           decoration: BoxDecoration(
-    border: Border.all(color: errorDepartamento ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
-    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+    border: Border.all(color: errorDepartamento ? Colors.red : Colors.transparent),
+    borderRadius: BorderRadius.circular(4.0),
   ),
           child: DropdownButton<String>(
             value: _selectedDepartamento,
@@ -93,8 +93,8 @@ class _DepartamentosDDLState extends State<DepartamentosDDL> {
         SizedBox(height: 10,),
         Container(
                     decoration: BoxDecoration(
-    border: Border.all(color: errorMunicipio ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
-    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+    border: Border.all(color: errorMunicipio ? Colors.red : Colors.transparent),
+    borderRadius: BorderRadius.circular(4.0),
   ),
           child: DropdownButton<String>(
             value: _selectedMunicipio,

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/DropDownLists/clientes.dart';
+import 'package:flutter_application_1/screens/DropDownLists/municipios.dart';
+import 'package:flutter_application_1/screens/DropDownLists/sucursales.dart';
 import 'package:flutter_application_1/screens/paquetesform_screen.dart';
 import 'package:flutter_application_1/screens/auth/welcome_page.dart';
 import 'package:flutter_application_1/screens/index_screen.dart';
 import 'package:flutter_application_1/views/AppColor.dart';
+import 'package:flutter_application_1/widgets/fechasalida.dart';
+import 'package:flutter_application_1/screens/graficas_screen.dart';
 class admin_screen extends StatefulWidget {
 
   @override
@@ -64,7 +69,22 @@ Widget btnEnviarUnPaquete (context){
     children: [
       ElevatedButton(
         onPressed: () {
-  
+ peso = "";
+ errorPeso = false;
+ errorCliente = false;
+errorSucursal = false;
+errorDepartamento = false;
+errorMunicipio = false;
+ errorDireccionExacta = false;
+ errorFechaSalida = false;
+DireccionExacta = "";
+cliente = "";
+sucursal = "";
+peso = "";
+departamento = "";
+municipio = "";
+DireccionExacta = "";
+fechaFormateada = "";
 
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => PaquetesForm()));
         },
@@ -131,7 +151,7 @@ Widget btnEstadisticas(context){
     children: [
       ElevatedButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Graficas()));
         },
         child: Padding(
           padding: const EdgeInsets.all(15.0),

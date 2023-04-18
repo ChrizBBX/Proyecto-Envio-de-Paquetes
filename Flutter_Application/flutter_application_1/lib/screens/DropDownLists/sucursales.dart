@@ -35,8 +35,8 @@ class _sucursalesddlState extends State<sucursalesddl> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-    border: Border.all(color: errorSucursal ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
-    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+    border: Border.all(color: errorSucursal ? Colors.red : Colors.transparent),
+    borderRadius: BorderRadius.circular(4.0),
   ),
       child: DropdownButton(
         value: _selectedSucursal,

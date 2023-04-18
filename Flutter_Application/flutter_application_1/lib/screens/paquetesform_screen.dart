@@ -73,60 +73,94 @@ Widget btnEnviar (){
   onPressed: () async {
     bool x = true;
     if(cliente == '' || cliente == 'Seleccione un Cliente'){
-       x = false;
-                  errorCliente = true;
-
+       x = false;   
+       setState(() {
+                    errorCliente = true;
+                  });
        print('cliente vacio');
     }else{
-                  errorCliente = false;
+         print('cliente lleno');
+                  setState(() {
+                    errorCliente = false;
+                  });
     }
 
     if(sucursal == 'Seleccione una Sucursal' || sucursal == ''){
        x = false;
-                  errorSucursal = true;
+                  setState(() {
+                    errorSucursal = true;
+                  });
        print('sucursal vacia');
     }else{
-                  errorSucursal = false;
+         print('sucursal lleno');
+                  setState(() {
+                    errorSucursal = false;
+                  });
     }
 
-    if(peso == ''){
+    if(peso == '' || peso == null){
        x = false;
-     errorPeso = true;
+           setState(() {
+                    errorPeso = true;
+                  });
       print('peso vacio');
     }else{
-          errorPeso = false;
+         print('peso lleno');
+          setState(() {
+                    errorPeso = false;
+                  });
     }
 
     if(departamento == 'Seleccione un departamento' || departamento == ''){
        x = false;
-       errorDepartamento = true;
+      setState(() {
+                    errorDepartamento = true;
+                  });
        print('Departamento vacio');
     }else{
-       errorDepartamento = false;
+      print('departamento lleno');
+             setState(() {
+                    errorDepartamento = false;
+                  });
     }
 
     if(municipio == 'Seleccione un municipio' || municipio == ''){
        x = false;
-       errorMunicipio = true;
+         setState(() {
+                    errorMunicipio = true;
+                  });
        print('municipio vacio');
     }else{
-      errorMunicipio = false;
+         print('municipio lleno');
+          setState(() {
+                    errorMunicipio = false;
+                  });
     }
 
     if(DireccionExacta == ''){
        x = false;
-        errorDireccionExacta = true; 
+        setState(() {
+                    errorDireccionExacta = true;
+                  });
        print('direccion vacio');
     }else{
-errorDireccionExacta = false;
+         print('direccionExacta lleno');
+     setState(() {
+                    errorDireccionExacta = false;
+                  });
     }
 
     if(fechaFormateada == null || fechaFormateada == ''){
        x = false;
-       errorFechaSalida = true;
+            setState(() {
+                    errorFechaSalida = true;
+                  });
        print('fecha vacia');
     }else{
-      errorFechaSalida = false;
+         print('fecha lleno');
+       setState(() {
+                    errorFechaSalida = false;
+                  });
     }
 print(x);
 if(x == true){
@@ -207,7 +241,7 @@ Widget SucursalInput (){
 Widget PesoInput (){
   return Container(
     decoration:BoxDecoration(
-    border: Border.all(color: errorCliente ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
+    border: Border.all(color: errorPeso ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
     borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
   ), 
     child: Column(
