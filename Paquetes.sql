@@ -811,8 +811,14 @@ CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_Insert
 @paqu_UserCreacion			INT
 AS
 BEGIN
+BEGIN TRY
 INSERT INTO paqu.tbPaquetes(paqu_Cliente, sucu_ID, paqu_Peso, paqu_Fragil, meto_ID, muni_ID, paqu_DireccionExacta, paqu_FechaSalida,trac_ID,paqu_UserCreacion, paqu_FechaModificacion, paqu_UserModificacion)
-VALUES(@paqu_Cliente,@sucu_ID,@paqu_Peso,@paqu_Fragil,@meto_ID,@muni_ID,@paqu_DireccionExacta,@paqu_FechaSalida,@trac_ID,@paqu_UserCreacion,NULL,NULL)
+VALUES(@paqu_Cliente,@sucu_ID,@paqu_Peso,@paqu_Fragil,1,@muni_ID,@paqu_DireccionExacta,@paqu_FechaSalida,1,@paqu_UserCreacion,NULL,NULL)
+SELECT '1'
+END TRY
+BEGIN CATCH
+SELECT '0'
+END CATCH
 END
 
 GO 

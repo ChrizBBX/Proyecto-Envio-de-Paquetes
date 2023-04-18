@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 
+bool? Fragil;
 class checkbox extends StatefulWidget {
 
   @override
@@ -20,6 +21,7 @@ Widget build(BuildContext context) {
         onChanged: (bool? value) {
           setState(() {
             _isChecked = value!;
+            Fragil = value;
           });
         },
         controlAffinity: ListTileControlAffinity.leading, // Mover el control a la izquierda

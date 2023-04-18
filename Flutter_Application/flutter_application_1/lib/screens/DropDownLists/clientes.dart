@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/paquetesform_screen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class clientesddl extends StatefulWidget {
+String cliente = "";
+
+class ClientesDDL extends StatefulWidget {
   @override
-  _clientesddlState createState() => _clientesddlState();
+  _ClientesDDLState createState() => _ClientesDDLState();
 }
 
-class _clientesddlState extends State<clientesddl> {
+class _ClientesDDLState extends State<ClientesDDL> {
   List<dynamic> _clientes = [];
   String _selectedCliente = 'Seleccione un Cliente';
+
+  String get selectedCliente => _selectedCliente; // Getter para acceder al valor de _selectedCliente
 
   @override
   void initState() {
@@ -18,7 +23,8 @@ class _clientesddlState extends State<clientesddl> {
   }
 
   Future<void> _loadData() async {
-    final response = await http.get(Uri.parse('http://rapiexprezzz.somee.com/api/Clientes'));
+    final response =
+        await http.get(Uri.parse('http://rapiexprezzz.somee.com/api/Clientes'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -31,25 +37,33 @@ class _clientesddlState extends State<clientesddl> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      value: _selectedCliente,
-      onChanged: (newValue) {
-        setState(() {
-          _selectedCliente = newValue.toString();
-        });
-      },
-      items: [
-        DropdownMenuItem(
-          value: 'Seleccione un Cliente',
-          child: Text('Seleccione un Cliente'),
-        ),
-        ..._clientes.map((cliente) {
-          return DropdownMenuItem(
-            value: cliente['pers_ID'].toString(),
-            child: Text(cliente['clienteNombreCompleto']),
-          );
-        }).toList(),
-      ],
+    return Container(
+       decoration: BoxDecoration(
+    border: Border.all(color: errorCliente ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
+    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+  ),
+      child: DropdownButton(
+        value: _selectedCliente,
+        onChanged: (newValue) {
+          setState(() {
+            _selectedCliente = newValue.toString();
+            cliente = newValue.toString();
+          });
+        },
+        items: [
+          DropdownMenuItem(
+            value: 'Seleccione un Cliente',
+            child: Text('Seleccione un Cliente'),
+          ),
+          ..._clientes.map((cliente) {
+            return DropdownMenuItem(
+              value: cliente['pers_ID'].toString(),
+              child: Text(cliente['clienteNombreCompleto']),
+            );
+          }).toList(),
+        ],
+        
+      ),
     );
   }
 }

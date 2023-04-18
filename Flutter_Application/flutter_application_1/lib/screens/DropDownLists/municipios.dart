@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_application_1/screens/paquetesform_screen.dart';
 String municipio = "";
-
+String departamento = "";
 class DepartamentosDDL extends StatefulWidget {
   @override
   _DepartamentosDDLState createState() => _DepartamentosDDLState();
@@ -55,11 +56,16 @@ class _DepartamentosDDLState extends State<DepartamentosDDL> {
     return Column(
       children: [
         Container(
+          decoration: BoxDecoration(
+    border: Border.all(color: errorDepartamento ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
+    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+  ),
           child: DropdownButton<String>(
             value: _selectedDepartamento,
             onChanged: (newValue) async {
               setState(() {
                 _selectedDepartamento = newValue!;
+                departamento = newValue;
               });
               if (_selectedDepartamento != 'Seleccione un departamento') {
                 await _getMunicipios(_selectedDepartamento);
@@ -84,25 +90,33 @@ class _DepartamentosDDLState extends State<DepartamentosDDL> {
             ],
           ),
         ),
-        DropdownButton<String>(
-          value: _selectedMunicipio,
-          onChanged: (newValue) {
-            setState(() {
-              _selectedMunicipio = newValue!;
-            });
-          },
-          items: [
-            DropdownMenuItem(
-              value: 'Seleccione un municipio',
-              child: Text('Seleccione un municipio'),
-            ),
-            ..._municipios.map((municipio) {
-              return DropdownMenuItem(
-                value: municipio['muni_ID'].toString(),
-                child: Text(municipio['muni_Descripcion']),
-              );
-            }).toList(),
-          ],
+        SizedBox(height: 10,),
+        Container(
+                    decoration: BoxDecoration(
+    border: Border.all(color: errorMunicipio ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
+    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+  ),
+          child: DropdownButton<String>(
+            value: _selectedMunicipio,
+            onChanged: (newValue) {
+              setState(() {
+                _selectedMunicipio = newValue!;
+                municipio = newValue;
+              });
+            },
+            items: [
+              DropdownMenuItem(
+                value: 'Seleccione un municipio',
+                child: Text('Seleccione un municipio'),
+              ),
+              ..._municipios.map((municipio) {
+                return DropdownMenuItem(
+                  value: municipio['muni_ID'].toString(),
+                  child: Text(municipio['muni_Descripcion']),
+                );
+              }).toList(),
+            ],
+          ),
         ),
       ],
     );

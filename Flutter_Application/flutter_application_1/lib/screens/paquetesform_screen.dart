@@ -6,9 +6,21 @@ import 'package:flutter_application_1/widgets/fechasalida.dart';
 import 'package:flutter_application_1/widgets/checkbox.dart';
 import 'package:flutter_application_1/screens/DropDownLists/sucursales.dart';
 import 'package:flutter_application_1/screens/DropDownLists/clientes.dart';
-import 'package:flutter_application_1/screens/DropDownLists/departamentos.dart';
 import 'package:flutter_application_1/screens/DropDownLists/municipios.dart';
+import 'package:flutter_application_1/screens/admin_screen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
+String peso = "";
+bool errorPeso = false;
+bool errorCliente = false;
+bool errorSucursal = false;
+bool errorDepartamento = false;
+bool errorMunicipio = false;
+bool errorDireccionExacta = false;
+bool errorFechaSalida = false;
+String DireccionExacta = "";
 class PaquetesForm extends StatefulWidget {
 
   @override
@@ -32,30 +44,111 @@ body: Container(
   Padding(
     padding: const EdgeInsets.all(8.0),
     child: ListView(
-      children: [
-        encabezado(),
-  SizedBox(height: 10,),
-  Container(decoration: BoxDecoration(border: Border.all(color: Colors.grey,width: 1,),borderRadius: BorderRadius.circular(4),),child: clientesddl(),),
-  SizedBox(height: 10,),
-  Container(decoration: BoxDecoration(border: Border.all(color: Colors.grey,width: 1,),borderRadius: BorderRadius.circular(4),),child: sucursalesddl(),),
-  SizedBox(height: 10,),
-  Expanded(child: PesoInput()),
-  SizedBox(height: 10,),
-  Container(decoration: BoxDecoration(border: Border.all(color: Colors.grey,width: 1,),borderRadius: BorderRadius.circular(4),),child: DepartamentosDDL(),),
-  SizedBox(height: 10,),
-  Expanded(child: DireccionExactaInput()),
-  SizedBox(height: 10,),
-  Expanded(child: FechaSalidaInput()),
-  SizedBox(height: 10,),
-  Expanded(child: checkbox()),
-  SizedBox(height: 10,),
-  Expanded(child: btnEnviar())
-      ],
-    ),
+  children: [
+    SizedBox(height: 10,),
+    Container(decoration: BoxDecoration(border: Border.all(color: Colors.grey,width: 1,),borderRadius: BorderRadius.circular(4),),child: ClientesDDL(),),
+    SizedBox(height: 10,),
+    Container(decoration: BoxDecoration(border: Border.all(color: Colors.grey,width: 1,),borderRadius: BorderRadius.circular(4),),child: sucursalesddl(),),
+    SizedBox(height: 10,),
+    PesoInput(),
+    SizedBox(height: 10,),
+    Container(decoration: BoxDecoration(border: Border.all(color: Colors.grey,width: 1,),borderRadius: BorderRadius.circular(4),),child: DepartamentosDDL(),),
+    SizedBox(height: 10,),
+    DireccionExactaInput(),
+    SizedBox(height: 10,),
+    FechaSalidaInput(),
+    SizedBox(height: 10,),
+    checkbox(),
+    SizedBox(height: 10,),
+    btnEnviar(),
+  ],
+),
   ),
 ),
     );
   }
+  
+Widget btnEnviar (){
+  return ElevatedButton(
+  onPressed: () async {
+    bool x = true;
+    if(cliente == '' || cliente == 'Seleccione un Cliente'){
+       x = false;
+                  errorCliente = true;
+
+       print('cliente vacio');
+    }else{
+                  errorCliente = false;
+    }
+
+    if(sucursal == 'Seleccione una Sucursal' || sucursal == ''){
+       x = false;
+                  errorSucursal = true;
+       print('sucursal vacia');
+    }else{
+                  errorSucursal = false;
+    }
+
+    if(peso == ''){
+       x = false;
+     errorPeso = true;
+      print('peso vacio');
+    }else{
+          errorPeso = false;
+    }
+
+    if(departamento == 'Seleccione un departamento' || departamento == ''){
+       x = false;
+       errorDepartamento = true;
+       print('Departamento vacio');
+    }else{
+       errorDepartamento = false;
+    }
+
+    if(municipio == 'Seleccione un municipio' || municipio == ''){
+       x = false;
+       errorMunicipio = true;
+       print('municipio vacio');
+    }else{
+      errorMunicipio = false;
+    }
+
+    if(DireccionExacta == ''){
+       x = false;
+        errorDireccionExacta = true; 
+       print('direccion vacio');
+    }else{
+errorDireccionExacta = false;
+    }
+
+    if(fechaFormateada == null || fechaFormateada == ''){
+       x = false;
+       errorFechaSalida = true;
+       print('fecha vacia');
+    }else{
+      errorFechaSalida = false;
+    }
+print(x);
+if(x == true){
+var url = Uri.parse('http://rapiexprezzz.somee.com/api/Paquetes/Insert');
+var response = await http.post(
+  url,
+  headers: {'Content-Type': 'application/json'},
+  body: json.encode({'paqu_Cliente': cliente, 'sucu_ID': sucursal, 'paqu_Peso': peso, 'paqu_Fragil': Fragil, 'muni_ID': municipio, 'paqu_DireccionExacta': DireccionExacta, 'paqu_FechaSalida': fechaFormateada,'trac_ID': "1"}),
+);
+  if (response.statusCode == 200) {
+   var jsonResponse = json.decode(response.body);
+if (jsonResponse != null && jsonResponse.length > 0) {
+        Navigator.of(context).pop();
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => admin_screen()));
+  }
+  }
+}
+
+},
+  child: Text('Enviar'),
+  );
 }
 
 Widget encabezado (){
@@ -111,17 +204,29 @@ Widget SucursalInput (){
     ],
   );
 }
-
 Widget PesoInput (){
-  return Column(
-    children: [
-      TextField(
-        decoration: InputDecoration(
-          hintText: 'Peso (lb)',
-          border: OutlineInputBorder(),
-        ),
-      )
-    ],
+  return Container(
+    decoration:BoxDecoration(
+    border: Border.all(color: errorCliente ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
+    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+  ), 
+    child: Column(
+      children: [
+        TextField(
+            keyboardType: TextInputType.number, // Define el tipo de teclado como números
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), // Aplica un formateador para permitir solo números
+        ],
+          decoration: InputDecoration(
+            hintText: 'Peso (lb)',
+            border: OutlineInputBorder(),
+          ),
+            onChanged: (value) {
+                    peso = value;
+                  },
+        )
+      ],
+    ),
   );
 }
 
@@ -152,28 +257,21 @@ Widget MunicipioInput (){
 }
 
 Widget DireccionExactaInput (){
-  return Column(
-    children: [
-      TextField(
-        decoration: InputDecoration(
-          labelText: 'Direccion Exacta',
-           labelStyle: TextStyle(fontSize: 22),
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-          border: OutlineInputBorder(),
-        ),
-      )
-    ],
-  );
-}
-
-Widget btnEnviar (){
-  return Expanded(
-    child: ElevatedButton(
-    onPressed: () {
-      print('hola');
-    },
-    child: Text('Enviar'),
+  return Container(
+    decoration: BoxDecoration(
+    border: Border.all(color: errorDireccionExacta ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
+    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+  ),
+    child: TextField(
+      decoration: InputDecoration(
+        hintText: 'Direccion Exacta',
+        border:  OutlineInputBorder(),
+      ),
+         onChanged: (value) {
+                DireccionExacta = value;
+              },
     ),
   );
 }
 
+}

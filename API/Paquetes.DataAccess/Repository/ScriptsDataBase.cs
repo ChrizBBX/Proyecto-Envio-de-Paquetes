@@ -10,6 +10,7 @@ namespace Paquetes.DataAccess.Repository
     {
         #region Paquetes
         public static string UDP_Paquetes_Select = "paqu.UDP_tbPaquetes_VW";
+        public static string UDP_Paquetes_Insert = "paqu.UDP_tbPaquetes_Insert";
         #endregion
 
         #region Metodos de pago

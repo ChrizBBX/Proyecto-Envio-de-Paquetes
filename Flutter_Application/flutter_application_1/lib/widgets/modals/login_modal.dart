@@ -88,7 +88,6 @@ var response = await http.put(
   body: json.encode({'user_Username': username, 'user_Contrasena': password}),
 );
 
-print(response.statusCode);
   if (response.statusCode == 200) {
    var jsonResponse = json.decode(response.body);
 if (jsonResponse != null && jsonResponse.length > 0) {

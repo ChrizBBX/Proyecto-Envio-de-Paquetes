@@ -65,7 +65,7 @@ class RegisterModal extends StatelessWidget {
                   showModalBottomSheet(
                     context: context,
                     backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                    shape: RoundedRectangleBorder(borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
                     isScrollControlled: true,
                     builder: (context) {
                       return LoginPage();

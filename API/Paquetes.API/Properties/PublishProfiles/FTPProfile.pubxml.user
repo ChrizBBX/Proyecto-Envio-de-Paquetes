@@ -8,14 +8,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJazTVTxpUEWKbIjg2++gEQAAAAACAAAAAAAQZgAAAAEAACAAAAC/61gaDn5VOJVwSbi3wOl2BULbTathZ2t/AmqV9meUKAAAAAAOgAAAAAIAACAAAABoGcKHBWVy1bs4e+GuMkFEZiVsu3vB+LjhQ1ulzzcnryAAAACWBSrINUyadzjT535ad3xyjkyDhZB4bvDJyrnohjR/hEAAAABudeWI5kHDp05iIjEPPTAyH3Gp0a9WmqJkBsSNqOfPftEt4jVkGZuWnVQIgBBBUZ+vZULGuJR/puBVgtnyh7yn</EncryptedPassword>
     <_PublishTargetUrl>ftp://155.254.244.38/www.RapiExprezzz.somee.com</_PublishTargetUrl>
-    <History>True|2023-04-17T07:03:02.4257712Z;True|2023-04-16T20:13:15.1588658-06:00;True|2023-04-16T02:50:37.5637113-06:00;True|2023-04-16T02:38:40.2531490-06:00;True|2023-04-14T00:12:36.7482683-06:00;True|2023-04-13T23:29:35.7536717-06:00;True|2023-04-12T22:59:00.5274044-06:00;False|2023-04-12T22:53:53.0498308-06:00;True|2023-04-12T17:33:51.2803643-06:00;False|2023-04-12T12:23:06.4618277-06:00;False|2023-04-12T12:20:08.2379901-06:00;</History>
+    <History>True|2023-04-17T22:07:24.7477566Z;False|2023-04-17T16:04:50.6037067-06:00;True|2023-04-17T01:03:02.4257712-06:00;True|2023-04-16T20:13:15.1588658-06:00;True|2023-04-16T02:50:37.5637113-06:00;True|2023-04-16T02:38:40.2531490-06:00;True|2023-04-14T00:12:36.7482683-06:00;True|2023-04-13T23:29:35.7536717-06:00;True|2023-04-12T22:59:00.5274044-06:00;False|2023-04-12T22:53:53.0498308-06:00;True|2023-04-12T17:33:51.2803643-06:00;False|2023-04-12T12:23:06.4618277-06:00;False|2023-04-12T12:20:08.2379901-06:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
-      <publishTime>04/11/2023 15:00:46</publishTime>
+      <publishTime>04/16/2023 16:09:33</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>04/13/2023 16:00:16</publishTime>
+      <publishTime>04/16/2023 16:09:33</publishTime>
     </File>
     <File Include="AutoMapper.dll">
       <publishTime>01/16/2023 09:41:56</publishTime>
@@ -120,7 +120,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/26/2020 16:58:46</publishTime>
     </File>
     <File Include="Microsoft.Bcl.AsyncInterfaces.dll">
-      <publishTime>04/14/2020 17:39:12</publishTime>
+      <publishTime>04/14/2020 16:39:12</publishTime>
     </File>
     <File Include="Microsoft.CodeAnalysis.CSharp.dll">
       <publishTime>11/11/2020 18:15:12</publishTime>
@@ -138,7 +138,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/11/2020 18:16:26</publishTime>
     </File>
     <File Include="Microsoft.Data.SqlClient.dll">
-      <publishTime>08/25/2020 18:24:48</publishTime>
+      <publishTime>08/25/2020 17:24:48</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
       <publishTime>04/12/2022 16:29:32</publishTime>
@@ -153,37 +153,37 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/12/2022 16:30:00</publishTime>
     </File>
     <File Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll">
-      <publishTime>10/22/2021 18:48:30</publishTime>
+      <publishTime>10/22/2021 17:48:30</publishTime>
     </File>
     <File Include="Microsoft.Extensions.DependencyInjection.dll">
-      <publishTime>06/15/2021 14:12:46</publishTime>
+      <publishTime>06/15/2021 13:12:46</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Options.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Primitives.dll">
-      <publishTime>10/22/2021 18:50:40</publishTime>
+      <publishTime>10/22/2021 17:50:40</publishTime>
     </File>
     <File Include="Microsoft.Identity.Client.dll">
-      <publishTime>05/18/2020 15:11:54</publishTime>
+      <publishTime>05/18/2020 14:11:54</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.JsonWebTokens.dll">
-      <publishTime>10/18/2019 18:39:24</publishTime>
+      <publishTime>10/18/2019 17:39:24</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Logging.dll">
-      <publishTime>10/18/2019 18:40:20</publishTime>
+      <publishTime>10/18/2019 17:40:20</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Protocols.dll">
-      <publishTime>10/18/2019 18:41:02</publishTime>
+      <publishTime>10/18/2019 17:41:02</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
-      <publishTime>10/18/2019 18:48:48</publishTime>
+      <publishTime>10/18/2019 17:48:48</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Tokens.dll">
-      <publishTime>10/18/2019 18:43:40</publishTime>
+      <publishTime>10/18/2019 17:43:40</publishTime>
     </File>
     <File Include="Microsoft.OpenApi.dll">
-      <publishTime>08/29/2020 15:14:12</publishTime>
+      <publishTime>08/29/2020 14:14:12</publishTime>
     </File>
     <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll">
       <publishTime>02/08/2021 19:32:08</publishTime>
@@ -210,43 +210,43 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/24/2018 11:44:14</publishTime>
     </File>
     <File Include="Paquetes.API.deps.json">
-      <publishTime>04/17/2023 01:00:48</publishTime>
+      <publishTime>04/17/2023 16:05:15</publishTime>
     </File>
     <File Include="Paquetes.API.dll">
-      <publishTime>04/17/2023 00:55:36</publishTime>
+      <publishTime>04/17/2023 16:05:05</publishTime>
     </File>
     <File Include="Paquetes.API.exe">
-      <publishTime>04/17/2023 00:55:36</publishTime>
+      <publishTime>04/17/2023 16:05:05</publishTime>
     </File>
     <File Include="Paquetes.API.pdb">
-      <publishTime>04/17/2023 00:55:36</publishTime>
+      <publishTime>04/17/2023 16:05:05</publishTime>
     </File>
     <File Include="Paquetes.API.runtimeconfig.json">
-      <publishTime>04/17/2023 00:55:43</publishTime>
+      <publishTime>04/17/2023 16:02:35</publishTime>
     </File>
     <File Include="Paquetes.API.Views.dll">
-      <publishTime>04/17/2023 01:00:38</publishTime>
+      <publishTime>04/17/2023 16:05:06</publishTime>
     </File>
     <File Include="Paquetes.API.Views.pdb">
-      <publishTime>04/17/2023 01:00:38</publishTime>
+      <publishTime>04/17/2023 16:05:06</publishTime>
     </File>
     <File Include="Paquetes.BusinessLogic.dll">
-      <publishTime>04/17/2023 00:55:34</publishTime>
+      <publishTime>04/17/2023 16:02:33</publishTime>
     </File>
     <File Include="Paquetes.BusinessLogic.pdb">
-      <publishTime>04/17/2023 00:55:34</publishTime>
+      <publishTime>04/17/2023 16:02:33</publishTime>
     </File>
     <File Include="Paquetes.DataAccess.dll">
-      <publishTime>04/17/2023 01:00:36</publishTime>
+      <publishTime>04/17/2023 16:02:32</publishTime>
     </File>
     <File Include="Paquetes.DataAccess.pdb">
-      <publishTime>04/17/2023 01:00:36</publishTime>
+      <publishTime>04/17/2023 16:02:32</publishTime>
     </File>
     <File Include="Paquetes.Entities.dll">
-      <publishTime>04/17/2023 00:55:32</publishTime>
+      <publishTime>04/17/2023 16:02:31</publishTime>
     </File>
     <File Include="Paquetes.Entities.pdb">
-      <publishTime>04/17/2023 00:55:32</publishTime>
+      <publishTime>04/17/2023 16:02:31</publishTime>
     </File>
     <File Include="pl/Microsoft.CodeAnalysis.CSharp.resources.dll">
       <publishTime>11/11/2020 18:15:14</publishTime>
@@ -285,40 +285,40 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/11/2020 18:16:28</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll">
-      <publishTime>08/25/2020 18:25:12</publishTime>
+      <publishTime>08/25/2020 17:25:12</publishTime>
     </File>
     <File Include="runtimes/win-arm/lib/net5.0/dotnet-aspnet-codegenerator-design.exe">
       <publishTime>02/08/2021 19:32:20</publishTime>
     </File>
     <File Include="runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>08/25/2020 15:34:56</publishTime>
+      <publishTime>08/25/2020 14:34:56</publishTime>
     </File>
     <File Include="runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.pdb">
-      <publishTime>08/25/2020 15:31:56</publishTime>
+      <publishTime>08/25/2020 14:31:56</publishTime>
     </File>
     <File Include="runtimes/win-arm64/lib/net5.0/dotnet-aspnet-codegenerator-design.exe">
       <publishTime>02/08/2021 19:32:20</publishTime>
     </File>
     <File Include="runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>08/25/2020 15:35:06</publishTime>
+      <publishTime>08/25/2020 14:35:06</publishTime>
     </File>
     <File Include="runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.pdb">
-      <publishTime>08/25/2020 15:31:56</publishTime>
+      <publishTime>08/25/2020 14:31:56</publishTime>
     </File>
     <File Include="runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>08/25/2020 15:34:56</publishTime>
+      <publishTime>08/25/2020 14:34:56</publishTime>
     </File>
     <File Include="runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.pdb">
-      <publishTime>08/25/2020 15:31:56</publishTime>
+      <publishTime>08/25/2020 14:31:56</publishTime>
     </File>
     <File Include="runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>08/25/2020 15:34:56</publishTime>
+      <publishTime>08/25/2020 14:34:56</publishTime>
     </File>
     <File Include="runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.pdb">
-      <publishTime>08/25/2020 15:31:56</publishTime>
+      <publishTime>08/25/2020 14:31:56</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll">
-      <publishTime>08/25/2020 18:24:48</publishTime>
+      <publishTime>08/25/2020 17:24:48</publishTime>
     </File>
     <File Include="runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll">
       <publishTime>11/15/2019 02:53:44</publishTime>
@@ -357,13 +357,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/11/2020 20:40:42</publishTime>
     </File>
     <File Include="System.IdentityModel.Tokens.Jwt.dll">
-      <publishTime>10/18/2019 18:38:18</publishTime>
+      <publishTime>10/18/2019 17:38:18</publishTime>
     </File>
     <File Include="System.Runtime.Caching.dll">
       <publishTime>11/15/2019 02:37:36</publishTime>
     </File>
     <File Include="System.Runtime.CompilerServices.Unsafe.dll">
-      <publishTime>10/22/2021 18:40:56</publishTime>
+      <publishTime>10/22/2021 17:40:56</publishTime>
     </File>
     <File Include="System.Security.Cryptography.ProtectedData.dll">
       <publishTime>11/15/2019 02:37:42</publishTime>
@@ -381,115 +381,115 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/11/2020 18:16:28</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>04/17/2023 01:00:48</publishTime>
+      <publishTime>04/17/2023 16:05:15</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/favicon.ico">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/js/site.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/LICENSE">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.min.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.min.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/LICENSE.md">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery/dist/jquery.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery/dist/jquery.min.js">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery/dist/jquery.min.map">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery/LICENSE.txt">
-      <publishTime>04/11/2023 15:00:47</publishTime>
+      <publishTime>04/16/2023 16:09:35</publishTime>
     </File>
     <File Include="zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll">
       <publishTime>11/11/2020 18:15:14</publishTime>

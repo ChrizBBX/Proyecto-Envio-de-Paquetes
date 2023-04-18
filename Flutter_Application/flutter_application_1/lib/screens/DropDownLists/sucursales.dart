@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_application_1/screens/paquetesform_screen.dart';
 import 'dart:convert';
 
+String sucursal = "";
 class sucursalesddl extends StatefulWidget {
   @override
   _sucursalesddlState createState() => _sucursalesddlState();
@@ -31,25 +33,32 @@ class _sucursalesddlState extends State<sucursalesddl> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      value: _selectedSucursal,
-      onChanged: (newValue) {
-        setState(() {
-          _selectedSucursal = newValue.toString();
-        });
-      },
-      items: [
-        DropdownMenuItem(
-          value: 'Seleccione una Sucursal',
-          child: Text('Seleccione una Sucursal'),
-        ),
-        ..._sucursales.map((sucursal) {
-          return DropdownMenuItem(
-            value: sucursal['sucu_ID'].toString(),
-            child: Text(sucursal['sucu_Nombre']),
-          );
-        }).toList(),
-      ],
+    return Container(
+      decoration: BoxDecoration(
+    border: Border.all(color: errorSucursal ? Colors.red : Colors.transparent), // Configura el color del borde según el valor de cliente
+    borderRadius: BorderRadius.circular(4.0), // Configura el radio de borde
+  ),
+      child: DropdownButton(
+        value: _selectedSucursal,
+        onChanged: (newValue) {
+          setState(() {
+            _selectedSucursal = newValue.toString();
+            sucursal = newValue.toString();
+          });
+        },
+        items: [
+          DropdownMenuItem(
+            value: 'Seleccione una Sucursal',
+            child: Text('Seleccione una Sucursal'),
+          ),
+          ..._sucursales.map((sucursal) {
+            return DropdownMenuItem(
+              value: sucursal['sucu_ID'].toString(),
+              child: Text(sucursal['sucu_Nombre']),
+            );
+          }).toList(),
+        ],
+      ),
     );
   }
 }
