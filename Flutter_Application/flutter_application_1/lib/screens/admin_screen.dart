@@ -18,11 +18,12 @@ class _admin_screenState extends State<admin_screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.primaryExtraSoft,
       appBar: AppBar(
-  title: Text('RapiExprezzz'),
+  title: Text('RapiExprezzz',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 25),),
   flexibleSpace: Container(
     decoration: BoxDecoration(
-      color: Colors.grey
+      color: AppColor.secondary
     ),
   ),
 ),
@@ -92,21 +93,21 @@ fechaFormateada = "";
           padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
-                Icon(Icons.local_shipping, color:  Colors.black,size: 50,),
+                Icon(Icons.local_shipping, color:  AppColor.secondary,size: 50,),
                            //Espacio entre el icono y el texto
                                   SizedBox(width: 30,),
               //Espacio entre el texto y la flechita
               Expanded(child: Text('Enviar un Paquete',
-                style: TextStyle(fontSize: 20, color: Colors.black),
+                style: TextStyle(fontSize: 20, color: AppColor.secondary),
               )),
             
               //Flechita xd
-              Icon(Icons.arrow_forward_ios,  size: 30,color: Colors.black,),
+              Icon(Icons.arrow_forward_ios,  size: 30,color: AppColor.secondary,),
             ],
           ),
         ),  
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColor.primary,
         ),
       ),        
     ],
@@ -124,21 +125,21 @@ Widget btnHistorialdePaquetes(context){
           padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
-                Icon(Icons.access_time, color:  Colors.black,size: 50,),
+                Icon(Icons.access_time, color:  AppColor.secondary,size: 50,),
                            //Espacio entre el icono y el texto
                                   SizedBox(width: 30,),
               //Espacio entre el texto y la flechita
               Expanded(child: Text('Historial de Paquetes',
-                style: TextStyle(fontSize: 20, color: Colors.black),
+                style: TextStyle(fontSize: 20, color: AppColor.secondary),
               )),
             
               //Flechita xd
-              Icon(Icons.arrow_forward_ios,  size: 30,color: Colors.black,),
+              Icon(Icons.arrow_forward_ios,  size: 30,color: AppColor.secondary,),
             ],
           ),
         ),  
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColor.primary,
         ),
       ),        
     ],
@@ -157,21 +158,21 @@ Widget btnEstadisticas(context){
           padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
-                Icon(Icons.bar_chart, color:  Colors.black,size: 50,),
+                Icon(Icons.bar_chart, color:  AppColor.secondary,size: 50,),
                            //Espacio entre el icono y el texto
                                   SizedBox(width: 30,),
               //Espacio entre el texto y la flechita
               Expanded(child: Text('Estadisticas y Graficas',
-                style: TextStyle(fontSize: 20, color: Colors.black),
+                style: TextStyle(fontSize: 20, color: AppColor.secondary),
               )),
             
               //Flechita xd
-              Icon(Icons.arrow_forward_ios,  size: 30,color: Colors.black,),
+              Icon(Icons.arrow_forward_ios,  size: 30,color: AppColor.secondary,),
             ],
           ),
         ),  
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColor.primary,
         ),
       ),        
     ],

@@ -611,6 +611,37 @@ BEGIN
 SELECT * FROM gral.VW_tbMunicipios WHERE dept_ID = @dept_ID
 END
 GO
+/*-------------------------Register------------------------------*/
+/*Register View*/
+GO
+CREATE VIEW acce.VW_Register
+AS 
+SELECT [pers_Identidad], [pers_Nombres], [pers_Apellidos], [pers_Sexo], [pers_EsAdmin], [user_ID], [user_Username], [user_Contrasena] FROM [paqu].[tbPersonas] pers INNER JOIN [acce].[tbUsuarios] [user]
+ON pers.pers_ID = [user].pers_ID
+GO
+
+/*Register Insert*/
+GO
+CREATE OR ALTER PROCEDURE acce.UDP_Register 
+@pers_Identidad NVARCHAR(13),
+@pers_Nombres NVARCHAR(150),
+@pers_Apellidos NVARCHAR(150),
+@pers_Sexo CHAR,
+@user_Username NVARCHAR(150),
+@user_Contrasena NVARCHAR(MAX)
+AS
+BEGIN
+DECLARE @persmaxid 
+DECLARE @Pass VARBINARY(MAX) = CONVERT(VARBINARY(MAX), HASHBYTES('SHA2_512', @user_Contrasena));
+INSERT INTO paqu.tbPersonas([pers_Identidad], [pers_Nombres], [pers_Apellidos], [pers_Sexo], [pers_EsAdmin], [pers_UserCreacion], [pers_FechaModificacion], [pers_UserModificacion])
+VALUES(@pers_Identidad,@pers_Nombres,@pers_Apellidos,@pers_Sexo,0,1,NULL,NULL)
+
+INSERT INTO acce.tbUsuarios([user_Username], [user_Contrasena],[pers_ID],[user_FechaModificacion], [user_UserModificacion])
+VALUES(@user_Username,@Pass,)
+
+END
+GO
+
 /*-------------------------PaquetesXMunicipio-------------------------------*/
 /*PaqutesXMunicipio View*/
 GO
