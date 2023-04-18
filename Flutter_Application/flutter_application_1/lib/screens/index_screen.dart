@@ -246,7 +246,6 @@ class ItemWidget extends StatelessWidget {
 }
 
 
-
 List<Widget> listado(List<dynamic> info){
 
   List<Widget> lista = [];

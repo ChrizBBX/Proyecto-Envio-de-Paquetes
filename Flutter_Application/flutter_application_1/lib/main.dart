@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/home_screen.dart';
 import 'package:flutter_application_1/screens/index_screen.dart';
-import 'package:flutter_application_1/screens/index_screen.dart';
+import 'package:flutter_application_1/screens/yoquese.dart';
 import 'package:flutter_application_1/screens/login.dart';
 import 'package:flutter_application_1/screens/auth/welcome_page.dart';
 import 'package:flutter_application_1/screens/progressbar_screen.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hola mundo',
-      home: HomePage1(),
+      home: HomePage(),
     );
   }
 }
