@@ -22,6 +22,7 @@ namespace Paquetes.BusinessLogic
             service.AddScoped<DepartamentosRepository>();
             service.AddScoped<MunicipiosRepository>();
             service.AddScoped<PaquetesXMunicipioRepository>();
+            service.AddScoped<RegisterRepository>();
 
             PaquetesContext.BuildConnectionString(connectionString);
         }

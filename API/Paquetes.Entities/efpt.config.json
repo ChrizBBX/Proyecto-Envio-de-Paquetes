@@ -46,6 +46,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[acce].[VW_Register]",
+         "ObjectType": 3
+      },
+      {
          "Name": "[acce].[VW_tbUsuarios]",
          "ObjectType": 3
       },

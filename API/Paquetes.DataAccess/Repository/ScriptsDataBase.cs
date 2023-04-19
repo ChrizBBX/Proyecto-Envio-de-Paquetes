@@ -24,6 +24,7 @@ namespace Paquetes.DataAccess.Repository
 
         #region Usuarios
         public static string UDP_Login = "acce.UDP_Login";
+        public static string UDP_Register = "acce.UDP_Register";
         #endregion
 
         #region Clientes

@@ -622,7 +622,7 @@ GO
 
 /*Register Insert*/
 GO
-CREATE OR ALTER PROCEDURE acce.UDP_Register 
+CREATE OR ALTER PROCEDURE acce.UDP_Register
 @pers_Identidad NVARCHAR(13),
 @pers_Nombres NVARCHAR(150),
 @pers_Apellidos NVARCHAR(150),
@@ -631,14 +631,19 @@ CREATE OR ALTER PROCEDURE acce.UDP_Register
 @user_Contrasena NVARCHAR(MAX)
 AS
 BEGIN
-DECLARE @persmaxid 
+BEGIN TRY
 DECLARE @Pass VARBINARY(MAX) = CONVERT(VARBINARY(MAX), HASHBYTES('SHA2_512', @user_Contrasena));
 INSERT INTO paqu.tbPersonas([pers_Identidad], [pers_Nombres], [pers_Apellidos], [pers_Sexo], [pers_EsAdmin], [pers_UserCreacion], [pers_FechaModificacion], [pers_UserModificacion])
 VALUES(@pers_Identidad,@pers_Nombres,@pers_Apellidos,@pers_Sexo,0,1,NULL,NULL)
 
+DECLARE @persmaxid INT = (SELECT MAX(pers_ID) FROM paqu.tbPersonas)
 INSERT INTO acce.tbUsuarios([user_Username], [user_Contrasena],[pers_ID],[user_FechaModificacion], [user_UserModificacion])
-VALUES(@user_Username,@Pass,)
-
+VALUES(@user_Username,@Pass,@persmaxid,NULL,NULL)
+SELECT '1'
+END TRY
+BEGIN CATCH
+SELECT '0'
+END CATCH
 END
 GO
 

@@ -103,7 +103,7 @@ if (jsonResponse != null && jsonResponse.length > 0) {
             Icon(Icons.warning), // Barra de progreso circular
             SizedBox(width: 10), // Espaciado horizontal
             Text('Usuario o contraseña incorrectos'), // Mensaje de texto
-          ],
+          ],  
         ),
         duration: Duration(seconds: 2), // Duración del SnackBar
       ),

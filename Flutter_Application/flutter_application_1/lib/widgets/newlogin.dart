@@ -33,7 +33,7 @@ class _newloginState extends State<newlogin> {
     borderRadius: BorderRadius.circular(4.0),
   ),
                  child: TextField(
-                    decoration: InputDecoration(hintText: 'Usuario',fillColor: AppColor.secondary, filled: true),
+                    decoration: InputDecoration(hintText: 'Usuario',fillColor: AppColor.secondary.withOpacity(0.5), filled: true,),
                     style: TextStyle(    
                     ),
                     onChanged: (value) {
@@ -50,7 +50,7 @@ class _newloginState extends State<newlogin> {
     borderRadius: BorderRadius.circular(4.0),
   ),
                   child: TextField(
-                    decoration: InputDecoration(hintText: 'Contraseña', fillColor: AppColor.secondary,filled: true),
+                    decoration: InputDecoration(hintText: 'Contraseña', fillColor: AppColor.secondary.withOpacity(0.5),filled: true),
                     obscureText: true,
                     onChanged: (value) {
                       password = value;
