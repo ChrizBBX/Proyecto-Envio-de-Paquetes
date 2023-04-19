@@ -95,7 +95,7 @@ class HomePage extends StatelessWidget {
         children: [
           Card(
               child: ListTile(
-              title: Text('Título de la Card'),
+              title: paqu_ID,
               subtitle: Text('Descripción de la Card'),
               trailing: Icon(Icons.arrow_forward),
               onTap: () {
