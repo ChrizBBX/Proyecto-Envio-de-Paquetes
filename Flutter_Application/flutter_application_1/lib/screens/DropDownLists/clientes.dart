@@ -22,7 +22,7 @@ class _ClientesDDLState extends State<ClientesDDL> {
 
   Future<void> _loadData() async {
     final response =
-        await http.get(Uri.parse('http://rapiexprezzz.somee.com/api/Clientes'));
+        await http.get(Uri.parse('http://chris03-001-site1.htempurl.com/api/Clientes'));
 
     if (response.statusCode == 200) {
       setState(() {

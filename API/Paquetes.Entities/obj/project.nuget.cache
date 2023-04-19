@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yk35CdQBplOeQROpQRHtl8qsRhAs0YrQ2ALcapzhktNmfhae4GMxfXd66jY9+amF81jB9ZLWKEDqBrjfzxU2ug==",
+  "dgSpecHash": "a6rDUNwIT0ltPN6G4QDQBp23SCU5dJ6ayH/yJvy67LH8a8+nu9k27yU5gOuliBdJJQblmqSH9H2kugrxKp2Sww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\achri\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj",
+  "projectFilePath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.Entities\\Paquetes.Entities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -28,7 +28,7 @@ class _MyBarChartState extends State<MyBarChart> {
   List<SalesData> _data = [];
 
   Future<void> _fetchData() async {
-    final response = await http.get(Uri.parse("http://rapiexprezzz.somee.com/api/PaquetesXMunicipio"));
+    final response = await http.get(Uri.parse("http://chris03-001-site1.htempurl.com/api/PaquetesXMunicipio"));
     final jsonData = json.decode(response.body);
     final List<dynamic> dataList = jsonData;
     final List<SalesData> newData = dataList

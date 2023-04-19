@@ -23,7 +23,7 @@ class _DepartamentosDDLState extends State<DepartamentosDDL> {
 
   Future<void> _getMunicipios(String departamentoId) async {
     final response = await http.post(
-      Uri.parse('http://rapiexprezzz.somee.com/api/Municipios'),
+      Uri.parse('http://chris03-001-site1.htempurl.com/api/Municipios'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'dept_ID': departamentoId}),
     );
@@ -39,7 +39,7 @@ class _DepartamentosDDLState extends State<DepartamentosDDL> {
   }
 
   Future<void> _getDepartamentos() async {
-    final response = await http.get(Uri.parse('http://rapiexprezzz.somee.com/api/Departamentos'));
+    final response = await http.get(Uri.parse('http://chris03-001-site1.htempurl.com/api/Departamentos'));
 
     if (response.statusCode == 200) {
       setState(() {

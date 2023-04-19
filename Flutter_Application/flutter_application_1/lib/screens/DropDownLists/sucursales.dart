@@ -20,7 +20,7 @@ class _sucursalesddlState extends State<sucursalesddl> {
   }
 
   void _getsucursalesddl() async {
-    final response = await http.get(Uri.parse('http://rapiexprezzz.somee.com/api/Sucursales'));
+    final response = await http.get(Uri.parse('http://chris03-001-site1.htempurl.com/api/Sucursales'));
 
     if (response.statusCode == 200) {
       setState(() {

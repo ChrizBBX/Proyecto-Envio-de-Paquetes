@@ -14,7 +14,7 @@ String? Nombres;
 String? Apellidos;
 String? Sexo;
 String? Contrasena;
-String? Username;
+String? Username1;
 String? errorIdentidad;
 String? errorNombres;
 String? errorApellidos;
@@ -115,7 +115,7 @@ Widget UsernameInput(){
       errorText: errorUsername
       ),
           onChanged: (value) {
-                  username = value;
+                  Username1 = value;
                 },
   );
 }
@@ -171,7 +171,7 @@ if(Apellidos == "" || Apellidos == null){
  });
 }
 
-if(sexoSeleccionado == "" || sexoSeleccionado == null){
+if(Sexo == "" || Sexo == null){
    x = false;
  setState(() {
    errorSexo = true;
@@ -182,7 +182,7 @@ if(sexoSeleccionado == "" || sexoSeleccionado == null){
  });
 }
 
-if(username == "" || username == null){
+if(Username1 == "" || Username1 == null){
    x = false;
  setState(() {
    errorUsername = "Complete este campo";
@@ -206,13 +206,14 @@ if(Contrasena == "" || Contrasena == null){
 }
 
 if(x == true){
-  var url = Uri.parse('http://rapiexprezzz.somee.com/api/Register');
+  var url = Uri.parse('http://chris03-001-site1.htempurl.com/api/Register');
 var response = await http.post(
   url,
   headers: {'Content-Type': 'application/json'},
-  body: json.encode({'pers_Identidad': Identidad, 'pers_Nombres': Nombres,'pers_Apellidos': Apellidos,'pers_Sexo': Sexo,'pers_EsAdmin': "false",'user_Username': username,"user_Contrasena": Contrasena}),
+  body: json.encode({'pers_Identidad': Identidad, 'pers_Nombres': Nombres,'pers_Apellidos': Apellidos,'pers_Sexo': Sexo,'pers_EsAdmin': false,'user_Username': Username1,"user_Contrasena": Contrasena}),
 );
 
+print(response.statusCode);
   if (response.statusCode == 200) {
    var jsonResponse = json.decode(response.body);
   if (jsonResponse != null && jsonResponse.length > 0) {
@@ -220,9 +221,11 @@ var response = await http.post(
             Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => WelcomePage()));
   } else {
-
+//Mostar mensaje de register fallido
+print('register fallido');
   }
   } else {
+    print('ERROR CON LA URL O ALGO ASI XD');
 //Por si ocurre un error con la URL
   }
 }
@@ -260,7 +263,7 @@ class _SexoCheckboxState extends State<SexoCheckbox> {
               onChanged: (String? value) {
                 setState(() {
                   _sexoSeleccionado = value;
-                  sexoSeleccionado = value;
+                  Sexo = value;
                 });
               },
             ),
@@ -271,7 +274,7 @@ class _SexoCheckboxState extends State<SexoCheckbox> {
               onChanged: (String? value) {
                 setState(() {
                   _sexoSeleccionado = value;
-                  sexoSeleccionado = value;
+                  Sexo = value;
                 });
               },
               subtitle: errorSexo == true ? Text('Seleccione una opcion',style: TextStyle(color:Colors.red),): null,

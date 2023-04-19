@@ -19,14 +19,13 @@ class _admin_screenState extends State<admin_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primaryExtraSoft,
-      appBar: AppBar(
-  title: Text('RapiExprezzz',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 25),),
-  flexibleSpace: Container(
-    decoration: BoxDecoration(
-      color: AppColor.secondary
-    ),
-  ),
-),
+//       appBar: AppBar(
+//   flexibleSpace: Container(
+//     decoration: BoxDecoration(
+//       color: Colors.white
+//     ),
+//   ),
+// ),
 
       body: Container(
         child: ListView(
@@ -65,116 +64,152 @@ class _admin_screenState extends State<admin_screen> {
 //             );
 // }
 
-Widget btnEnviarUnPaquete (context){
-  return Column(
-    children: [
-      ElevatedButton(
-        onPressed: () {
- peso = "";
- errorPeso = false;
- errorCliente = false;
-errorSucursal = false;
-errorDepartamento = false;
-errorMunicipio = false;
- errorDireccionExacta = false;
- errorFechaSalida = false;
-DireccionExacta = "";
-cliente = "";
-sucursal = "";
-peso = "";
-departamento = "";
-municipio = "";
-DireccionExacta = "";
-fechaFormateada = "";
+Widget btnEnviarUnPaquete(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      peso = "";
+      errorPeso = false;
+      errorCliente = false;
+      errorSucursal = false;
+      errorDepartamento = false;
+      errorMunicipio = false;
+      errorDireccionExacta = false;
+      DireccionExacta = "";
+      cliente = "";
+      sucursal = "";
+      peso = "";
+      departamento = "";
+      municipio = "";
+      DireccionExacta = "";
+      fechaFormateada = "";
 
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => PaquetesForm()));
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(
-            children: [
-                Icon(Icons.local_shipping, color:  AppColor.secondary,size: 50,),
-                           //Espacio entre el icono y el texto
-                                  SizedBox(width: 30,),
-              //Espacio entre el texto y la flechita
-              Expanded(child: Text('Enviar un Paquete',
-                style: TextStyle(fontSize: 20, color: AppColor.secondary),
-              )),
-            
-              //Flechita xd
-              Icon(Icons.arrow_forward_ios,  size: 30,color: AppColor.secondary,),
-            ],
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => PaquetesForm()));
+    },
+    child: Container(
+      height: 80,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
           ),
-        ),  
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColor.primary,
+        ],
+        image: DecorationImage(
+          image: NetworkImage('https://static.vecteezy.com/system/resources/previews/003/212/264/non_2x/abstract-modern-soft-blue-gradient-diagonal-lines-background-free-vector.jpg'),
+          fit: BoxFit.cover,
         ),
-      ),        
-    ],
-  );
-}
-
-Widget btnHistorialdePaquetes(context){
-  return Column(
-    children: [
-      ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(
-            children: [
-                Icon(Icons.access_time, color:  AppColor.secondary,size: 50,),
-                           //Espacio entre el icono y el texto
-                                  SizedBox(width: 30,),
-              //Espacio entre el texto y la flechita
-              Expanded(child: Text('Historial de Paquetes',
-                style: TextStyle(fontSize: 20, color: AppColor.secondary),
-              )),
-            
-              //Flechita xd
-              Icon(Icons.arrow_forward_ios,  size: 30,color: AppColor.secondary,),
-            ],
-          ),
-        ),  
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColor.primary,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Row(
+          children: [
+            Icon(Icons.local_shipping, color: Colors.black, size: 50,),
+            SizedBox(width: 30,),
+            Expanded(
+              child: Text(
+                'Enviar un Paquete',
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              ),
+            ),
+            Icon(Icons.arrow_forward_ios, size: 30, color: Colors.black,),
+          ],
         ),
-      ),        
-    ],
+      ),
+    ),
   );
 }
 
 
-Widget btnEstadisticas(context){
-  return Column(
-    children: [
-      ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Graficas()));
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(
-            children: [
-                Icon(Icons.bar_chart, color:  AppColor.secondary,size: 50,),
-                           //Espacio entre el icono y el texto
-                                  SizedBox(width: 30,),
-              //Espacio entre el texto y la flechita
-              Expanded(child: Text('Estadisticas y Graficas',
-                style: TextStyle(fontSize: 20, color: AppColor.secondary),
-              )),
-            
-              //Flechita xd
-              Icon(Icons.arrow_forward_ios,  size: 30,color: AppColor.secondary,),
-            ],
+
+
+Widget btnHistorialdePaquetes(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
+    },
+    child: Container(
+      height: 80,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
           ),
-        ),  
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColor.primary,
+        ],
+        image: DecorationImage(
+          image: NetworkImage('https://static.vecteezy.com/system/resources/previews/000/189/953/non_2x/vibrant-diagonal-lines-pattern-background-vector.jpg'),
+          fit: BoxFit.cover,
         ),
-      ),        
-    ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Row(
+          children: [
+            Icon(Icons.access_time, color: AppColor.secondary, size: 50,),
+            SizedBox(width: 30,),
+            Expanded(
+              child: Text(
+                'Historial de Paquetes',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+            ),
+            Icon(Icons.arrow_forward_ios, size: 30, color: Colors.white,),
+          ],
+        ),
+      ),
+    ),
   );
 }
+
+
+
+
+
+Widget btnEstadisticas(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Graficas()));
+    },
+    child: Container(
+      height: 80,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        image: DecorationImage(
+          image: NetworkImage('https://th.bing.com/th/id/OIP.0ykZkL654vrD8vuRRjIYGgHaEo?pid=ImgDet&rs=1'),
+          fit: BoxFit.cover, // Ajustar la imagen al tamaño del contenedor
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Row(
+          children: [
+            Icon(Icons.bar_chart, color: AppColor.secondary, size: 50,),
+            SizedBox(width: 30,),
+            Expanded(
+              child: Text(
+                'Estadisticas y Graficas',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+            ),
+            Icon(Icons.arrow_forward_ios, size: 30, color: Colors.white,),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
