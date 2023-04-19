@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hUE+fMMaGN7oRpw8Tz+ptRxhNzlCHJhsQwa3t2hirubK80tFIM1Z4gRtWkgtD9awRMExqcSbU8Ax2jmFiHac/w==",
+  "dgSpecHash": "fOgG2BhguIyvw43Ogi0bIo6md9WPIWu26ZO6yzuwkZSwu2EU+3ESfoCJY6gGO/nMXlXpQxFDobDI641pL7Ituw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LAB01\\Desktop\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj",
+  "projectFilePath": "C:\\Users\\LAB01\\Documents\\GitHub\\Proyecto-Envio-de-Paquetes\\API\\Paquetes.API\\Paquetes.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LAB01\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\LAB01\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
