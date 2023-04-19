@@ -84,7 +84,7 @@ user_Estado				BIT DEFAULT 1,
 CONSTRAINT PK_tbUsuarios_user_ID PRIMARY KEY([user_ID]),
 CONSTRAINT FK_tbUsuarios_pers_ID_tbPersonas_pers_ID FOREIGN KEY (pers_ID) REFERENCES paqu.tbPersonas(pers_ID)
 )
-
+/*Usuarios Insert*/
 GO
 CREATE PROCEDURE UDP_tbUsuarios_Insert
 @user_Username NVARCHAR(250),
@@ -103,6 +103,26 @@ GO
 
 EXECUTE UDP_tbUsuarios_Insert 'admin','123',1,1
 
+GO
+
+/*Recover Password*/
+GO
+CREATE OR ALTER PROCEDURE acce.UDP_Recover_Password
+@user_Username NVARCHAR(250),
+@user_Contrasena NVARCHAR(MAX)
+AS
+BEGIN
+BEGIN TRY
+DECLARE @Pass VARBINARY(MAX) = CONVERT(VARBINARY(MAX), HASHBYTES('SHA2_512', @user_Contrasena));
+UPDATE acce.tbUsuarios
+SET user_Contrasena = @Pass
+WHERE user_Username = @user_Username
+SELECT '1'
+END TRY
+BEGIN CATCH
+SELECT '0'
+END CATCH
+END
 GO
  
 ALTER TABLE acce.tbUsuarios

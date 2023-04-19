@@ -135,6 +135,19 @@ if (jsonResponse != null && jsonResponse.length > 0) {
             ),
           ),
           onTap: () {
+             Identidad = null;
+ Nombres = null;
+ Apellidos = null;
+ Sexo = null;
+ Contrasena = null;
+ Username = null;
+ errorIdentidad = null;
+ errorNombres = null;
+ errorApellidos = null;
+ errorSexo = false;
+ errorUsername = null;
+ errorContrasena = null;
+ sexoSeleccionado = null;
             Navigator.push(
               context,
               MaterialPageRoute(

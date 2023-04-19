@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_application_1/screens/auth/welcome_page.dart';
 import 'package:flutter_application_1/widgets/modals/login_modal.dart';
-
+import 'package:flutter/services.dart';
 import '../views/AppColor.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -15,13 +15,13 @@ String? Apellidos;
 String? Sexo;
 String? Contrasena;
 String? Username;
-String? _errorIdentidad;
-String? _errorNombres;
-String? _errorApellidos;
-String? _errorSexo;
-String? _errorUsername;
-String? _errorContrasena;
-
+String? errorIdentidad;
+String? errorNombres;
+String? errorApellidos;
+bool errorSexo = false;
+String? errorUsername;
+String? errorContrasena;
+String? sexoSeleccionado;
 class register_screen extends StatefulWidget {
   const register_screen({super.key});
 
@@ -70,9 +70,13 @@ class _register_screenState extends State<register_screen> {
 
 Widget IdentidadInput(){
   return TextField(
+     keyboardType: TextInputType.number, // Define el tipo de teclado como números
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), // Aplica un formateador para permitir solo números
+        ],
     decoration: InputDecoration(
       hintText: 'Numero de Identidad',
-      errorText: _errorIdentidad
+      errorText: errorIdentidad
     ),
     onChanged: (value) {
                   Identidad = value;
@@ -84,7 +88,7 @@ Widget NombresInput(){
   return TextField(
     decoration: InputDecoration(
       hintText: 'Nombres',
-      errorText: _errorNombres
+      errorText: errorNombres
     ),
       onChanged: (value) {
                   Nombres = value;
@@ -96,7 +100,7 @@ Widget ApellidosInput(){
   return TextField(
     decoration: InputDecoration(
       hintText: 'Apellidos',
-      errorText: _errorApellidos,
+      errorText: errorApellidos,
     ),
       onChanged: (value) {
                   Apellidos = value;
@@ -108,7 +112,7 @@ Widget UsernameInput(){
   return TextField(
       decoration: InputDecoration(
       hintText: 'Usuario',
-      errorText: _errorUsername
+      errorText: errorUsername
       ),
           onChanged: (value) {
                   username = value;
@@ -118,9 +122,10 @@ Widget UsernameInput(){
 
 Widget ContrasenaInput(){
   return TextField(
+    obscureText: true,
       decoration: InputDecoration(
       hintText: 'Contraseña',
-      errorText: _errorContrasena
+      errorText: errorContrasena
       ),
           onChanged: (value) {
                   Contrasena = value;
@@ -134,58 +139,74 @@ bool x = true;
 
 if(Identidad == "" || Identidad == null){
  setState(() {
-   _errorIdentidad = "Complete este campo";
+   x = false;
+   errorIdentidad = "Complete este campo";
  });
 }else{
-  print('entra');
  setState(() {
-   _errorIdentidad = null;
+   errorIdentidad = null;
  });
 }
 
 if(Nombres == "" || Nombres == null){
+   x = false;
  setState(() {
-   _errorNombres = "Complete este campo";
+   errorNombres = "Complete este campo";
  });
 }else{
  setState(() {
-   _errorNombres = null;
+
+   errorNombres = null;
  });
 }
 
 if(Apellidos == "" || Apellidos == null){
+   x = false;
  setState(() {
-   _errorApellidos = "Complete este campo";
+   errorApellidos = "Complete este campo";
  });
 }else{
  setState(() {
-   _errorApellidos = null;
+   errorApellidos = null;
+ });
+}
+
+if(sexoSeleccionado == "" || sexoSeleccionado == null){
+   x = false;
+ setState(() {
+   errorSexo = true;
+ });
+}else{
+ setState(() {
+   errorSexo = false;
  });
 }
 
 if(username == "" || username == null){
+   x = false;
  setState(() {
-   _errorUsername = "Complete este campo";
+   errorUsername = "Complete este campo";
  });
 }else{
  setState(() {
-   _errorUsername = null;
+   errorUsername = null;
  });
 }
 
 if(Contrasena == "" || Contrasena == null){
+   x = false;
  setState(() {
   print(Contrasena);
-   _errorContrasena = "Complete este campo";
+   errorContrasena = "Complete este campo";
  });
 }else{
-  print('hola');
  setState(() {
-   _errorContrasena = null;
+   errorContrasena = null;
  });
 }
 
-var url = Uri.parse('http://rapiexprezzz.somee.com/api/Register');
+if(x == true){
+  var url = Uri.parse('http://rapiexprezzz.somee.com/api/Register');
 var response = await http.post(
   url,
   headers: {'Content-Type': 'application/json'},
@@ -204,6 +225,7 @@ var response = await http.post(
   } else {
 //Por si ocurre un error con la URL
   }
+}
 },
   child: Text('Registrarse',),
   style: ButtonStyle(
@@ -225,29 +247,37 @@ class _SexoCheckboxState extends State<SexoCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: [
-          RadioListTile(
-            title: Text('Masculino'),
-            value: 'Masculino',
-            groupValue: _sexoSeleccionado,
-            onChanged: (String? value) {
-              setState(() {
-                _sexoSeleccionado = value;
-              });
-            },
-          ),
-          RadioListTile(
-            title: Text('Femenino'),
-            value: 'Femenino',
-            groupValue: _sexoSeleccionado,
-            onChanged: (String? value) {
-              setState(() {
-                _sexoSeleccionado = value;
-              });
-            },
-          ),
-        ],
-      );
+    return Container(
+      decoration: BoxDecoration(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Sexo:',style: TextStyle(fontSize: 15),),
+            RadioListTile(
+              title: Text('Masculino'),
+              value: 'M',
+              groupValue: _sexoSeleccionado,
+              onChanged: (String? value) {
+                setState(() {
+                  _sexoSeleccionado = value;
+                  sexoSeleccionado = value;
+                });
+              },
+            ),
+            RadioListTile(
+              title: Text('Femenino'),
+              value: 'F',
+              groupValue: _sexoSeleccionado,
+              onChanged: (String? value) {
+                setState(() {
+                  _sexoSeleccionado = value;
+                  sexoSeleccionado = value;
+                });
+              },
+              subtitle: errorSexo == true ? Text('Seleccione una opcion',style: TextStyle(color:Colors.red),): null,
+            ),
+          ],
+        ),
+    );
   }
 }

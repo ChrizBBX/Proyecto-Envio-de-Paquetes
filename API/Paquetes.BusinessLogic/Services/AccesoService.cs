@@ -58,5 +58,32 @@ namespace Paquetes.BusinessLogic.Services
                 throw;
             }
         }
+
+        public ServiceResult Recover(VW_tbUsuarios item)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var insertar = _usuariosrepository.Recover(item);
+                if (insertar.MessageStatus == "1")
+                {
+                    return result.Ok(insertar.MessageStatus);
+                }
+                else if (insertar.MessageStatus == "0")
+                {
+                    return result.Conflict(insertar.MessageStatus);
+                }
+                else
+                {
+                    return result.BadRequest(insertar.MessageStatus);
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -29,5 +29,12 @@ namespace Paquetes.API.Controllers
             var listado = _accesoservice.Login(item);
             return Ok(listado);
         }
+
+        [HttpPut("Recover")]
+        public IActionResult Recover(VW_tbUsuarios item)
+        {
+            var listado = _accesoservice.Recover(item);
+            return Ok(listado);
+        }
     }
 }
