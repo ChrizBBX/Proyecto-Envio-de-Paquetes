@@ -1,12 +1,16 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/admin_screen.dart';
+import 'package:flutter_application_1/screens/pruebas.dart';
+import 'package:flutter_application_1/screens/paquetesformedit_screen.dart';
 import 'package:flutter_application_1/screens/tracking_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'dart:async';
 
+String? paqu_ID;
+String? direccion;
 class Index extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -32,37 +36,46 @@ class _PackageSearchScreenState extends State<PackageSearchScreen> {
   String? _errorText;
   Map<String, dynamic> packageData = {};
 
-  Future<void> _fetchPackageData() async {
-    if (_packageId != '' && _packageId != '0') {
-      setState(() {
-        _isLoading = true;
-      });
-      _errorText = null;
-      final url = 'http://chris03-001-site1.htempurl.com/api/Paquetes';
-      final response = await http.get(Uri.parse(url));
+Future<void> _fetchPackageData() async {
+  if (_packageId != '' && _packageId != '0') {
+    setState(() {
+      _isLoading = true;
+    });
+    _errorText = null;
+    final url = 'http://chris03-001-site1.htempurl.com/api/Paquetes';
+    final response = await http.get(Uri.parse(url));
 
-      setState(() {
-        _isLoading = false;
-        if (response.statusCode == 200) {
-          final List<dynamic> jsonData = json.decode(response.body);
-          print(_packageId);
-          if (int.parse(_packageId) < jsonData.length) {
-            packageData = jsonData[int.parse(_packageId)-1];
-            datos = packageData;
-          } else {
-            _errorText = "El Tracking ingresado no coincide";
-            packageData = {};
-          }
+    setState(() {
+      _isLoading = false;
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonData = json.decode(response.body);
+        print(_packageId);
+        // Filtrar los registros eliminados lógicamente (estado = 0)
+        final filteredData = jsonData.where((item) => item['paqu_Estado'] == true).toList();
+        // Buscar el elemento con el ID especificado en la lista filtrada
+        var package = filteredData.firstWhere((item) => item['paqu_ID'] == int.parse(_packageId), orElse: () => null);
+        if (package != null) {
+          packageData = package;
+          datos = packageData;
+          paqu_ID = _packageId;
+          direccion = package['paqu_DireccionExacta'];
         } else {
+          _errorText = "El Tracking ingresado no coincide";
           packageData = {};
         }
-      });
-    } else {
-      setState(() {
-        _errorText = "Ingrese un ID de Tracking";
-      });
-    }
+      } else {
+        packageData = {};
+      }
+    });
+  } else {
+    setState(() {
+      _errorText = "Ingrese un ID de Tracking";
+    });
   }
+}
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -116,23 +129,24 @@ class _PackageSearchScreenState extends State<PackageSearchScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('ID del Paquete: ${packageData['paqu_ID']}'),
-                    Text('Cliente: ${packageData['paqu_ClienteNombreCompleto']}'),
-                    Text('Sucursal: ${packageData['sucu_Nombre']}'),
-                    Text('Peso: ${packageData['paqu_Peso']}'),
-                    Text('Fragil: ${packageData['paqu_Fragil']}'),
-                    Text('Dirección: ${packageData['paqu_DireccionExacta']}'),
-                    Text('Fecha de Salida: ${packageData['paqu_FechaSalida']}'),
-                    Text('Estado de Tracking: ${packageData['tracking']}'),
-                    Text('Fecha de Creación: ${packageData['paqu_FechaCreacion']}'),
-                    SizedBox(height: 10,),
                     Row(
-                      children: <Widget>[
-                        Icon(Icons.arrow_forward_ios),
-                        Text('Ver Paquete',style: TextStyle(fontSize: 18,color: Colors.blue,fontWeight: FontWeight.bold),),
+                      children: [
+                        Text('ID del Paquete: ${packageData['paqu_ID']}',style: TextStyle(fontWeight: FontWeight.bold),),
                         Flexible(child: CardOption()),
                       ],
                     ),
+                    Text('Cliente: ${packageData['paqu_ClienteNombreCompleto']}'),
+                    Text('Sucursal: ${packageData['sucu_Nombre']}'),
+                    Text('Peso: ${packageData['paqu_Peso']}'),
+                    Row(
+                      children: [
+                        Text('Fragil:'),
+                        Icon(packageData['paqu_Fragil'] == true ? Icons.check: Icons.close),
+                      ],
+                    ),
+                    Text('Dirección: ${packageData['paqu_DireccionExacta']}'),
+                    Text('Estado de Tracking: ${packageData['tracking']}'),
+                    SizedBox(height: 10,),
                   ],
                 ),
               ),
@@ -164,15 +178,49 @@ class _CardOptionState extends State<CardOption> {
     // Aquí puedes agregar la lógica correspondiente para manejar la selección de opciones
     if (value == 'Eliminar') {
       print('Eliminar seleccionado');
-      // Agrega aquí la lógica para el evento de Eliminar
+      _eliminarDatos();
     } else if (value == 'Editar') {
       print('Editar seleccionado');
-      // Agrega aquí la lógica para el evento de Editar
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FormEditPaquete(id: paqu_ID,direccion:direccion ,)),
+                );
     }
   }
 
   Future<void> _eliminarDatos() async {
   //Hacer la funcion de eliminar aqui y tener esperanzas de que funcione
+  var url = Uri.parse('http://chris03-001-site1.htempurl.com/api/Paquetes/Delete');
+var response = await http.post(
+  url,
+  headers: {'Content-Type': 'application/json'},
+  body: json.encode({'paqu_ID': paqu_ID}),
+);
+
+  if (response.statusCode == 200) {
+   var jsonResponse = json.decode(response.body);
+if (jsonResponse != null && jsonResponse.length > 0) {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => FloatingBottomNavigationBar()));
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Row(
+          children: [
+            Icon(Icons.warning), // Barra de progreso circular
+            SizedBox(width: 10), // Espaciado horizontal
+            Text('Ha ocurrido un error'), // Mensaje de texto
+          ],  
+        ),
+        duration: Duration(seconds: 2), // Duración del SnackBar
+      ),
+    );
+  }
+  } else {
+//Por si ocurre un error con la URL
+print("Error de conexion o algo asi xd");
+  }
 }
 
   @override
@@ -201,3 +249,40 @@ class _CardOptionState extends State<CardOption> {
     );
   }
 }
+
+ Editado (context){
+return ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Row(
+          children: [
+            Icon(Icons.warning), // Barra de progreso circular
+            SizedBox(width: 10), // Espaciado horizontal
+            Text('Ha ocurrido un error'), // Mensaje de texto
+          ],  
+        ),
+        duration: Duration(seconds: 2), // Duración del SnackBar
+      ),
+    );
+}
+
+
+  Future<void> _AlertaExito(context) async {
+    if(Alerta == true){
+      print('hola');
+         ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.green,
+        content: Row(
+          children: [
+            Icon(Icons.warning), // Barra de progreso circular
+            SizedBox(width: 10), // Espaciado horizontal
+            Text('Direccion de paquete editada exitosamente'), // Mensaje de texto
+          ],  
+        ),
+        duration: Duration(seconds: 2), // Duración del SnackBar
+      ),
+    );
+    }
+}
+

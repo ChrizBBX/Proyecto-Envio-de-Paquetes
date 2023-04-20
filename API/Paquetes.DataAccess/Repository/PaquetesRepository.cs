@@ -66,7 +66,15 @@ namespace Paquetes.DataAccess.Repository
 
         public RequestStatus Update(tbPaquetes item)
         {
-            throw new NotImplementedException();
+            using var db = new SqlConnection(PaquetesContext.ConnectionString);
+            RequestStatus result = new RequestStatus();
+            var parametros = new DynamicParameters();
+            parametros.Add("@paqu_ID", item.paqu_ID, DbType.Int32, ParameterDirection.Input);
+            parametros.Add("@paqu_DireccionExacta", item.paqu_DireccionExacta, DbType.String, ParameterDirection.Input);
+            var answer = db.QueryFirst<string>(ScriptsDataBase.UDP_Paquetes_Edit, parametros, commandType: CommandType.StoredProcedure);
+
+            result.MessageStatus = answer;
+            return result;
         }
     }
 }

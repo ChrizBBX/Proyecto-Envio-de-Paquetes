@@ -39,6 +39,14 @@ namespace Paquetes.API.Controllers
             return Ok(listado);
         }
 
+        [HttpPost("Edit")]
+        public IActionResult Edit(PaquetesViewModel item)
+        {
+            var listadoMapeado = _mapper.Map<tbPaquetes>(item);
+            var listado = _paquetesService.EditPaquete(listadoMapeado);
+            return Ok(listado);
+        }
+
         [HttpPost("Delete")]
         public IActionResult Delete(PaquetesViewModel item)
         {

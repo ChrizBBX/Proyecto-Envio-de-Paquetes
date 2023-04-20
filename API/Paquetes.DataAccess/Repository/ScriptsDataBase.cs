@@ -12,6 +12,7 @@ namespace Paquetes.DataAccess.Repository
         public static string UDP_Paquetes_Select = "paqu.UDP_tbPaquetes_VW";
         public static string UDP_PaquetesXMunicipio_Select = "paqu.UDP_PaquetesXMunicipio_VW";
         public static string UDP_Paquetes_Insert = "paqu.UDP_tbPaquetes_Insert";
+        public static string UDP_Paquetes_Edit = "paqu.UDP_tbPaquetes_Edit";
         public static string UDP_Paquetes_Delete = "paqu.UDP_tbPaquetes_Delete";
         #endregion
 

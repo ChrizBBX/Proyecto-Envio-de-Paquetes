@@ -173,7 +173,6 @@ var response = await http.post(
   if (response.statusCode == 200) {
    var jsonResponse = json.decode(response.body);
 if (jsonResponse != null && jsonResponse.length > 0) {
-        Navigator.of(context).pop();
           Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (context) => admin_screen()));
   }
