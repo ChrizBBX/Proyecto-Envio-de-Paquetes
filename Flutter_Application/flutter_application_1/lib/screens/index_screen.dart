@@ -4,6 +4,8 @@ import 'package:flutter_application_1/screens/admin_screen.dart';
 import 'package:flutter_application_1/screens/tracking_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
+import 'dart:convert';
+import 'dart:async';
 
 class Index extends StatelessWidget {
   @override
@@ -168,6 +170,10 @@ class _CardOptionState extends State<CardOption> {
       // Agrega aquí la lógica para el evento de Editar
     }
   }
+
+  Future<void> _eliminarDatos() async {
+  //Hacer la funcion de eliminar aqui y tener esperanzas de que funcione
+}
 
   @override
   Widget build(BuildContext context) {
