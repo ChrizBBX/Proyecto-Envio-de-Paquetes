@@ -903,6 +903,23 @@ EXECUTE paqu.UDP_tbPaquetes_Insert 3,1,200,0,1,'0101','Colonia MonteCristo pajas
 EXECUTE paqu.UDP_tbPaquetes_Insert 2,1,200,0,1,'0209','Barrio los pinos en el parque','10-10-2023',1,1
 GO
 
+/*Paquetes Delete*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_Delete
+@paqu_ID INT
+AS
+BEGIN
+BEGIN TRY
+UPDATE paqu.tbPaquetes
+SET paqu_Estado = 0
+WHERE paqu_ID = @paqu_ID
+SELECT '1'
+END TRY
+BEGIN CATCH
+SELECT '0'
+END CATCH
+END
+GO
 
 /*-------------------------Login-------------------------------*/
 /*Login UDP*/

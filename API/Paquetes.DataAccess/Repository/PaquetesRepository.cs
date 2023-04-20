@@ -12,6 +12,18 @@ namespace Paquetes.DataAccess.Repository
 {
     public class PaquetesRepository : IRepository<tbPaquetes, VW_tbPaquetes>
     {
+        public RequestStatus Delete(tbPaquetes item)
+        {
+            using var db = new SqlConnection(PaquetesContext.ConnectionString);
+            RequestStatus result = new RequestStatus();
+            var parametros = new DynamicParameters();
+            parametros.Add("@paqu_ID", item.paqu_ID, DbType.Int32, ParameterDirection.Input);
+            var answer = db.QueryFirst<string>(ScriptsDataBase.UDP_Paquetes_Delete, parametros, commandType: CommandType.StoredProcedure);
+
+            result.MessageStatus = answer;
+            return result;
+        }
+
         public RequestStatus Delete(int id)
         {
             throw new NotImplementedException();
@@ -42,6 +54,8 @@ namespace Paquetes.DataAccess.Repository
             result.MessageStatus = answer;
             return result;
         }
+
+
 
         public IEnumerable<VW_tbPaquetes> List()
         {

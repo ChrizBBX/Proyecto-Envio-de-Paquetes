@@ -128,7 +128,7 @@ Widget btnEnviarUnPaquete(BuildContext context) {
 Widget btnHistorialdePaquetes(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyWidget()));
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Index()));
     },
     child: Container(
       height: 80,

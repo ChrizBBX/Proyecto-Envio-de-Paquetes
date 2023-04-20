@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/admin_screen.dart';
 import 'package:flutter_application_1/screens/auth/welcome_page.dart';
+import 'package:flutter_application_1/screens/pruebas.dart';
 
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hola mundo',
-      home: WelcomePage(),
+      home: FloatingBottomNavigationBar(),
     );
   }
 }

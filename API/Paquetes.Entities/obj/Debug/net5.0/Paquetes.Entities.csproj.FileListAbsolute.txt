@@ -33,3 +33,4 @@ C:\Users\achri\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities
 C:\Users\achri\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.dll
 C:\Users\achri\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\ref\Paquetes.Entities.dll
 C:\Users\achri\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.pdb
+C:\Users\Chris\Documents\GitHub\Proyecto-Envio-de-Paquetes\API\Paquetes.Entities\obj\Debug\net5.0\Paquetes.Entities.csproj.AssemblyReference.cache

@@ -38,5 +38,13 @@ namespace Paquetes.API.Controllers
             var listado = _paquetesService.InsertarPaquete(listadoMapeado);
             return Ok(listado);
         }
+
+        [HttpPost("Delete")]
+        public IActionResult Delete(PaquetesViewModel item)
+        {
+            var listadoMapeado = _mapper.Map<tbPaquetes>(item);
+            var listado = _paquetesService.DeletePaquete(listadoMapeado);
+            return Ok(listado);
+        }
     }
 }
