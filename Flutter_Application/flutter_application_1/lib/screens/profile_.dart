@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/widgets/user_info_tile.dart';
+import 'package:flutter_application_1/views/AppColor.dart';
+import 'package:flutter_application_1/widgets/user_info_title.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -62,7 +61,6 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       Text('Change Profile Picture', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w600, color: Colors.white)),
                       SizedBox(width: 8),
-                      SvgPicture.asset('assets/icons/camera.svg', color: Colors.white),
                     ],
                   )
                 ],
@@ -91,7 +89,6 @@ class ProfilePage extends StatelessWidget {
                   margin: EdgeInsets.only(bottom: 16),
                   label: 'Subscription Type',
                   value: 'Premium Subscription',
-                  valueBackground: AppColor.secondary,
                 ),
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
