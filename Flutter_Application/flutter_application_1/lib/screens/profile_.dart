@@ -11,23 +11,13 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: AppColor.primary,
         elevation: 0,
         centerTitle: true,
-        title: Text('SEXOOO', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
+        title: Text('Perfil', style: TextStyle(fontFamily: 'stabillo', fontWeight: FontWeight.w400, fontSize: 16)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
-        actions: [
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Edit',
-              style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
-            ),
-            style: TextButton.styleFrom(primary: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
-          ),
-        ],
       ),
       body: ListView(
         shrinkWrap: true,
@@ -53,13 +43,13 @@ class ProfilePage extends StatelessWidget {
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(100),
                       // Profile Picture
-                      image: DecorationImage(image: AssetImage('assets/images/profile.jpg'), fit: BoxFit.cover),
+                      image: DecorationImage(image: AssetImage('assets/images/foto-perfil.png'), fit: BoxFit.cover),
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Change Profile Picture', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w600, color: Colors.white)),
+                      Text('Editar Usuario', style: TextStyle(fontFamily: 'verdana', fontWeight: FontWeight.w600, color: Colors.white)),
                       SizedBox(width: 8),
                     ],
                   )
@@ -77,23 +67,18 @@ class ProfilePage extends StatelessWidget {
               children: [
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
-                  label: 'Email',
-                  value: 'reinazahradummy@gmail.com',
+                  label: 'Nombre Completo',
+                  value: 'Aquí va el nombre xd',
                 ),
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
-                  label: 'Full Name',
-                  value: 'Reina Zahra Azizah',
+                  label: 'Correo Electrónico',
+                  value: 'Aquí el correo',
                 ),
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
-                  label: 'Subscription Type',
-                  value: 'Premium Subscription',
-                ),
-                UserInfoTile(
-                  margin: EdgeInsets.only(bottom: 16),
-                  label: 'Subscription Time',
-                  value: 'Until 22 Oct 2021',
+                  label: 'N° de Identidad',
+                  value: '0000 0000 00000',
                 ),
               ],
             ),

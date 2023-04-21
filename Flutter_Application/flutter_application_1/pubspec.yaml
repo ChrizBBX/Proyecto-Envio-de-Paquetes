@@ -65,7 +65,8 @@ flutter:
     - assets/images/Empaquetado.gif
     - assets/images/Encamino.gif
     - assets/images/Entregado.gif
-    - 
+    - assets/images/profile.jpg
+    - assets/images/foto-perfil.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

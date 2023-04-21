@@ -43,9 +43,9 @@ class _FloatingBottomNavigationBarState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: Text('Bottom Navigation Bar Example'),
+        title: Text('Prueba de Perfil'),
         showProfilePhoto: true,
-        profilePhoto: AssetImage('assets/images/pp.png'),
+        profilePhoto: AssetImage('assets/images/profile.png'),
         profilePhotoOnPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfilePage()));
         },

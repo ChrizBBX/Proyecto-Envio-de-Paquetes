@@ -20,9 +20,6 @@ class puta extends StatelessWidget {
 }
 
 
-
-
-
 // class MiDato {
 //   final String id;
 //   final String nombre;
