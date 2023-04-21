@@ -1,13 +1,16 @@
 
+import 'package:elegant_notification/elegant_notification.dart';
+import 'package:elegant_notification/resources/arrays.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/index_screen.dart';
 import 'package:flutter_application_1/widgets/fechasalida.dart';
 import 'package:flutter_application_1/widgets/checkbox.dart';
 import 'package:flutter_application_1/screens/DropDownLists/sucursales.dart';
 import 'package:flutter_application_1/screens/DropDownLists/clientes.dart';
 import 'package:flutter_application_1/screens/DropDownLists/municipios.dart';
-import 'package:flutter_application_1/screens/admin_screen.dart';
+import 'package:flutter_application_1/screens/pruebas.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/services.dart';
@@ -173,9 +176,21 @@ var response = await http.post(
   if (response.statusCode == 200) {
    var jsonResponse = json.decode(response.body);
 if (jsonResponse != null && jsonResponse.length > 0) {
+    ElegantNotification.success(
+                    width: 360,
+                    notificationPosition: NotificationPosition.topLeft,
+                    animation: AnimationType.fromTop,
+                    title: Text('Agregado'),
+                    description: Text('Paquete agregado correctamente'),
+                    onDismiss: () {
+                      print(
+                        'Se envio',
+                      );
+                    },
+                  ).show(context);
           Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => admin_screen()));
-  }
+              builder: (context) => FloatingBottomNavigationBar()));
+  } 
   }
 }
 

@@ -74,9 +74,6 @@ Future<void> _fetchPackageData() async {
   }
 }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

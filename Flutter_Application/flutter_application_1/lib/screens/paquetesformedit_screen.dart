@@ -1,3 +1,5 @@
+import 'package:elegant_notification/elegant_notification.dart';
+import 'package:elegant_notification/resources/arrays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -62,7 +64,18 @@ var response = await http.post(
   if (response.statusCode == 200) {
    var jsonResponse = json.decode(response.body);
 if (jsonResponse != null && jsonResponse.length > 0) {
-  Alerta = true;
+  ElegantNotification.success(
+                    width: 360,
+                    notificationPosition: NotificationPosition.topLeft,
+                    animation: AnimationType.fromTop,
+                    title: Text('Editado'),
+                    description: Text('Direccion del paquete editada exitosamente'),
+                    onDismiss: () {
+                      print(
+                        'Direccion del paquete editada exitosamente',
+                      );
+                    },
+                  ).show(context);
   Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => Index()),
