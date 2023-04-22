@@ -18,7 +18,7 @@ class UserInfoTile extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(left: 20),
-            child: Text('$label', style: TextStyle(color: Colors.black, fontSize: 12)),
+            child: Text('$label', style: TextStyle(color: Colors.yellow, fontSize: 12)),
           ),
           Container(
             margin: EdgeInsets.only(top: 6),
