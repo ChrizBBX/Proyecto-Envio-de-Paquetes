@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hola mundo',
-      home: FloatingBottomNavigationBar(),
+      home: WelcomePage(),
     );
   }
 }

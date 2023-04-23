@@ -9,8 +9,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
+import '../pruebas.dart';
 
+bool? userEsAdmin;
 bool errorLogin = false;
+String? pers_ID;
+String? user_NombreCompleto;
+String? user_Username;
+String? pers_Identidad;
 class WelcomePage extends StatefulWidget {
   @override
   State<WelcomePage> createState() => _WelcomePageState();
@@ -93,8 +99,14 @@ var response = await http.put(
   if (response.statusCode == 200) {
    var jsonResponse = json.decode(response.body);
 if (jsonResponse != null && jsonResponse.length > 0) {
+    userEsAdmin = jsonResponse[0]['pers_EsAdmin'];
+    pers_ID = jsonResponse[0]['pers_ID'].toString();
+    user_NombreCompleto = jsonResponse[0]['user_NombreCompleto'];
+    user_Username = jsonResponse[0]['user_Username'];
+    pers_Identidad = jsonResponse[0]['pers_Identidad'];
+    print(userEsAdmin);
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => admin_screen()));
+                builder: (context) => FloatingBottomNavigationBar()));
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -148,7 +160,8 @@ if (jsonResponse != null && jsonResponse.length > 0) {
  errorSexo = false;
  errorUsername = null;
  errorContrasena = null;
- sexoSeleccionado = null;
+ sexoSeleccionado = null; 
+ username = null;
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -185,6 +198,7 @@ if (jsonResponse != null && jsonResponse.length > 0) {
  errorUsername = null;
  errorContrasena = null;
  sexoSeleccionado = null;
+ username = null;
             Navigator.push(
               context,
               MaterialPageRoute(

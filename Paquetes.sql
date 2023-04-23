@@ -940,6 +940,28 @@ END CATCH
 END
 GO
 
+/*Paquetes X Cliente*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_PaquetesXCliente
+@pers_ID INT
+AS
+BEGIN
+SELECT paqu_ID, paqu_Cliente,CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS paqu_ClienteNombreCompleto, 
+paqu.sucu_ID,sucu.sucu_Nombre AS sucu_Nombre, paqu_Peso, 
+paqu_Fragil, meto_ID, 
+paqu.muni_ID,muni.muni_Descripcion, paqu_DireccionExacta, 
+paqu_FechaSalida,paqu.trac_ID,trac.trac_Nombre AS Tracking, paqu_FechaCreacion, 
+paqu_UserCreacion, paqu_FechaModificacion, 
+paqu_UserModificacion, paqu_Estado
+FROM paqu.tbPaquetes paqu INNER JOIN paqu.tbPersonas pers
+ON paqu.paqu_Cliente = pers.pers_ID INNER JOIN paqu.tbSucursales sucu
+ON paqu.sucu_ID = sucu.sucu_ID INNER JOIN gral.tbMunicipios muni
+ON paqu.muni_ID = muni.muni_ID INNER JOIN gral.tbTracking trac
+ON paqu.trac_ID = trac.trac_ID
+WHERE paqu.paqu_Cliente = @pers_ID
+END
+GO
+
 /*-------------------------Login-------------------------------*/
 /*Login UDP*/
 GO
@@ -949,9 +971,9 @@ CREATE OR ALTER PROCEDURE acce.UDP_Login
 AS
 BEGIN
 DECLARE @Pass VARBINARY(MAX) = CONVERT(VARBINARY(MAX), HASHBYTES('SHA2_512', @user_Contrasena));
-SELECT [user_ID], [user_Username], 
+SELECT pers_EsAdmin,[user_ID], [user_Username], 
 [user_Contrasena], [user].[pers_ID],CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS user_NombreCompleto,pers.pers_Sexo, 
-[user_FechaCreacion], [user_UserCreacion], 
+[user_FechaCreacion], [user_UserCreacion],pers.pers_Identidad, 
 [user_FechaModificacion], [user_UserModificacion], 
 [user_Estado] 
 FROM acce.tbUsuarios [user] INNER JOIN paqu.tbPersonas pers
@@ -967,7 +989,7 @@ CREATE VIEW acce.VW_tbUsuarios
 AS
 SELECT [user_ID], [user_Username], 
 [user_Contrasena], [user].[pers_ID],pers.pers_EsAdmin,CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS user_NombreCompleto,pers.pers_Sexo, 
-[user_FechaCreacion], [user_UserCreacion], 
+[user_FechaCreacion], [user_UserCreacion],pers.pers_Identidad,
 [user_FechaModificacion], [user_UserModificacion], 
 [user_Estado] 
 FROM acce.tbUsuarios [user] INNER JOIN paqu.tbPersonas pers

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/auth/welcome_page.dart';
 import 'package:flutter_application_1/screens/paquetesform_screen.dart';
 import 'package:flutter_application_1/screens/index_screen.dart';
 import 'package:flutter_application_1/screens/DropDownLists/clientes.dart';
@@ -7,6 +8,9 @@ import 'package:flutter_application_1/screens/DropDownLists/sucursales.dart';
 import 'package:flutter_application_1/widgets/fechasalida.dart';
 import 'package:flutter_application_1/screens/graficas_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'loginsietio.dart';
+import 'misionvision_screen.dart';
+import 'mispaquetes_screen.dart';
  
 class FloatingBottomNavigationBar extends StatefulWidget {
   @override
@@ -48,8 +52,18 @@ class _FloatingBottomNavigationBarState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Bottom Navigation Bar Example'),
+  appBar: AppBar(
+        title: Text('RapiExprezzz'),
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              // Navegar a la pantalla de usuario
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfilePage()));
+            },
+          ),
+        ],
       ),
       body: Container(
         child: Column(
@@ -82,6 +96,7 @@ class _FloatingBottomNavigationBarState
             ElevatedButton(
               onPressed: () {
                 // Acción del botón
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => MisionVisionScreen()));
               },
               child: Text(
                 'Saber mas', // Texto del botón
@@ -117,6 +132,7 @@ CarouselSlider(
     Container(
       decoration: BoxDecoration(
         image: DecorationImage(
+          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.9), BlendMode.dstATop),
           image: AssetImage('assets/images/bg1.jpg'), // Ejemplo de una imagen cargada desde un archivo local
           fit: BoxFit.cover, // Ajuste de la imagen en el contenedor
         ),
@@ -125,7 +141,7 @@ CarouselSlider(
     child: Column(
       children: [
         SizedBox(height: 10,),
-        Container(child: Text('Envios a nivel nacional',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, color: Colors.white),),decoration: BoxDecoration(color: Color.fromRGBO(100, 94, 94, 0.561)),),
+        Container(child: Text('Envios a nivel nacional',style: TextStyle(fontSize: 18, color: Colors.white),),decoration: BoxDecoration(color: Color.fromRGBO(100, 94, 94, 0.561)),),
         SizedBox(height: 20,),
         Padding(
           padding: const EdgeInsets.all(15.0),
@@ -146,9 +162,36 @@ CarouselSlider(
       child: Center(
        child: Column(
         children: [
-          Container(child: Text('Seguridad',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),)
+          SizedBox(height: 10,),
+          Container(child: Text('Seguridad',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),),
+          SizedBox(height: 20,),
+          Padding(padding: const EdgeInsets.all(15.0),
+          child: Text('Personal capacitado, unidades en buen estado y procesos que garantizas el cuidado de los paquetes',style: TextStyle(color: Colors.white,fontSize: 18),),)
+
         ],
        ),
+      ),
+    ),
+    //Elemento 3
+      Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/Velocidad.jpeg'), // Ejemplo de una imagen cargada desde un archivo local
+          fit: BoxFit.cover, // Ajuste de la imagen en el contenedor
+        ),
+      ),
+      child: Center(
+    child: Column(
+      children: [
+        SizedBox(height: 10,),
+        Container(child: Text('Velocidad',style: TextStyle(fontSize: 18, color: Colors.white),),decoration: BoxDecoration(color: Color.fromRGBO(100, 94, 94, 0.561)),),
+        SizedBox(height: 20,),
+        Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Text('Entregas el mismo dia',style: TextStyle(fontSize: 20,color: Colors.white),),
+        )
+      ],
+    ),
       ),
     ),
     // Agrega más elementos aquí según tus necesidades
@@ -159,9 +202,10 @@ CarouselSlider(
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(userEsAdmin == true ? Icons.add : Icons.inbox),
         onPressed: () {
-               peso = "";
+          if(userEsAdmin == true){
+                          peso = "";
       errorPeso = false;
       errorCliente = false;
       errorSucursal = false;
@@ -178,6 +222,9 @@ CarouselSlider(
       fechaFormateada = "";
 
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => PaquetesForm()));
+          }else{
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => PaquetesClienteScreen()));
+          }
         },
       ),
       bottomNavigationBar: BottomAppBar(
@@ -190,14 +237,14 @@ CarouselSlider(
               IconButton(
                 icon: Icon(Icons.search),
                 onPressed: () {          
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Index()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Index()));
                 },
               ),
               IconButton(
                 icon: Icon(Icons.show_chart),
                 onPressed: () {
                   _onItemTapped(2);
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Graficas()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Graficas()));
                 },
               ),
             ],

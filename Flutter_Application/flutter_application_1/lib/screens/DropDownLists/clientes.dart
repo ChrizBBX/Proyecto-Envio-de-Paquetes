@@ -46,6 +46,7 @@ class _ClientesDDLState extends State<ClientesDDL> {
           setState(() {
             _selectedCliente = newValue.toString();
             cliente = newValue.toString();
+            print(cliente);
           });
         },
         items: [

@@ -31,6 +31,13 @@ namespace Paquetes.API.Controllers
             return Ok(listado);
         }
 
+        [HttpPost("PaquetesXCliente")]
+        public IActionResult List(VW_tbPaquetes item)
+        {
+            var listado = _paquetesService.ListadoPaquetesXCliente(item);
+            return Ok(listado);
+        }
+
         [HttpPost("Insert")]
         public IActionResult Insert(PaquetesViewModel item)
         {

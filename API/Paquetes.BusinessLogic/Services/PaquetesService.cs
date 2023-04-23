@@ -39,6 +39,19 @@ namespace Paquetes.BusinessLogic.Services
             }
         }
 
+        public IEnumerable<VW_tbPaquetes> ListadoPaquetesXCliente(VW_tbPaquetes item)
+        {
+            try
+            {
+                return _paquetesrepository.PaquetesXCliente(item);
+            }
+            catch (Exception e)
+            {
+
+                return Enumerable.Empty<VW_tbPaquetes>();
+            }
+        }
+
         public IEnumerable<VW_PaquetesXMunicipio> ListadoPaquetesXMunicipio()
         {
             try

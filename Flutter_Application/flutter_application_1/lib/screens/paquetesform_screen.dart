@@ -15,6 +15,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
+import 'graficas_screen.dart';
+
 String peso = "";
 bool errorPeso = false;
 bool errorCliente = false;
@@ -36,6 +38,7 @@ class _PaquetesFormState extends State<PaquetesForm> {
     return Scaffold(
       appBar: AppBar(
   title: Text('Enviar un paquete'),
+       automaticallyImplyLeading: false,
   flexibleSpace: Container(
     decoration: BoxDecoration(
       color: Colors.grey
@@ -64,10 +67,41 @@ body: Container(
     checkbox(),
     SizedBox(height: 10,),
     btnEnviar(),
+    SizedBox(height: 40,)
   ],
 ),
   ),
 ),
+floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.home),
+        onPressed: () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => FloatingBottomNavigationBar()));
+        },
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {          
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Index()));
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.show_chart),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Graficas()));
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
   

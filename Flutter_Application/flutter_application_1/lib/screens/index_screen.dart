@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/admin_screen.dart';
+import 'package:flutter_application_1/screens/auth/welcome_page.dart';
 import 'package:flutter_application_1/screens/pruebas.dart';
 import 'package:flutter_application_1/screens/paquetesformedit_screen.dart';
 import 'package:flutter_application_1/screens/tracking_screen.dart';
@@ -9,6 +10,8 @@ import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'dart:async';
 
+import 'graficas_screen.dart';
+
 String? paqu_ID;
 String? direccion;
 class Index extends StatelessWidget {
@@ -16,7 +19,7 @@ class Index extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Barra de Búsqueda de Paquetes',
+      title: 'Buscar Paquete por ID de tracking',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -49,7 +52,6 @@ Future<void> _fetchPackageData() async {
       _isLoading = false;
       if (response.statusCode == 200) {
         final List<dynamic> jsonData = json.decode(response.body);
-        print(_packageId);
         // Filtrar los registros eliminados lógicamente (estado = 0)
         final filteredData = jsonData.where((item) => item['paqu_Estado'] == true).toList();
         // Buscar el elemento con el ID especificado en la lista filtrada
@@ -129,7 +131,7 @@ Future<void> _fetchPackageData() async {
                     Row(
                       children: [
                         Text('ID del Paquete: ${packageData['paqu_ID']}',style: TextStyle(fontWeight: FontWeight.bold),),
-                        Flexible(child: CardOption()),
+                        Flexible(child: userEsAdmin  == true ? CardOption() : Container()),
                       ],
                     ),
                     Text('Cliente: ${packageData['paqu_ClienteNombreCompleto']}'),
@@ -155,6 +157,36 @@ Future<void> _fetchPackageData() async {
     ),
     ]
   ),
+  floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.home),
+        onPressed: () {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => FloatingBottomNavigationBar()));
+        },
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {          
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Index()));
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.show_chart),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Graficas()));
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
 );
   }  
 }

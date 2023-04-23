@@ -5,10 +5,13 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_application_1/screens/index_screen.dart';
 import 'package:flutter_application_1/screens/paquetesform_screen.dart';
+import 'package:flutter_application_1/screens/pruebas.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'dart:async';
+
+import 'graficas_screen.dart';
 
 
           String? _errorDireccionExacta;
@@ -30,6 +33,7 @@ class _FormEditPaqueteState extends State<FormEditPaquete> {
     return Scaffold(
     appBar: AppBar(
       title: Text('Editar Paquete'),
+           automaticallyImplyLeading: false,
     ),
     body: Container(
       child: Padding(
@@ -76,7 +80,7 @@ if (jsonResponse != null && jsonResponse.length > 0) {
                       );
                     },
                   ).show(context);
-  Navigator.push(
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(builder: (context) => Index()),
   );
@@ -92,20 +96,49 @@ print('hay un error manito');
       _errorDireccionExacta = "Este campo es requerido";
     });
   }
-
             },
              child: Text('Editar'))
           ], 
         ),
       ),
     ),
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.home),
+        onPressed: () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => FloatingBottomNavigationBar()));
+        },
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {          
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Index()));
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.show_chart),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Graficas()));
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
 
 void _redirigirPantalla(BuildContext context) {
   // Lógica para redirigir a la pantalla deseada después de la operación exitosa
-  Navigator.push(
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(builder: (context) => Index()),
   );

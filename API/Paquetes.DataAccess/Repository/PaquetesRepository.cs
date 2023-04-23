@@ -55,13 +55,18 @@ namespace Paquetes.DataAccess.Repository
             return result;
         }
 
-
-
         public IEnumerable<VW_tbPaquetes> List()
         {
             using var db = new SqlConnection(PaquetesContext.ConnectionString);
             var parametros = new DynamicParameters();
             return db.Query<VW_tbPaquetes>(ScriptsDataBase.UDP_Paquetes_Select, null, commandType: CommandType.StoredProcedure);
+        }
+        public IEnumerable<VW_tbPaquetes> PaquetesXCliente(VW_tbPaquetes item)
+        {
+            using var db = new SqlConnection(PaquetesContext.ConnectionString);
+            var parametros = new DynamicParameters();
+            parametros.Add("@pers_ID", item.paqu_Cliente, DbType.Int32, ParameterDirection.Input);
+            return db.Query<VW_tbPaquetes>(ScriptsDataBase.UDP_PaquetesXCliente_Select, parametros, commandType: CommandType.StoredProcedure);
         }
 
         public RequestStatus Update(tbPaquetes item)

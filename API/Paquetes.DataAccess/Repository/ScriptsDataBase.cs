@@ -14,6 +14,7 @@ namespace Paquetes.DataAccess.Repository
         public static string UDP_Paquetes_Insert = "paqu.UDP_tbPaquetes_Insert";
         public static string UDP_Paquetes_Edit = "paqu.UDP_tbPaquetes_Edit";
         public static string UDP_Paquetes_Delete = "paqu.UDP_tbPaquetes_Delete";
+        public static string UDP_PaquetesXCliente_Select = "paqu.UDP_tbPaquetes_PaquetesXCliente";
         #endregion
 
         #region Metodos de pago

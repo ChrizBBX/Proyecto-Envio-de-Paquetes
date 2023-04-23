@@ -10,6 +10,7 @@ namespace Paquetes.Entities.Entities
     {
         public tbPersonas()
         {
+            tbPaquetes = new HashSet<tbPaquetes>();
             tbUsuarios = new HashSet<tbUsuarios>();
         }
 
@@ -27,6 +28,7 @@ namespace Paquetes.Entities.Entities
 
         public virtual tbUsuarios pers_UserCreacionNavigation { get; set; }
         public virtual tbUsuarios pers_UserModificacionNavigation { get; set; }
+        public virtual ICollection<tbPaquetes> tbPaquetes { get; set; }
         public virtual ICollection<tbUsuarios> tbUsuarios { get; set; }
     }
 }

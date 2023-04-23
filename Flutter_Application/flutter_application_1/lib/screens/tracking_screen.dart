@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/index_screen.dart';
+import 'package:flutter_application_1/screens/pruebas.dart';
 import 'dart:ui';
+import 'graficas_screen.dart';
 
 class PantallaDeAuditoria extends StatelessWidget {
   final String trackingStatus;
 
-  PantallaDeAuditoria({required this.trackingStatus});
+  PantallaDeAuditoria({required this.trackingStatus,required});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Auditoría de Seguimiento'),
+        automaticallyImplyLeading: false,
       ),
       body: Card(
         elevation: 10,
@@ -58,6 +61,36 @@ class PantallaDeAuditoria extends StatelessWidget {
                 backgroundColor: Color.fromARGB(255, 247, 156, 150),
               ),
               Gif()
+            ],
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.home),
+        onPressed: () {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => FloatingBottomNavigationBar()));
+        },
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {          
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Index()));
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.show_chart),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Graficas()));
+                },
+              ),
             ],
           ),
         ),

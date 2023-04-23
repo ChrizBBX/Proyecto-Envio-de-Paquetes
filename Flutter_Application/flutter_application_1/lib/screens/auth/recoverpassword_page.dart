@@ -98,6 +98,7 @@ var response = await http.put(
   if (response.statusCode == 200) {
    var jsonResponse = json.decode(response.body);
 if (jsonResponse != null && jsonResponse.length > 0) {
+
             Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => WelcomePage()));
   } else {
@@ -140,6 +141,8 @@ if (jsonResponse != null && jsonResponse.length > 0) {
             ),
           ),
           onTap: () {
+            UsernameRecover = null;
+            ContrasenaRecover = null;
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -176,8 +179,9 @@ Widget Campos (){
                padding: const EdgeInsets.all(15.0),
                child: Container(
                  child: TextField(
-                    decoration: InputDecoration(hintText: 'Usuario',fillColor: AppColor.secondary.withOpacity(0.5), filled: true,errorText: errorUsernameRecover),
-                    style: TextStyle(    
+                    decoration: InputDecoration(hintText: 'Usuario',fillColor: AppColor.secondary.withOpacity(0.5), filled: true,errorText: errorUsernameRecover,hintStyle: TextStyle(color: Colors.white)),
+                    style: TextStyle(   
+                      color: Colors.white
                     ),
                     onChanged: (value) {
                       UsernameRecover = value;
@@ -188,7 +192,10 @@ Widget Campos (){
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: TextField(
-                  decoration: InputDecoration(hintText: 'Nueva Contraseña', fillColor: AppColor.secondary.withOpacity(0.5),filled: true,errorText: errorContrasenaRecover),
+                  decoration: InputDecoration(hintText: 'Nueva Contraseña', fillColor: AppColor.secondary.withOpacity(0.5),filled: true,errorText: errorContrasenaRecover,hintStyle: TextStyle(color: Colors.white)),
+                  style: TextStyle(
+                    color: Colors.white
+                  ),
                   obscureText: true,
                   onChanged: (value) {
                     ContrasenaRecover = value;
