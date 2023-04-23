@@ -69,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextField(
                 decoration: InputDecoration(hintText: 'Contraseña'),
+                obscureText: true,
                 onChanged: (value) {
                   password = value;
                 },
@@ -87,10 +88,8 @@ var response = await http.put(
   body: json.encode({'user_Username': username, 'user_Contrasena': password}),
 );
 
-print(response.statusCode);
   if (response.statusCode == 200) {
    var jsonResponse = json.decode(response.body);
-   print(jsonResponse);
 if (jsonResponse != null && jsonResponse.length > 0) {
           Navigator.of(context).pop();
             Navigator.of(context).pushReplacement(MaterialPageRoute(

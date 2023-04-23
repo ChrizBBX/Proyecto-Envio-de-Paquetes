@@ -41,6 +41,19 @@ namespace Paquetes.DataAccess.Repository
             return db.Query<VW_tbUsuarios>(ScriptsDataBase.UDP_Login, parametros, commandType: CommandType.StoredProcedure);
         }
 
+        public RequestStatus Recover(VW_tbUsuarios item)
+        {
+            using var db = new SqlConnection(PaquetesContext.ConnectionString);
+            RequestStatus result = new RequestStatus();
+            var parametros = new DynamicParameters();
+            parametros.Add("@user_Username", item.user_Username, DbType.String, ParameterDirection.Input);
+            parametros.Add("@user_Contrasena", item.user_Contrasena, DbType.String, ParameterDirection.Input);
+            var answer = db.QueryFirst<string>(ScriptsDataBase.UDP_RecoverPassword, parametros, commandType: CommandType.StoredProcedure);
+
+            result.MessageStatus = answer;
+            return result;
+        }
+
         public RequestStatus Update(tbUsuarios item)
         {
             throw new NotImplementedException();

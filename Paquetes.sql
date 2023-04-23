@@ -84,7 +84,7 @@ user_Estado				BIT DEFAULT 1,
 CONSTRAINT PK_tbUsuarios_user_ID PRIMARY KEY([user_ID]),
 CONSTRAINT FK_tbUsuarios_pers_ID_tbPersonas_pers_ID FOREIGN KEY (pers_ID) REFERENCES paqu.tbPersonas(pers_ID)
 )
-
+/*Usuarios Insert*/
 GO
 CREATE PROCEDURE UDP_tbUsuarios_Insert
 @user_Username NVARCHAR(250),
@@ -103,6 +103,26 @@ GO
 
 EXECUTE UDP_tbUsuarios_Insert 'admin','123',1,1
 
+GO
+
+/*Recover Password*/
+GO
+CREATE OR ALTER PROCEDURE acce.UDP_Recover_Password
+@user_Username NVARCHAR(250),
+@user_Contrasena NVARCHAR(MAX)
+AS
+BEGIN
+BEGIN TRY
+DECLARE @Pass VARBINARY(MAX) = CONVERT(VARBINARY(MAX), HASHBYTES('SHA2_512', @user_Contrasena));
+UPDATE acce.tbUsuarios
+SET user_Contrasena = @Pass
+WHERE user_Username = @user_Username
+SELECT '1'
+END TRY
+BEGIN CATCH
+SELECT '0'
+END CATCH
+END
 GO
  
 ALTER TABLE acce.tbUsuarios
@@ -558,7 +578,116 @@ VALUES	('01','0101','La Ceiba', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('18', '1810', 'Victoria', '1', NULL, GETDATE(), NULL, GETDATE()),
 		('18', '1811', 'Yorito', '1', NULL, GETDATE(), NULL, GETDATE());
 GO
+/*-------------------------Departamentos-------------------------------*/
+GO
+
+/*Departamentos View*/
+CREATE VIEW gral.VW_tbDepartamentos
+AS
+SELECT [dept_ID], [dept_Descripcion], 
+[dept_Estado], [dept_UserCreacion], 
+[dept_FechaCreacion], [dept_UserModificacion], 
+[dept_FechaModificacion]
+FROM gral.tbDepartamentos
+
+/*Departamentos View UDP*/
+GO
+
+CREATE OR ALTER PROCEDURE gral.UDP_tbDepartamentos_VW
+AS
+BEGIN
+SELECT * FROM gral.VW_tbDepartamentos
+END
+
+GO
+
+/*-------------------------Municipios-------------------------------*/
+/*Municipios View*/
+GO
+CREATE VIEW gral.VW_tbMunicipios
+AS
+SELECT [dept_ID], [muni_ID], 
+[muni_Descripcion], [muni_Estado], 
+[muni_UserCreacion], [muni_FechaCreacion], 
+[muni_UserModificacion], [muni_FechaModificacion]
+FROM [gral].[tbMunicipios]
+GO
+
+/*Municipios View UDP*/
+GO
+CREATE OR ALTER PROCEDURE gral.UDP_tbMunicipios_VW
+AS
+BEGIN
+SELECT * FROM gral.VW_tbMunicipios
+END
+GO
+
+/*Municipios x Departamento UDP*/
+GO
+CREATE OR ALTER PROCEDURE gral.UDP_tbMunicipiosXtbDepartamentos
+@dept_ID CHAR(2)
+AS
+BEGIN
+SELECT * FROM gral.VW_tbMunicipios WHERE dept_ID = @dept_ID
+END
+GO
+/*-------------------------Register------------------------------*/
+/*Register View*/
+GO
+CREATE VIEW acce.VW_Register
+AS 
+SELECT [pers_Identidad], [pers_Nombres], [pers_Apellidos], [pers_Sexo], [pers_EsAdmin], [user_ID], [user_Username], [user_Contrasena] FROM [paqu].[tbPersonas] pers INNER JOIN [acce].[tbUsuarios] [user]
+ON pers.pers_ID = [user].pers_ID
+GO
+
+/*Register Insert*/
+GO
+CREATE OR ALTER PROCEDURE acce.UDP_Register
+@pers_Identidad NVARCHAR(13),
+@pers_Nombres NVARCHAR(150),
+@pers_Apellidos NVARCHAR(150),
+@pers_Sexo CHAR,
+@user_Username NVARCHAR(150),
+@user_Contrasena NVARCHAR(MAX)
+AS
+BEGIN
+BEGIN TRY
+DECLARE @Pass VARBINARY(MAX) = CONVERT(VARBINARY(MAX), HASHBYTES('SHA2_512', @user_Contrasena));
+INSERT INTO paqu.tbPersonas([pers_Identidad], [pers_Nombres], [pers_Apellidos], [pers_Sexo], [pers_EsAdmin], [pers_UserCreacion], [pers_FechaModificacion], [pers_UserModificacion])
+VALUES(@pers_Identidad,@pers_Nombres,@pers_Apellidos,@pers_Sexo,0,1,NULL,NULL)
+
+DECLARE @persmaxid INT = (SELECT MAX(pers_ID) FROM paqu.tbPersonas)
+INSERT INTO acce.tbUsuarios([user_Username], [user_Contrasena],[pers_ID],[user_FechaModificacion], [user_UserModificacion])
+VALUES(@user_Username,@Pass,@persmaxid,NULL,NULL)
+SELECT '1'
+END TRY
+BEGIN CATCH
+SELECT '0'
+END CATCH
+END
+GO
+
+/*-------------------------PaquetesXMunicipio-------------------------------*/
+/*PaqutesXMunicipio View*/
+GO
+CREATE VIEW paqu.VW_PaquetesXMunicipio
+AS
+SELECT muni.muni_ID, muni.muni_Descripcion, COUNT(paqu.paqu_ID) AS cantidad_Paquetes
+FROM paqu.tbPaquetes paqu
+INNER JOIN gral.tbMunicipios muni ON paqu.muni_ID = muni.muni_ID
+GROUP BY muni.muni_ID, muni.muni_Descripcion;
+GO
+/*PaquetesXMunicipio UDP*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_PaquetesXMunicipio_VW
+AS
+BEGIN
+SELECT * FROM paqu.VW_PaquetesXMunicipio
+END
+GO
+
 /*-------------------------Personas-------------------------------*/
+/*Personas Insert*/
 GO
 CREATE OR ALTER PROCEDURE paqu.UDP_tbPersonas_Insert
 @pers_Identidad NVARCHAR(13),
@@ -576,6 +705,54 @@ GO
 EXECUTE paqu.UDP_tbPersonas_Insert '0501-2006-75435','Vladimir','Putin','M',0,1
 EXECUTE paqu.UDP_tbPersonas_Insert '0318-1999-09991','Elon','Musk','M',0,1
 GO
+
+/*Personas View Clientes*/
+GO
+CREATE VIEW paqu.VW_tbClientes
+AS
+SELECT [pers_ID], [pers_Identidad], 
+[pers_Nombres], [pers_Apellidos],CONCAT(pers_Nombres,' ',pers_Apellidos) AS ClienteNombreCompleto,
+[pers_Sexo], [pers_EsAdmin], 
+[pers_FechaCreacion], [pers_UserCreacion], 
+[pers_FechaModificacion], [pers_UserModificacion], 
+[pers_Estado]
+FROM paqu.tbPersonas
+WHERE pers_EsAdmin = 0
+GO
+
+/*Personas View Clientes UDP*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbClientes_VW
+AS
+BEGIN
+SELECT * FROM paqu.VW_tbClientes
+END
+GO
+
+/*Personas View Empleados*/
+GO
+CREATE VIEW paqu.VW_tbEmpleados 
+AS
+SELECT [pers_ID], [pers_Identidad], 
+[pers_Nombres], [pers_Apellidos],CONCAT(pers_Nombres,' ',pers_Apellidos) AS EmpleadoNombreCompleto,
+[pers_Sexo], [pers_EsAdmin], 
+[pers_FechaCreacion], [pers_UserCreacion], 
+[pers_FechaModificacion], [pers_UserModificacion], 
+[pers_Estado]
+FROM paqu.tbPersonas
+WHERE pers_EsAdmin = 1
+GO
+
+/*Personas View Empleados UDP*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbEmpleados_VW
+AS
+BEGIN
+SELECT * FROM paqu.VW_tbEmpleados
+END
+GO
+
+
 /*-------------------------Sucursales-------------------------------*/
 /*Sucursales View*/
 GO
@@ -709,8 +886,14 @@ CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_Insert
 @paqu_UserCreacion			INT
 AS
 BEGIN
+BEGIN TRY
 INSERT INTO paqu.tbPaquetes(paqu_Cliente, sucu_ID, paqu_Peso, paqu_Fragil, meto_ID, muni_ID, paqu_DireccionExacta, paqu_FechaSalida,trac_ID,paqu_UserCreacion, paqu_FechaModificacion, paqu_UserModificacion)
-VALUES(@paqu_Cliente,@sucu_ID,@paqu_Peso,@paqu_Fragil,@meto_ID,@muni_ID,@paqu_DireccionExacta,@paqu_FechaSalida,@trac_ID,@paqu_UserCreacion,NULL,NULL)
+VALUES(@paqu_Cliente,@sucu_ID,@paqu_Peso,@paqu_Fragil,1,@muni_ID,@paqu_DireccionExacta,@paqu_FechaSalida,1,@paqu_UserCreacion,NULL,NULL)
+SELECT '1'
+END TRY
+BEGIN CATCH
+SELECT '0'
+END CATCH
 END
 
 GO 
@@ -720,6 +903,64 @@ EXECUTE paqu.UDP_tbPaquetes_Insert 3,1,200,0,1,'0101','Colonia MonteCristo pajas
 EXECUTE paqu.UDP_tbPaquetes_Insert 2,1,200,0,1,'0209','Barrio los pinos en el parque','10-10-2023',1,1
 GO
 
+/*Paquetes Edit*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_Edit
+@paqu_ID INT,
+@paqu_DireccionExacta NVARCHAR(500)
+AS
+BEGIN
+BEGIN TRY
+UPDATE paqu.tbPaquetes
+SET paqu_DireccionExacta = @paqu_DireccionExacta
+WHERE paqu_ID = @paqu_ID
+SELECT '1'
+END TRY
+BEGIN CATCH
+SELECT '0'
+END CATCH
+END
+GO
+
+/*Paquetes Delete*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_Delete
+@paqu_ID INT
+AS
+BEGIN
+BEGIN TRY
+UPDATE paqu.tbPaquetes
+SET paqu_Estado = 0
+WHERE paqu_ID = @paqu_ID
+SELECT '1'
+END TRY
+BEGIN CATCH
+SELECT '0'
+END CATCH
+END
+GO
+
+/*Paquetes X Cliente*/
+GO
+CREATE OR ALTER PROCEDURE paqu.UDP_tbPaquetes_PaquetesXCliente
+@pers_ID INT
+AS
+BEGIN
+SELECT paqu_ID, paqu_Cliente,CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS paqu_ClienteNombreCompleto, 
+paqu.sucu_ID,sucu.sucu_Nombre AS sucu_Nombre, paqu_Peso, 
+paqu_Fragil, meto_ID, 
+paqu.muni_ID,muni.muni_Descripcion, paqu_DireccionExacta, 
+paqu_FechaSalida,paqu.trac_ID,trac.trac_Nombre AS Tracking, paqu_FechaCreacion, 
+paqu_UserCreacion, paqu_FechaModificacion, 
+paqu_UserModificacion, paqu_Estado
+FROM paqu.tbPaquetes paqu INNER JOIN paqu.tbPersonas pers
+ON paqu.paqu_Cliente = pers.pers_ID INNER JOIN paqu.tbSucursales sucu
+ON paqu.sucu_ID = sucu.sucu_ID INNER JOIN gral.tbMunicipios muni
+ON paqu.muni_ID = muni.muni_ID INNER JOIN gral.tbTracking trac
+ON paqu.trac_ID = trac.trac_ID
+WHERE paqu.paqu_Cliente = @pers_ID
+END
+GO
 
 /*-------------------------Login-------------------------------*/
 /*Login UDP*/
@@ -730,9 +971,9 @@ CREATE OR ALTER PROCEDURE acce.UDP_Login
 AS
 BEGIN
 DECLARE @Pass VARBINARY(MAX) = CONVERT(VARBINARY(MAX), HASHBYTES('SHA2_512', @user_Contrasena));
-SELECT [user_ID], [user_Username], 
+SELECT pers_EsAdmin,[user_ID], [user_Username], 
 [user_Contrasena], [user].[pers_ID],CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS user_NombreCompleto,pers.pers_Sexo, 
-[user_FechaCreacion], [user_UserCreacion], 
+[user_FechaCreacion], [user_UserCreacion],pers.pers_Identidad, 
 [user_FechaModificacion], [user_UserModificacion], 
 [user_Estado] 
 FROM acce.tbUsuarios [user] INNER JOIN paqu.tbPersonas pers
@@ -748,7 +989,7 @@ CREATE VIEW acce.VW_tbUsuarios
 AS
 SELECT [user_ID], [user_Username], 
 [user_Contrasena], [user].[pers_ID],pers.pers_EsAdmin,CONCAT(pers.pers_Nombres,pers.pers_Apellidos) AS user_NombreCompleto,pers.pers_Sexo, 
-[user_FechaCreacion], [user_UserCreacion], 
+[user_FechaCreacion], [user_UserCreacion],pers.pers_Identidad,
 [user_FechaModificacion], [user_UserModificacion], 
 [user_Estado] 
 FROM acce.tbUsuarios [user] INNER JOIN paqu.tbPersonas pers

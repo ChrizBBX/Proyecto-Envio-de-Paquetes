@@ -26,6 +26,7 @@ namespace Paquetes.Entities.Entities
 
         public virtual tbMetodosPago meto { get; set; }
         public virtual tbMunicipios muni { get; set; }
+        public virtual tbPersonas paqu_ClienteNavigation { get; set; }
         public virtual tbUsuarios paqu_UserCreacionNavigation { get; set; }
         public virtual tbUsuarios paqu_UserModificacionNavigation { get; set; }
         public virtual tbSucursales sucu { get; set; }

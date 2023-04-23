@@ -46,11 +46,35 @@
          "ObjectType": 0
       },
       {
+         "Name": "[acce].[VW_Register]",
+         "ObjectType": 3
+      },
+      {
          "Name": "[acce].[VW_tbUsuarios]",
          "ObjectType": 3
       },
       {
+         "Name": "[gral].[VW_tbDepartamentos]",
+         "ObjectType": 3
+      },
+      {
          "Name": "[gral].[VW_tbMetodosPago]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[gral].[VW_tbMunicipios]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[paqu].[VW_PaquetesXMunicipio]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[paqu].[VW_tbClientes]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[paqu].[VW_tbEmpleados]",
          "ObjectType": 3
       },
       {

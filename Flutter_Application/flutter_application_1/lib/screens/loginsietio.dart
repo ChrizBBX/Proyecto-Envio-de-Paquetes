@@ -1,107 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/pruebas.dart';
 import 'package:flutter_application_1/views/AppColor.dart';
 
-class FloatingBottomNavigationBar extends StatefulWidget {
-  @override
-  _FloatingBottomNavigationBarState createState() =>
-      _FloatingBottomNavigationBarState();
-}
-
-class _FloatingBottomNavigationBarState
-    extends State<FloatingBottomNavigationBar> {
-  int _selectedIndex = 1; // Índice de la opción seleccionada
-
-  // Lista de íconos para la barra de navegación
-  final List<IconData> _icons = [
-    Icons.search, // Ícono de historial
-    Icons.add, // Ícono de más
-    Icons.show_chart, // Ícono de gráficos
-  ];
-
-  // Función para cambiar la opción seleccionada
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    // Lógica adicional basada en la opción seleccionada
-    switch (index) {
-      case 0:
-        // Lógica para el ícono de historial
-        break;
-      case 1:
-        // Lógica para el ícono de más
-        break;
-      case 2:
-        // Lógica para el ícono de gráficos
-        break;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        title: Text('Prueba de Perfil'),
-        showProfilePhoto: true,
-        profilePhoto: AssetImage('assets/images/profile.png'),
-        profilePhotoOnPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfilePage()));
-        },
-      ),
-      body: Center(
-        child: Text('Contenido de la página'),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-      //          peso = "";
-      // errorPeso = false;
-      // errorCliente = false;
-      // errorSucursal = false;
-      // errorDepartamento = false;
-      // errorMunicipio = false;
-      // errorDireccionExacta = false;
-      // DireccionExacta = "";
-      // cliente = "";
-      // sucursal = "";
-      // peso = "";
-      // departamento = "";
-      // municipio = "";
-      // DireccionExacta = "";
-      // fechaFormateada = "";
-
-      // Navigator.of(context).push(MaterialPageRoute(builder: (context) => PaquetesForm()));
-        },
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        child: Container(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              // IconButton(
-              //   icon: Icon(Icons.search),
-              //   onPressed: () {          
-              //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => Index()));
-              //   },
-              // ),
-              // IconButton(
-              //   icon: Icon(Icons.show_chart),
-              //   onPressed: () {
-              //     _onItemTapped(2);
-              //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => Graficas()));
-              //   },
-              // ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+import 'auth/welcome_page.dart';
+import 'graficas_screen copy.dart';
+import 'index_screen.dart';
 
 /////////////////////////////////////////////////////////
 class ProfilePage extends StatelessWidget {
@@ -110,6 +13,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         brightness: Brightness.dark,
+               automaticallyImplyLeading: false,
         backgroundColor: AppColor.primary,
         elevation: 0,
         centerTitle: true,
@@ -123,7 +27,7 @@ class ProfilePage extends StatelessWidget {
       ),
       body: ListView(
         shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
+        physics: BouncingScrollPhysics(), 
         children: [
           // Section 1 - Profile Picture Wrapper
           Container(
@@ -145,16 +49,29 @@ class ProfilePage extends StatelessWidget {
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(100),
                       // Profile Picture
-                      image: DecorationImage(image: AssetImage('assets/images/foto-perfil.png'), fit: BoxFit.cover),
+                      image: DecorationImage(image: AssetImage('assets/images/profile.jpeg'), fit: BoxFit.cover),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Editar Usuario', style: TextStyle(fontFamily: 'verdana', fontWeight: FontWeight.w600, color: Colors.white)),
-                      SizedBox(width: 8),
-                    ],
-                  )
+                GestureDetector(
+  onTap: () {
+  Navigator.of(context).push(MaterialPageRoute(builder: (context) => WelcomePage()));
+  },
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        'Cerrar Sesión',
+        style: TextStyle(
+          fontFamily: 'verdana',
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+          decoration: TextDecoration.underline, // Agregamos subrayado para indicar que es clickeable
+        ),
+      ),
+      SizedBox(width: 8),
+    ],
+  ),
+)
                 ],
               ),
             ),
@@ -169,23 +86,53 @@ class ProfilePage extends StatelessWidget {
               children: [
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
-                  label: 'Nombre Completo',
-                  value: 'Aquí va el nombre xd',
+                  label: 'Username',
+                  value: user_Username,
                 ),
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
-                  label: 'Correo Electrónico',
-                  value: 'Aquí el correo',
+                  label: 'Nombre Completo',
+                  value: user_NombreCompleto,
                 ),
                 UserInfoTile(
                   margin: EdgeInsets.only(bottom: 16),
                   label: 'N° de Identidad',
-                  value: '0000 0000 00000',
+                  value: pers_Identidad,
                 ),
               ],
             ),
           )
         ],
+      ),
+           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.home),
+        onPressed: () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => FloatingBottomNavigationBar()));
+        },
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {          
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Index()));
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.show_chart),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Graficas()));
+                },
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

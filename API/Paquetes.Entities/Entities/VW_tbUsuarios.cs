@@ -17,6 +17,7 @@ namespace Paquetes.Entities.Entities
         public string pers_Sexo { get; set; }
         public DateTime? user_FechaCreacion { get; set; }
         public int? user_UserCreacion { get; set; }
+        public string pers_Identidad { get; set; }
         public DateTime? user_FechaModificacion { get; set; }
         public int? user_UserModificacion { get; set; }
         public bool? user_Estado { get; set; }

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Paquetes.API.Models;
+using Paquetes.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace Paquetes.API.Extensions
     {
         public MappingProfileExtensions()
         {
-            //CreateMap<ClientesViewModel, tbClientes>().ReverseMap();
+            CreateMap<PaquetesViewModel, tbPaquetes>().ReverseMap();
         }
     }
 }

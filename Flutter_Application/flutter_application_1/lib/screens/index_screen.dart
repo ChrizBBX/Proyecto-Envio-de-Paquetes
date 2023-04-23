@@ -1,289 +1,317 @@
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/admin_screen.dart';
+import 'package:flutter_application_1/screens/auth/welcome_page.dart';
+import 'package:flutter_application_1/screens/pruebas.dart';
+import 'package:flutter_application_1/screens/paquetesformedit_screen.dart';
+import 'package:flutter_application_1/screens/tracking_screen.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter/services.dart';
+import 'dart:convert';
+import 'dart:async';
 
-String url = "http://chris03-001-site1.htempurl.com/api/Paquetes";
+import 'graficas_screen.dart';
 
-Future<dynamic> _getListado({String? searchId}) async {
-  final respuesta = await http.get(Uri.parse(url));
-  if (respuesta.statusCode == 200) {
-    final json = respuesta.body;
-    final list = jsonDecode(json);
-    if (searchId != null) {
-      return list
-          .where((element) =>
-              element['paqu_ID'].toString().toLowerCase().contains(searchId.toLowerCase()))
-          .toList();
-    }
-    return list;
+String? paqu_ID;
+String? direccion;
+class Index extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Buscar Paquete por ID de tracking',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: PackageSearchScreen(),
+    );
+  }
+}
+Map<String, dynamic> datos = {};
+class PackageSearchScreen extends StatefulWidget {
+  @override
+  _PackageSearchScreenState createState() => _PackageSearchScreenState();
+}
+
+class _PackageSearchScreenState extends State<PackageSearchScreen> {
+  String _packageId = '';
+  bool _isLoading = false;
+  String? _errorText;
+  Map<String, dynamic> packageData = {};
+
+Future<void> _fetchPackageData() async {
+  if (_packageId != '' && _packageId != '0') {
+    setState(() {
+      _isLoading = true;
+    });
+    _errorText = null;
+    final url = 'http://chris03-001-site1.htempurl.com/api/Paquetes';
+    final response = await http.get(Uri.parse(url));
+
+    setState(() {
+      _isLoading = false;
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonData = json.decode(response.body);
+        // Filtrar los registros eliminados lógicamente (estado = 0)
+        final filteredData = jsonData.where((item) => item['paqu_Estado'] == true).toList();
+        // Buscar el elemento con el ID especificado en la lista filtrada
+        var package = filteredData.firstWhere((item) => item['paqu_ID'] == int.parse(_packageId), orElse: () => null);
+        if (package != null) {
+          packageData = package;
+          datos = packageData;
+          paqu_ID = _packageId;
+          direccion = package['paqu_DireccionExacta'];
+        } else {
+          _errorText = "El Tracking ingresado no coincide";
+          packageData = {};
+        }
+      } else {
+        packageData = {};
+      }
+    });
   } else {
-    print('Ha ocurrido un error');
+    setState(() {
+      _errorText = "Ingrese un ID de Tracking";
+    });
   }
 }
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
-
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-    final _searchController = TextEditingController();
-  final _searchFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
-      final searchId = _searchController.text.trim();
     return Scaffold(
-      appBar:AppBar(
-        backgroundColor: Colors.grey,
-  title: TextField(
-    controller: _searchController,
-    focusNode: _searchFocusNode,
-    decoration: InputDecoration(
-      hintText: 'Buscar por ID de tracking...',
-      border: InputBorder.none,
-      suffixIcon: IconButton(
-        icon: Icon(Icons.clear),
+  appBar: AppBar(
+    title: Text('Barra de Búsqueda de Paquetes'),
+
+  ),
+  body: ListView(
+    children: [Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: TextField(
+            keyboardType: TextInputType.number, // Define el tipo de teclado como números
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), // Aplica un formateador para permitir solo números
+            ],
+            onChanged: (value) {
+              setState(() {
+                _packageId = value;
+              });
+            },
+            decoration: InputDecoration(
+              labelText: 'ID de Tracking',
+              errorText: _errorText,
+              border: OutlineInputBorder(),
+            ),
+          ),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            _fetchPackageData();
+          },
+          child: Text('Buscar'),
+        ),
+        if (_isLoading)
+          CircularProgressIndicator()
+        else if (packageData.isNotEmpty)
+          Card(
+            margin: EdgeInsets.all(16.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PantallaDeAuditoria(trackingStatus: packageData['tracking'],)),
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text('ID del Paquete: ${packageData['paqu_ID']}',style: TextStyle(fontWeight: FontWeight.bold),),
+                        Flexible(child: userEsAdmin  == true ? CardOption() : Container()),
+                      ],
+                    ),
+                    Text('Cliente: ${packageData['paqu_ClienteNombreCompleto']}'),
+                    Text('Sucursal: ${packageData['sucu_Nombre']}'),
+                    Text('Peso: ${packageData['paqu_Peso']}'),
+                    Row(
+                      children: [
+                        Text('Fragil:'),
+                        Icon(packageData['paqu_Fragil'] == true ? Icons.check: Icons.close),
+                      ],
+                    ),
+                    Text('Dirección: ${packageData['paqu_DireccionExacta']}'),
+                    Text('Estado de Tracking: ${packageData['tracking']}'),
+                    SizedBox(height: 10,),
+                  ],
+                ),
+              ),
+            ),
+          )
+        else
+          Container(),
+      ],
+    ),
+    ]
+  ),
+  floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.home),
         onPressed: () {
-          _searchController.clear();
-          _searchFocusNode.unfocus();
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => FloatingBottomNavigationBar()));
         },
       ),
-    ),
-    onChanged: (value) {
-      setState(() {});
-    },
-  ),
-  // ...
-),
-    
-      body: FutureBuilder<dynamic>(
-      future: _getListado(searchId: searchId.isNotEmpty ? searchId : null),
-      builder: (context, item) {
-        if (item.hasData) {
-          return ListView(
-            children: listado(item.data),
-          );
-        }
-          else{
-            return const Text("Sin data");
-          }
-        },
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {          
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Index()));
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.show_chart),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Graficas()));
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+);
+  }  
+}
+
+class CardOption extends StatefulWidget {
+  @override
+  _CardOptionState createState() => _CardOptionState();
+}
+
+class _CardOptionState extends State<CardOption> {
+  String? _selectedOption; // Opción seleccionada en el menú emergente
+
+  void _onOptionSelected(String value) {
+    setState(() {
+      _selectedOption = value;
+    });
+
+    // Aquí puedes agregar la lógica correspondiente para manejar la selección de opciones
+    if (value == 'Eliminar') {
+      print('Eliminar seleccionado');
+      _eliminarDatos();
+    } else if (value == 'Editar') {
+      print('Editar seleccionado');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FormEditPaquete(id: paqu_ID,direccion:direccion ,)),
+                );
+    }
+  }
+
+  Future<void> _eliminarDatos() async {
+  //Hacer la funcion de eliminar aqui y tener esperanzas de que funcione
+  var url = Uri.parse('http://chris03-001-site1.htempurl.com/api/Paquetes/Delete');
+var response = await http.post(
+  url,
+  headers: {'Content-Type': 'application/json'},
+  body: json.encode({'paqu_ID': paqu_ID}),
+);
+
+  if (response.statusCode == 200) {
+   var jsonResponse = json.decode(response.body);
+if (jsonResponse != null && jsonResponse.length > 0) {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => FloatingBottomNavigationBar()));
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Row(
+          children: [
+            Icon(Icons.warning), // Barra de progreso circular
+            SizedBox(width: 10), // Espaciado horizontal
+            Text('Ha ocurrido un error'), // Mensaje de texto
+          ],  
+        ),
+        duration: Duration(seconds: 2), // Duración del SnackBar
       ),
     );
   }
+  } else {
+//Por si ocurre un error con la URL
+print("Error de conexion o algo asi xd");
+  }
 }
-
-class ItemWidget extends StatelessWidget {
-  final String paqu_ID;
-  final String paqu_ClienteNombreCompleto;
-  final String sucu_Nombre;
-  final String paqu_Peso;
-  final String muni_Descripcion;
-  final String muni_DireccionExacta;
-  final String Tracking;
-
-  ItemWidget({
-    required this.paqu_ID,
-    required this.paqu_ClienteNombreCompleto,
-    required this.sucu_Nombre,
-    required this.paqu_Peso,
-    required this.muni_Descripcion,
-    required this.muni_DireccionExacta,
-        required this.Tracking,
-  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.grey,
-          width: 1,
+    return PopupMenuButton<String>(
+      onSelected: _onOptionSelected,
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+        PopupMenuItem<String>(
+          value: 'Eliminar',
+          child: ListTile(
+            leading: Icon(Icons.delete), // Icono para la opción "Eliminar"
+            title: Text('Eliminar'),
+          ),
         ),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      margin: EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Row(
-              children: [
-                Text(
-                  'Tracking: ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  paqu_ID,
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
+        PopupMenuItem<String>(
+          value: 'Editar',
+          child: ListTile(
+            leading: Icon(Icons.edit), // Icono para la opción "Editar"
+            title: Text('Editar'),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Row(
-              children: [
-                Text(
-                  'Cliente: ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  paqu_ClienteNombreCompleto,
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Row(
-              children: [
-                Text(
-                  'Sucursal: ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  sucu_Nombre,
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Row(
-              children: [
-                Text(
-                  'Peso (lb): ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  paqu_Peso,
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Row(
-              children: [
-                Text(
-                  'Destino: ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  muni_Descripcion,
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Row(
-              children: [
-                Text(
-                  'DireccionExacta: ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                  Flexible(
-        child: Text(
-          muni_DireccionExacta,
-          style: TextStyle(fontSize: 16),
         ),
-      ),
-              ],
-            ),
-          ),
-                Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Row(
-              children: [
-                Text(
-                  'Estado: ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                  Flexible(
-        child: Text(
-          Tracking,
-          style: TextStyle(fontSize: 16),
-        ),
-      ),
-              ],
-            ),
-          ),
-          Divider(),
-        ],
+      ],
+      child: ListTile(
+        trailing: Icon(Icons.more_vert), // Icono del botón con menú emergente
       ),
     );
   }
 }
 
-
-
-List<Widget> listado(List<dynamic> info){
-
-  List<Widget> lista = [];
-
-  info.forEach((element) {
-    var item = ItemWidget(
-      paqu_ID: element["paqu_ID"].toString(),
-      paqu_ClienteNombreCompleto: element["paqu_ClienteNombreCompleto"],
-      sucu_Nombre: element["sucu_Nombre"],
-       paqu_Peso: element["paqu_Peso"].toString(),
-        muni_Descripcion: element["muni_Descripcion"],
-         muni_DireccionExacta: element["paqu_DireccionExacta"],
-           Tracking: element["tracking"],
-    );
-    lista.add(item);
-  });
-
-  return lista;
-}
-
-
-Widget PaquetesGet(){
-  return FutureBuilder<dynamic>(
-      future: _getListado(),
-      builder: (context,item){
-        if(item.hasData){
-          return Container(
-            width: 300, 
-            child: ListView(
-              children: listado(item.data),
-            ),
-            alignment: Alignment.center,
-          );
-        }
-        else{
-          return Text("Sin datos");
-        }
-      },
+ Editado (context){
+return ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Row(
+          children: [
+            Icon(Icons.warning), // Barra de progreso circular
+            SizedBox(width: 10), // Espaciado horizontal
+            Text('Ha ocurrido un error'), // Mensaje de texto
+          ],  
+        ),
+        duration: Duration(seconds: 2), // Duración del SnackBar
+      ),
     );
 }
+
+
+  Future<void> _AlertaExito(context) async {
+    if(Alerta == true){
+      print('hola');
+         ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.green,
+        content: Row(
+          children: [
+            Icon(Icons.warning), // Barra de progreso circular
+            SizedBox(width: 10), // Espaciado horizontal
+            Text('Direccion de paquete editada exitosamente'), // Mensaje de texto
+          ],  
+        ),
+        duration: Duration(seconds: 2), // Duración del SnackBar
+      ),
+    );
+    }
+}
+
