@@ -46,7 +46,7 @@ class _RecoverPageState extends State<RecoverPage> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(bottom: 16),
-                        child: Text('Cambiar Contraseña', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700, fontSize: 32, color: Colors.white)),
+                        child: Text('Cambiar Contraseña', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700, fontSize: 32, color: AppColor.primarySoft)),
                       ),
                     ],
                   ),

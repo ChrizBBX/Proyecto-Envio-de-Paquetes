@@ -54,9 +54,9 @@ class _FloatingBottomNavigationBarState
     return Scaffold(
   appBar: AppBar(
         leading: Image.asset(
-    'assets/images/rapiexprezzz.jpeg', // la ruta de la imagen en tu proyecto
-    fit: BoxFit.contain, // ajustar la imagen al tamaño del AppBar
-  ),
+        'assets/images/rapiexprezzz.jpeg',
+        fit: BoxFit.contain,
+       ),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(

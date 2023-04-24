@@ -50,9 +50,9 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(bottom: 16),
-                        child: Text('Con Ganas de Enviar un Paquete?', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700, fontSize: 32, color: Colors.white)),
+                        child: Text('Con Ganas de Enviar un Paquete?', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700, fontSize: 32, color: AppColor.primarySoft,)),
                       ),
-                      Text("Te ayudaremos cuando necesites ayuda", style: TextStyle(color: Colors.white)),
+                      Text("Te ayudaremos cuando necesites ayuda", style: TextStyle(color: Colors.black)),
                     ],
                   ),
                   Column(

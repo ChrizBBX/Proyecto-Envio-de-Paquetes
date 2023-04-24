@@ -38,7 +38,7 @@ class _register_screenState extends State<register_screen> {
   title: Text('Registrarse',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
   flexibleSpace: Container(
     decoration: BoxDecoration(
-      color: AppColor.secondary
+      color: Colors.grey
     ),
   ),
 ),
