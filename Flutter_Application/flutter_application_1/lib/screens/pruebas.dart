@@ -80,7 +80,7 @@ class _FloatingBottomNavigationBarState
           crossAxisAlignment: CrossAxisAlignment.start, // Alineación del contenido a la izquierda
           children: [
             Text(
-              'Quines somos', // Encabezado
+              'Quienes Somos', // Encabezado
               style: TextStyle(
                 fontSize: 24.0, // Tamaño de fuente del encabezado
                 fontWeight: FontWeight.bold, // Estilo de fuente del encabezado
@@ -90,8 +90,10 @@ class _FloatingBottomNavigationBarState
             Text(
               'RapiExprezzz es una empresa con un orgulloso pasado y un futuro aún más brillante. Nuestros valores nos definen. Nuestra cultura nos distingue. Nuestra estrategia nos impulsa. En RapiExprezzzz el cliente es lo primero, las personas lideran y la innovación impulsa.', // Cuerpo de texto
               style: TextStyle(
-                fontSize: 16.0, // Tamaño de fuente del cuerpo de texto
+                fontSize: 16.0,
+                 // Tamaño de fuente del cuerpo de texto
               ),
+              textAlign: TextAlign.justify,
             ),// Espaciado flexible para empujar el botón a la parte inferior
             ElevatedButton(
               onPressed: () {
@@ -106,7 +108,7 @@ class _FloatingBottomNavigationBarState
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue, // Color de fondo del botón
+                primary: Colors.black, // Color de fondo del botón
                 onPrimary: Colors.white, // Color de texto del botón
                 padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0), // Padding del botón
               ),

@@ -33,7 +33,8 @@ class MisionVisionScreen extends StatelessWidget {
                   SizedBox(height: 8.0),
                   Text(
                     'Brindar soluciones y servicio de clase mundial asegurando que nuestros minoristas reciban apoyo en las más de 5000 comunidades a las que servimos.',
-                    style: TextStyle(fontSize: 16.0),
+                    style: TextStyle(fontSize: 16.0,),
+                    textAlign: TextAlign.justify,
                   ),
                 ],
               ),
@@ -53,11 +54,13 @@ class MisionVisionScreen extends StatelessWidget {
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
+                    
                   ),
                   SizedBox(height: 8.0),
                   Text(
                     'Apoyar apasionadamente a las empresas pequeñas de nuestros vecindarios porque su comunidad es nuestra comunidad.',
                     style: TextStyle(fontSize: 16.0),
+                    textAlign: TextAlign.justify,
                   ),
                 ],
               ),
