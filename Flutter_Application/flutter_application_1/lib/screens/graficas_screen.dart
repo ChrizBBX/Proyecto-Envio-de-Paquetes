@@ -63,6 +63,7 @@ class _GraficasState extends State<Graficas> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey,
         title: Text('Gráfica de Paquetes por Municipio'),
       ),
       body: isLoading
@@ -77,7 +78,6 @@ class _GraficasState extends State<Graficas> {
                       dataMap: dataMap,
                       colorList: colorList,
                       chartRadius: MediaQuery.of(context).size.width / 2,
-                      centerText: "Paquetes por municipio",
                       chartType: ChartType.disc,
                       animationDuration: Duration(seconds: 3),
                       chartValuesOptions: ChartValuesOptions(
@@ -102,6 +102,7 @@ class _GraficasState extends State<Graficas> {
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey,
         child: Icon(Icons.home),
         onPressed: () {
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => FloatingBottomNavigationBar()));

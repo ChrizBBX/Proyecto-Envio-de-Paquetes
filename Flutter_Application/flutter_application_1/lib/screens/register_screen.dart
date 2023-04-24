@@ -53,6 +53,7 @@ class _register_screenState extends State<register_screen> {
         IdentidadInput(),
         NombresInput(),
         ApellidosInput(),
+        SizedBox(height: 10,),
         SexoCheckbox(),
         UsernameInput(),
         ContrasenaInput(),
@@ -68,19 +69,21 @@ class _register_screenState extends State<register_screen> {
   }
 
 
-Widget IdentidadInput(){
+Widget IdentidadInput() {
   return TextField(
-     keyboardType: TextInputType.number, // Define el tipo de teclado como números
-        inputFormatters: <TextInputFormatter>[
-          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), // Aplica un formateador para permitir solo números
-        ],
+    keyboardType: TextInputType.number, // Define el tipo de teclado como números
+    inputFormatters: <TextInputFormatter>[
+      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), // Aplica un formateador para permitir solo números
+    ],
     decoration: InputDecoration(
       hintText: 'Numero de Identidad',
-      errorText: errorIdentidad
+      errorText: errorIdentidad,
     ),
     onChanged: (value) {
-                  Identidad = value;
-                },
+      Identidad = value;
+    },
+    maxLength: 13, // Establece la longitud máxima del texto a 13 caracteres
+
   );
 }
 
@@ -230,7 +233,7 @@ print('register fallido');
   }
 }
 },
-  child: Text('Registrarse',),
+  child: Text('Registrarse',style: TextStyle(color: Colors.white),),
   style: ButtonStyle(
     backgroundColor: MaterialStateProperty.all<Color>(AppColor.primary),
   ),

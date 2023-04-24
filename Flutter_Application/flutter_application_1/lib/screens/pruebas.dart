@@ -53,10 +53,16 @@ class _FloatingBottomNavigationBarState
   Widget build(BuildContext context) {
     return Scaffold(
   appBar: AppBar(
-        leading: Image.asset(
-        'assets/images/rapiexprezzz.jpeg',
-        fit: BoxFit.contain,
-       ),
+    backgroundColor: Colors.grey,
+        leading: SizedBox(
+    width: 50, // ancho de la imagen
+    height: 50, // alto de la imagen
+    child: Image.asset(
+      'assets/images/rapiextprezzzcaja.jpeg',
+      fit: BoxFit.cover, // ajuste para cubrir la caja de la imagen
+    ),
+  ),
+  title: Text('RAPIEXPREZZZ'),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
@@ -207,6 +213,7 @@ CarouselSlider(
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey, // Color de fondo del botón flotante
         child: Icon(userEsAdmin == true ? Icons.add : Icons.inbox),
         onPressed: () {
           if(userEsAdmin == true){
