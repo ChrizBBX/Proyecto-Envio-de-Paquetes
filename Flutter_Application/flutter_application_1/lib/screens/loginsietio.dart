@@ -17,7 +17,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: AppColor.primary,
         elevation: 0,
         centerTitle: true,
-        title: Text('Perfil', style: TextStyle(fontFamily: 'stabillo', fontWeight: FontWeight.w400, fontSize: 20)),
+        title: Text('Mi Perfil', style: TextStyle(fontFamily: 'stabillo', fontWeight: FontWeight.w400, fontSize: 20, color: Colors.white)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
@@ -31,7 +31,7 @@ class ProfilePage extends StatelessWidget {
         children: [
           // Section 1 - Profile Picture Wrapper
           Container(
-            color: AppColor.primary,
+            color: Colors.grey,
             padding: EdgeInsets.symmetric(vertical: 24),
             child: GestureDetector(
               onTap: () {
@@ -64,7 +64,7 @@ class ProfilePage extends StatelessWidget {
         style: TextStyle(
           fontFamily: 'verdana',
           fontWeight: FontWeight.w600,
-          color: Colors.white,
+          color: Colors.black,
           decoration: TextDecoration.underline, // Agregamos subrayado para indicar que es clickeable
         ),
       ),

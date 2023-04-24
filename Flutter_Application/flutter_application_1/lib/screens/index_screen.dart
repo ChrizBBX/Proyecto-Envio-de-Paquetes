@@ -21,7 +21,7 @@ class Index extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Buscar Paquete por ID de tracking',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
       home: PackageSearchScreen(),
     );
