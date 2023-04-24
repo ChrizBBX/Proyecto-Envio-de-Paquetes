@@ -53,7 +53,10 @@ class _FloatingBottomNavigationBarState
   Widget build(BuildContext context) {
     return Scaffold(
   appBar: AppBar(
-        title: Text('RapiExprezzz'),
+        leading: Image.asset(
+    'assets/images/rapiexprezzz.jpeg', // la ruta de la imagen en tu proyecto
+    fit: BoxFit.contain, // ajustar la imagen al tamaño del AppBar
+  ),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
